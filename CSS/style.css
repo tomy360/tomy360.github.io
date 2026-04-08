@@ -758,3 +758,20 @@ font-size:24px;
 }
 
 }
+
+
+
+@media screen and (max-width: 360px){
+.CartelPresent{
+        padding-top: 130px; /* un poco más de espacio para el nav real */
+    }
+
+.Preparando{
+width:90%;
+margin:80px auto;
+grid-template-columns:1fr;
+}
+
+}
+
+
