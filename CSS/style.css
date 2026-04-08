@@ -763,9 +763,10 @@ font-size:24px;
 
 
 @media screen and (max-width: 360px){
+   
 .CartelPresent{
-        padding-top: 110px; /* un poco más de espacio para el nav real */
-    }
+padding-top: 100px; /* un poco más de espacio para el nav real */
+}
 
 .Preparando{
 width:90%;
@@ -773,6 +774,16 @@ margin:80px auto;
 grid-template-columns:1fr;
 }
 
+.TextP2{
+color: #F8FAF4;
+font-size: 28px;
+margin-top: 22px;
+font-weight: 1600;
+text-shadow: 0 1px 3px rgba(0,0,0,0.35);
+}
+
+
+   
 }
 
 
