@@ -634,9 +634,10 @@ margin-top:4px;
 height: auto;              /* que se ajuste al contenido */
 min-height: 350px;         /* altura mínima agradable */
 text-align: center;
-padding: 120px 15px 20px 15px; /* padding-top suficiente para nav */
-margin-top: 50px;             /* eliminamos margin-top fijo */
+margin-top: 150px;             /* eliminamos margin-top fijo */
 box-sizing: border-box;
+padding-top: 160px;      /* más espacio debajo del nav fijo en móviles */
+min-height: 350px;  
 }
 
 .TextP1{
