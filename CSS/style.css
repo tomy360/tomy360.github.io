@@ -637,7 +637,7 @@ min-height: 350px;         /* altura mínima agradable */
 text-align: center;
 margin-top: 100px;             /* eliminamos margin-top fijo */
 box-sizing: border-box;
-padding-top: 160px;      /* más espacio debajo del nav fijo en móviles */
+padding-top: 140px;      /* más espacio debajo del nav fijo en móviles */
 min-height: 350px;  
 }
 
@@ -764,7 +764,7 @@ font-size:24px;
 
 @media screen and (max-width: 360px){
 .CartelPresent{
-        padding-top: 130px; /* un poco más de espacio para el nav real */
+        padding-top: 110px; /* un poco más de espacio para el nav real */
     }
 
 .Preparando{
