@@ -35,7 +35,12 @@ box-shadow: 0px 4px 15px rgba(0,0,0,0.25);
 border-bottom: 2px solid #2E3942;
 }
 
+.BotonBa.activo{
+    color: #5A7863;
+    font-weight: 700;
 
+    border-bottom: 3px solid #90AB8B; /* subrayado moderno */
+}
 
 
 .CartelIndex{
@@ -68,9 +73,6 @@ margin-bottom:10px;
 .CartelIndex .TextP2{
 margin-bottom:10px;
 }
-
-
-
 
 
 #LogoP{
@@ -159,7 +161,7 @@ color: #CFE5B4;
 
 .BotonP{
     display: inline-block;
-    text-align: center;
+
     text-decoration: none;
     font-size: 18px;
     font-weight: 600;
@@ -176,6 +178,7 @@ color: #CFE5B4;
     box-shadow: 0px 4px 12px rgba(0,0,0,0.15);
 
     transition: all 0.25s ease;
+    text-align: center;
 }
 
 .BotonP:hover{
@@ -197,101 +200,130 @@ color: #CFE5B4;
 }
 
 
+/* BOTÓN PRINCIPAL */
 #BotonDevocional{
-    font-size:30px;
-    width:220px;
-    background-color:#E8F5D8;
-       border: 3px solid #C8DDB0;
+    font-size: 26px;
+    width: 240px;
+
+    background: linear-gradient(145deg, #EBF4DD, #CFE5B4);
+    color: #3B4953;
+
+    border: 2px solid #90AB8B;
+    border-radius: 12px;
+
+    padding: 14px 20px;
+
+    box-shadow: 0 6px 14px rgba(0,0,0,0.15);
+    transition: all 0.25s ease;
+    cursor: pointer;
 }
 
-/* DEVOCIONAL OCULTO */
-.Devocional{
+/* HOVER */
+#BotonDevocional:hover{
+    transform: translateY(-2px);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.25);
+}
+
+/* CLICK */
+#BotonDevocional:active{
+    transform: translateY(1px);
+}
+
+/* OCULTAR CHECKBOX */
+#toggleDevocional{
     display: none;
-    margin-top: 30px;
-    padding: 25px;
+}
+
+/* DEVOCIONAL */
+.Devocional{
+    max-height: 0;
+    overflow: hidden;
+
+    margin-top: 20px;
+    padding: 0 25px;
+
     border: 3px solid #C8DDB0;
     border-radius: 15px;
-    background-color: #F7FBEF;
-    text-align: left;
+    background: #F7FBEF;
+
     line-height: 1.6;
+    scroll-behavior: smooth;
+    opacity: 0;
+    transition: all 0.4s ease;
 }
 
-/* CUANDO SE TOCA EL BOTON */
-#devocional:target{
-    display: block;
-}
-
-/* MOVER TEXTO A LA IZQUIERDA */
-#devocional:target ~ h2,
-#devocional:target ~ h3{
-    transform: translateX(-40px);
-}
-
-/* ocultar checkbox */
-#toggleDevocional{
-    display:none;
-}
-
-/* devocional oculto */
-.Devocional{
-    display:none;
-    margin-top:30px;
-    padding:25px;
-    border:3px solid #C8DDB0;
-    border-radius:15px;
-    background:#F7FBEF;
-    text-align:left;
-    line-height:1.6;
-}
-
-/* cuando está activado aparece */
+/* CUANDO SE ABRE */
 #toggleDevocional:checked ~ .Devocional{
-    display:block;
+    max-height: 100vh; /* 👈 clave */
+    padding: 25px;
+    opacity: 1;
+    overflow-y: auto; /* 👈 permite scroll si es largo */
 }
 
-/* mover texto a la izquierda */
-#toggleDevocional:checked ~ h2,
-#toggleDevocional:checked ~ h3{
-    transform:translateX(-40px);
-    transition:0.3s;
-}
-
-
-/* ocultar checkbox */
-#toggleDevocional{
-    display:none;
-}
-
-/* ocultar devocional */
-.Devocional{
-    display:none;
-}
-
-/* mostrar devocional */
-#toggleDevocional:checked ~ .Devocional{
-display:block;
-}
-
-/* texto cerrar oculto */
+/* TEXTO BOTÓN */
 .cerrar{
-    display:none;
+    display: none;
 }
 
-/* cambiar texto del botón */
 #toggleDevocional:checked + .BotonConcer .abrir{
-    display:none;
+    display: none;
 }
 
 #toggleDevocional:checked + .BotonConcer .cerrar{
-    display:inline;
+    display: inline;
 }
 
-/* mover botón al final */
-#toggleDevocional:checked + .BotonConcer{
-    order:3;
+/* BOTÓN BASE */
+.BotonConcer{
+    display: block;
+    width: 90%;
+    margin: 20px auto;
+
+    padding: 12px 15px;
+
+    text-align: center;
+    text-decoration: none;
+
+    font-size: 15px;
+    font-weight: 600;
+
+    color: #2F3E2E;
+    background-color: #DCECC8;
+
+    border: 1px solid #C8DDB0;
+    border-radius: 30px;
+
+    transition: all 0.25s ease;
 }
 
-/*                */
+/* HOVER BOTÓN BASE */
+.BotonConcer:hover{
+    background-color: #CFE5B4;
+    transform: scale(1.03);
+}
+
+/* SCROLL GENERAL DEL DEVOCIONAL */
+.Devocional::-webkit-scrollbar{
+    width: 8px;
+}
+
+/* FONDO DE LA BARRA */
+.Devocional::-webkit-scrollbar-track{
+    background: #EBF4DD;
+    border-radius: 10px;
+}
+
+/* BARRA (la que se mueve) */
+.Devocional::-webkit-scrollbar-thumb{
+    background: linear-gradient(180deg, #90AB8B, #5A7863);
+    border-radius: 10px;
+    border: 2px solid #EBF4DD; /* efecto flotante */
+}
+
+/* HOVER (cuando pasás el mouse) */
+.Devocional::-webkit-scrollbar-thumb:hover{
+    background: #3B4953;
+}
 
 
 .ContCarteles{
@@ -332,27 +364,14 @@ display:block;
     margin-top: 5px;
 }
 
-.BotonConcer{
-   display: block;
-   width: 90%;
-   padding: 12px 15px;
-   margin: 20px auto 15px auto;
-   text-decoration: none;
-   font-size: 15px;
-   font-weight: 600;
-   text-align: center;
-   color: #2F3E2E;
-   background-color: #DCECC8;
-   border: 1px solid #C8DDB0;
-   border-radius: 30px;
-   transition: all 0.25s ease;
-}
+
 
 .BotonConcer:hover{
    background-color: #CFE5B4;
    transform: translateY(-2px);
    box-shadow: 0px 6px 15px rgba(0,0,0,0.12);
 }
+
 .TextCI1{
     font-size: 28px;
     
@@ -1130,16 +1149,13 @@ margin-top:4px;
 width:100%;
 height:auto;
 min-height:400px;
-
 display:flex;
 flex-direction:column;
 justify-content:center;
 align-items:center;
 text-align:center;
-
 padding:120px 20px 40px 20px; /* espacio arriba para el nav */
 box-sizing:border-box;
-
 position:relative; 
 }
 
