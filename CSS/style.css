@@ -159,7 +159,7 @@ color: #CFE5B4;
 
 .BotonP{
     display: inline-block;
-
+    text-align: center;
     text-decoration: none;
     font-size: 18px;
     font-weight: 600;
