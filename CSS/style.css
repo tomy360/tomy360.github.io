@@ -1070,9 +1070,8 @@ display:block;
 }
 
 
-
 /* ========================= */
-/* RESPONSIVE PARA CELULARES..................................................................................................................................................................... */
+/* RESPONSIVE PARA CELULARES................................................................ */
 /* ========================= */
 
 @media (max-width: 768px){
@@ -1266,6 +1265,11 @@ font-size:24px;
     text-decoration:underline;
 }
 
+/* ========================= */
+/* SECCIÓN CENTRO RESPONSIVE ...................................................................................................................................*/
+/* ========================= */
+
+@media (max-width: 768px){
 
 /* CARTEL CON IMAGEN + TEXTO */
 .CartelPresentC{
@@ -1363,6 +1367,11 @@ gap:30px;
 width:100%;
 }
 
+}
+
+
+
+
 @media screen and (max-width: 360px){
 .CartelPresent{
         padding-top: 130px; /* un poco más de espacio para el nav real */
@@ -1375,6 +1384,7 @@ grid-template-columns:1fr;
 }
 
 }
+
 
 
 
