@@ -382,55 +382,51 @@ color: #CFE5B4;
     padding: 0 30px;
 }
 
+/* CONTENEDOR GENERAL */
 .HorariosPI{
-    width: 80%;
-    max-width: 1200px;
+    width: min(90%,1200px);
     margin: 80px auto;
     text-align: center;
 }
 
+/* GRID MEJOR QUE FLEX PARA ESTO */
 .ContHorarios{
-    display: flex;
-    justify-content: center;
-    gap: 40px;
-    flex-wrap: wrap;
-    width: 100%;
-    max-width: 1200px;
-    margin: auto;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px,1fr));
+    gap: 35px;
+    margin-top: 40px;
 }
 
-
-.ContHorarios div{
-    width: 220px;
+/* CADA TARJETA */
+.ContHorarios > div{
     padding: 20px;
-    text-align: center;
 }
 
+/* TITULO + ICONO */
 .TituloHorario{
     display: flex;
-     justify-content: flex-start;   /* centra todo */
     align-items: center;
-    gap: 8px;                  /* distancia entre icono y texto */
-    margin-bottom: 5px;
+    gap: 10px;
+    margin-bottom: 8px;
 }
 
 .TituloHorario h2{
     margin: 0;
+    font-size: 1.5rem;
 }
 
 .LogoIndx{
     width: 55px;
-   margin-right: 5px;
+    flex-shrink: 0;
 }
 
+/* HORARIOS EN UNA SOLA LINEA */
 .ContHorarios p{
-    margin-top: 5px;
+    margin: 0;
     font-size: 15px;
+    white-space: nowrap; /* todos en una sola fila */
 }
 
-.HV p{
-    white-space: nowrap;
-}
 
 .ContFI{
     width: 80%;
@@ -1290,114 +1286,168 @@ font-size:24px;
 
 /* CARTEL CON IMAGEN + TEXTO */
 .CartelPresentC{
-grid-template-columns:1fr;
-gap:20px;
-text-align:center;
-margin-top:40px;
-position:relative;
-z-index:1;
+    grid-template-columns:1fr;
+    gap:20px;
+    text-align:center;
+    margin-top:40px;
+    position:relative;
+    z-index:1;
 }
 
 .CartelPresentC img{
-height:250px;
+    height:250px;
 }
-
 
 .CartelIndex{
-margin-top:40px; /* 🔥 esto sí lo baja */
-padding:140px 15px 70px 15px; /* deja un valor normal */
-min-height:520px;
+    margin-top:40px;
+    padding:140px 15px 70px;
+    min-height:520px;
 }
+
 
 /* CARACTERISTICAS */
 .Caracteristicas{
-grid-template-columns:1fr;
-width:90%;
+    grid-template-columns:1fr;
+    width:90%;
 }
 
 .CaractIndi{
-text-align:center;
-align-items:center;
+    text-align:center;
+    align-items:center;
 }
 
 .CaractIndi img{
-align-self:center;
+    align-self:center;
 }
+
 
 /* INFO (LISTA + HORARIOS) */
 .InfoC{
-grid-template-columns:1fr;
-gap:40px;
+    grid-template-columns:1fr;
+    gap:40px;
 }
+
 
 /* LISTA */
 .ListaP li{
-grid-template-columns:40px 1fr;
+    grid-template-columns:40px 1fr;
 }
 
-/* HORARIOS */
+
+/* HORARIOS ANTIGUOS */
 .HorarioCi{
-flex-direction:column;
-align-items:flex-start;
-gap:5px;
+    flex-direction:column;
+    align-items:flex-start;
+    gap:5px;
 }
 
 .HorarioCi h3:last-child{
-text-align:left;
+    text-align:left;
 }
+
+
+/* NUEVO BLOQUE HORARIOS */
+/* NUEVO BLOQUE HORARIOS */
+.HorariosPI{
+    width:90%;
+}
+
+.ContHorarios{
+    grid-template-columns:1fr;
+    gap:35px;
+    justify-items:center; /* centra cada tarjeta */
+}
+
+.ContHorarios > div{
+    display:flex;
+    flex-direction:column;
+    align-items:center; /* centra todo dentro */
+    text-align:center;
+    width:100%;
+}
+
+.TituloHorario{
+    justify-content:center;
+    align-items:center;
+    margin-bottom:10px;
+}
+
+.TituloHorario h2{
+    font-size:1.4rem;
+}
+
+.LogoIndx{
+    width:48px;
+}
+
+.ContHorarios p{
+    font-size:14px;
+    white-space:nowrap;
+    text-align:center;
+    margin:0 auto;
+}
+
 
 /* TEXTOS GRANDES */
 .TxtTC{
-font-size:28px;
+    font-size:28px;
 }
 
 .TextIC{
-font-size:24px;
+    font-size:24px;
 }
+
 
 /* FAQ */
 .FAQ{
-width:90%;
+    width:90%;
 }
 
 .FAQ summary{
-font-size:16px;
+    font-size:16px;
 }
+
 
 /* TESTIMONIOS */
 .ContTestimonios{
-flex-direction:column;
-gap:20px;
+    flex-direction:column;
+    gap:20px;
 }
 
 .TestimonioInd{
-max-width:100%;
+    max-width:100%;
 }
+
 
 /* FINAL (CONTACTO) */
 .ContInfoEF{
-flex-direction:column;
-gap:30px;
+    flex-direction:column;
+    gap:30px;
 }
 
 .InfoEF{
-width:100%;
+    width:100%;
 }
 
 }
 
 
 
+@media screen and (max-width:360px){
 
-@media screen and (max-width: 360px){
 .CartelPresent{
-        padding-top: 130px; /* un poco más de espacio para el nav real */
-    }
+    padding-top:130px;
+}
 
 .Preparando{
-width:90%;
-margin:80px auto;
-grid-template-columns:1fr;
+    width:90%;
+    margin:80px auto;
+    grid-template-columns:1fr;
+}
+
+/* Ajuste extra para textos largos en horarios */
+.ContHorarios p{
+    font-size:13px;
 }
 
 }
