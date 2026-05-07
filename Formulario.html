@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./CSS/style.css">
+    <title>Preparando El Camino</title>
+</head>
+<body class="form-page TextB">
+
+<nav>
+    <img class="Logo" id="LogoP" src="./Imagenes/Iconos/Preparando.png" alt="Logo Preparando el Camino">
+    <div class="menu-botones">
+        <a class="BotonBa" href="./index.html">Inicio</a>
+        <a class="BotonBa" href="./Preparando.html">Iglesia</a>
+        <a class="BotonBa activo" href="./Emergente.html">Emergente social</a>
+    </div>
+    <img class="Logo" id="LogoE" src="./Imagenes/Iconos/Emergente.png" alt="Logo Centro Emergente">
+</nav>
+
+<div class="form-container">
+
+    <div class="form-header">
+        <h1>Emergente Social</h1>
+        <h2>Ficha Diaria de Autoevaluación</h2>
+        <p>* Indica que la pregunta es obligatoria</p>
+    </div>
+
+    <form action="https://api.web3forms.com/submit" method="POST">
+
+        <!-- Web3Forms access key -->
+        <input type="hidden" name="access_key" value="83b26456-bc6a-4433-8f45-df827a9b973e">
+
+        <!-- Asunto dinámico — se completa con JS antes de enviar -->
+        <input type="hidden" name="subject" id="asunto">
+
+        <!-- Redirigir a la misma página después de enviar -->
+        <input type="hidden" name="redirect" value="false">
+
+        <!-- DATOS PERSONALES -->
+        <div class="form-section">
+            <p class="form-section-title">Datos personales</p>
+
+            <div class="field">
+                <label for="nombreApellido">Nombre y Apellido</label>
+                <input type="text" id="nombreApellido" name="Nombre y Apellido" placeholder="Ej: Juan García">
+            </div>
+
+            <div class="field-row">
+                <div class="field">
+                    <label for="fechaNacimiento">Fecha de nacimiento</label>
+                    <input type="date" id="fechaNacimiento" name="Fecha de nacimiento">
+                </div>
+                <div class="field">
+                    <label for="edad">Edad</label>
+                    <input type="number" id="edad" name="Edad" min="1" max="120" placeholder="Ej: 30">
+                </div>
+            </div>
+
+            <div class="field">
+                <label for="direccion">Dirección</label>
+                <input type="text" id="direccion" name="Direccion" placeholder="Calle, número, ciudad">
+            </div>
+
+            <div class="field-row">
+                <div class="field">
+                    <label for="fecha">Fecha</label>
+                    <input type="date" id="fecha" name="Fecha">
+                </div>
+                <div class="field">
+                    <label for="tiempoPrograma">Tiempo en el programa</label>
+                    <input type="text" id="tiempoPrograma" name="Tiempo en el programa" placeholder="Ej: 3 meses">
+                </div>
+            </div>
+
+            <div class="field">
+                <label for="monitor">Monitor</label>
+                <input type="text" id="monitor" name="Monitor" placeholder="Nombre del monitor">
+            </div>
+        </div>
+
+        <!-- ÁREA ESPIRITUAL -->
+        <div class="form-section">
+            <p class="form-section-title">Área espiritual</p>
+
+            <div class="field">
+                <span class="options-label">¿Dedicas diariamente unos minutos a orar a Dios?<span class="req">*</span></span>
+                <div class="days-grid">
+                    <div class="day-check"><span>Lun</span><input type="checkbox" name="Oracion" value="Lunes"></div>
+                    <div class="day-check"><span>Mar</span><input type="checkbox" name="Oracion" value="Martes"></div>
+                    <div class="day-check"><span>Mié</span><input type="checkbox" name="Oracion" value="Miercoles"></div>
+                    <div class="day-check"><span>Jue</span><input type="checkbox" name="Oracion" value="Jueves"></div>
+                    <div class="day-check"><span>Vie</span><input type="checkbox" name="Oracion" value="Viernes"></div>
+                    <div class="day-check"><span>Sáb</span><input type="checkbox" name="Oracion" value="Sabado"></div>
+                    <div class="day-check"><span>Dom</span><input type="checkbox" name="Oracion" value="Domingo"></div>
+                </div>
+            </div>
+
+            <div class="field">
+                <span class="options-label">¿Lees la biblia a diario (versículo, libro cristiano o devocional)?<span class="req">*</span></span>
+                <div class="days-grid">
+                    <div class="day-check"><span>Lun</span><input type="checkbox" name="Lectura biblica" value="Lunes"></div>
+                    <div class="day-check"><span>Mar</span><input type="checkbox" name="Lectura biblica" value="Martes"></div>
+                    <div class="day-check"><span>Mié</span><input type="checkbox" name="Lectura biblica" value="Miercoles"></div>
+                    <div class="day-check"><span>Jue</span><input type="checkbox" name="Lectura biblica" value="Jueves"></div>
+                    <div class="day-check"><span>Vie</span><input type="checkbox" name="Lectura biblica" value="Viernes"></div>
+                    <div class="day-check"><span>Sáb</span><input type="checkbox" name="Lectura biblica" value="Sabado"></div>
+                    <div class="day-check"><span>Dom</span><input type="checkbox" name="Lectura biblica" value="Domingo"></div>
+                </div>
+            </div>
+
+            <div class="field">
+                <span class="options-label">¿Participas de algún discipulado o estudio bíblico? (Indicá cuáles y en qué iglesia en "Otro")<span class="req">*</span></span>
+                <div class="radio-group">
+                    <label class="radio-option"><input type="radio" name="Discipulado" value="Si" required> Sí</label>
+                    <label class="radio-option"><input type="radio" name="Discipulado" value="No"> No</label>
+                    <div class="otro-row">
+                        <input type="radio" name="Discipulado" value="Otro" id="discipuladoOtro">
+                        <label for="discipuladoOtro">Otro:</label>
+                        <input type="text" name="Discipulado - detalle" placeholder="Indicá cuáles estudios y en qué iglesia">
+                    </div>
+                </div>
+            </div>
+
+            <div class="field">
+                <span class="options-label">¿Asistís a una reunión de iglesia? (En "Otro" indica cuál)<span class="req">*</span></span>
+                <div class="radio-group">
+                    <label class="radio-option"><input type="radio" name="Asistencia a iglesia" value="Si" required> Sí</label>
+                    <label class="radio-option"><input type="radio" name="Asistencia a iglesia" value="No"> No</label>
+                    <div class="otro-row">
+                        <input type="radio" name="Asistencia a iglesia" value="Otro" id="iglesiaOtro">
+                        <label for="iglesiaOtro">Otro:</label>
+                        <input type="text" name="Asistencia a iglesia - detalle" placeholder="Indicá cuál iglesia">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ÁREA DE RECUPERACIÓN -->
+        <div class="form-section">
+            <p class="form-section-title">Área de recuperación</p>
+
+            <div class="field">
+                <span class="options-label">¿Asistís a un centro de recuperación? ¿Por qué problema? (Indicalo en "Otro")<span class="req">*</span></span>
+                <div class="radio-group">
+                    <label class="radio-option"><input type="radio" name="Centro de recuperacion" value="Si" required> Sí</label>
+                    <label class="radio-option"><input type="radio" name="Centro de recuperacion" value="No"> No</label>
+                    <div class="otro-row">
+                        <input type="radio" name="Centro de recuperacion" value="Otro" id="centroOtro">
+                        <label for="centroOtro">Otro:</label>
+                        <input type="text" name="Centro de recuperacion - detalle" placeholder="Indicá el problema">
+                    </div>
+                </div>
+            </div>
+
+            <div class="field">
+                <span class="options-label">¿Has tenido abstinencia esta semana (drogas, alcohol, pornografía, sexo, depresión, ira u otras conductas)?<span class="req">*</span></span>
+                <div class="days-grid">
+                    <div class="day-check"><span>Lun</span><input type="checkbox" name="Abstinencia" value="Lunes"></div>
+                    <div class="day-check"><span>Mar</span><input type="checkbox" name="Abstinencia" value="Martes"></div>
+                    <div class="day-check"><span>Mié</span><input type="checkbox" name="Abstinencia" value="Miercoles"></div>
+                    <div class="day-check"><span>Jue</span><input type="checkbox" name="Abstinencia" value="Jueves"></div>
+                    <div class="day-check"><span>Vie</span><input type="checkbox" name="Abstinencia" value="Viernes"></div>
+                    <div class="day-check"><span>Sáb</span><input type="checkbox" name="Abstinencia" value="Sabado"></div>
+                    <div class="day-check"><span>Dom</span><input type="checkbox" name="Abstinencia" value="Domingo"></div>
+                </div>
+            </div>
+
+            <div class="field">
+                <span class="options-label">¿Te has propuesto alejarte de personas, grupos o ambientes que no te suman?<span class="req">*</span></span>
+                <div class="radio-group">
+                    <label class="radio-option"><input type="radio" name="Alejarse de ambientes negativos" value="Si" required> Sí</label>
+                    <label class="radio-option"><input type="radio" name="Alejarse de ambientes negativos" value="No"> No</label>
+                </div>
+            </div>
+
+            <div class="field">
+                <span class="options-label">¿Has invertido esta semana en sanarte?<span class="req">*</span></span>
+                <div class="radio-group">
+                    <label class="radio-option"><input type="radio" name="Inversion en sanarse" value="Si" required> Sí</label>
+                    <label class="radio-option"><input type="radio" name="Inversion en sanarse" value="No"> No</label>
+                </div>
+            </div>
+        </div>
+
+        <!-- ÁREA MÉDICA -->
+        <div class="form-section">
+            <p class="form-section-title">Área médica</p>
+
+            <div class="field">
+                <span class="options-label">¿Estás en tratamiento psicológico? En "Otro" indica cuántas veces por semana.<span class="req">*</span></span>
+                <div class="radio-group">
+                    <label class="radio-option"><input type="radio" name="Tratamiento psicologico" value="Si" required> Sí</label>
+                    <label class="radio-option"><input type="radio" name="Tratamiento psicologico" value="No"> No</label>
+                    <div class="otro-row">
+                        <input type="radio" name="Tratamiento psicologico" value="Otro" id="psicoOtro">
+                        <label for="psicoOtro">Otro:</label>
+                        <input type="text" name="Tratamiento psicologico - detalle" placeholder="Ej: 2 veces por semana">
+                    </div>
+                </div>
+            </div>
+
+            <div class="field">
+                <span class="options-label">¿Estás en tratamiento psiquiátrico? En "Otro" indica cuántas veces por semana.<span class="req">*</span></span>
+                <div class="radio-group">
+                    <label class="radio-option"><input type="radio" name="Tratamiento psiquiatrico" value="Si" required> Sí</label>
+                    <label class="radio-option"><input type="radio" name="Tratamiento psiquiatrico" value="No"> No</label>
+                    <div class="otro-row">
+                        <input type="radio" name="Tratamiento psiquiatrico" value="Otro" id="psiquiaOtro">
+                        <label for="psiquiaOtro">Otro:</label>
+                        <input type="text" name="Tratamiento psiquiatrico - detalle" placeholder="Ej: 1 vez por semana">
+                    </div>
+                </div>
+            </div>
+
+            <div class="field">
+                <span class="options-label">¿Tomás medicación? En "Otro" coloca cuál y cuántas veces por semana.<span class="req">*</span></span>
+                <div class="radio-group">
+                    <label class="radio-option"><input type="radio" name="Medicacion" value="Si" required> Sí</label>
+                    <label class="radio-option"><input type="radio" name="Medicacion" value="No"> No</label>
+                    <div class="otro-row">
+                        <input type="radio" name="Medicacion" value="Otro" id="medicOtro">
+                        <label for="medicOtro">Otro:</label>
+                        <input type="text" name="Medicacion - detalle" placeholder="Ej: Rivotril, 1 vez al día">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="form-submit">
+            <button type="submit" class="btn-enviar TextB">Enviar ficha</button>
+        </div>
+
+    </form>
+
+    <!-- Mensaje de éxito (oculto por defecto) -->
+    <div id="mensajeExito" style="display:none; text-align:center; margin-top:30px; padding:25px; background:#F3F7EA; border:1px solid #D6E2C7; border-radius:14px;">
+        <h2 class="TextB" style="color:#5A7863;">¡Ficha enviada correctamente!</h2>
+        <p class="TextB">Las respuestas fueron enviadas. Gracias.</p>
+    </div>
+
+</div>
+
+<script>
+    const form = document.querySelector("form");
+
+    form.addEventListener("submit", function (e) {
+        e.preventDefault();
+
+        // Asunto dinámico
+        const nombre = document.getElementById("nombreApellido").value.trim() || "Sin nombre";
+        document.getElementById("asunto").value = "Evaluacion - " + nombre;
+
+        const data = new FormData(form);
+
+        fetch("https://api.web3forms.com/submit", {
+            method: "POST",
+            body: data
+        })
+        .then(res => res.json())
+        .then(json => {
+            if (json.success) {
+                form.style.display = "none";
+                document.getElementById("mensajeExito").style.display = "block";
+                window.scrollTo({ top: 0, behavior: "smooth" });
+            } else {
+                alert("Hubo un error al enviar. Por favor intentá de nuevo.");
+            }
+        })
+        .catch(() => {
+            alert("Hubo un error de conexión. Por favor intentá de nuevo.");
+        });
+    });
+</script>
+
+</body>
+</html>

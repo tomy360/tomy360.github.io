@@ -1,127 +1,120 @@
 @import url('https://fonts.googleapis.com/css2?family=Old+Standard+TT:ital,wght@0,400;0,700;1,400&family=Source+Serif+4:ital,opsz,wght@0,8..60,200..900;1,8..60,200..900&display=swap');
 
-*{
-box-sizing:border-box;
-}
+/* =====================
+   BASE
+   ===================== */
 
-html, body{
-    height: 100%;
-    margin: 0;
-}
-
-body{
-   background-color: #EBF4DD;
-    margin: 0px;
-    height: auto;
+*, *::before, *::after {
     box-sizing: border-box;
 }
 
-nav{
-background-color: #3B4953;
-width: 100%;
-height: 90px;
-
-display: flex;
-align-items: center;
-justify-content: space-between;
-
-position: fixed;
-top: 0;
-left: 0;
-z-index: 4;
-
-
-box-shadow: 0px 4px 15px rgba(0,0,0,0.25);
-border-bottom: 2px solid #2E3942;
+html, body {
+    margin: 0;
+    height: 100%;
 }
 
-.BotonBa.activo{
+body {
+    background-color: #EBF4DD;
+    height: auto;
+    overflow-x: hidden;
+}
+
+/* =====================
+   TIPOGRAFÍA BASE
+   ===================== */
+
+.TextB {
+    color: rgb(22, 1, 1);
+    font-family: "Old Standard TT", serif;
+    font-weight: 400;
+    font-style: normal;
+}
+
+/* =====================
+   NAV
+   ===================== */
+
+nav {
+    background-color: #3B4953;
+    width: 100%;
+    height: 90px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 4;
+    box-shadow: 0px 4px 15px rgba(0,0,0,0.25);
+    border-bottom: 2px solid #2E3942;
+}
+
+#LogoP { width: 85px; }
+#LogoE { width: 120px; }
+
+.menu-botones {
+    display: flex;
+    gap: 10px;
+    margin-left: auto;
+}
+
+.BotonBa {
+    text-decoration: none;
+    color: white;
+    font-size: 18px;
+    cursor: pointer;
+    padding: 10px 15px;
+    border-radius: 5px;
+}
+
+.BotonBa:hover,
+nav a:hover {
+    color: #CFE5B4;
+}
+
+.BotonBa.activo {
     color: #5A7863;
     font-weight: 700;
-
-    border-bottom: 3px solid #90AB8B; /* subrayado moderno */
+    border-bottom: 3px solid #90AB8B;
 }
 
+/* =====================
+   CARTEL PRINCIPAL (hero)
+   ===================== */
 
-.CartelIndex{
-min-height:500px;
-
-display:flex;
-flex-direction:column;
-justify-content:space-between; /* distribuye contenido */
-
-padding:140px 20px 60px 20px; /* separa del nav y del fondo */
-
-position:relative;
-overflow:hidden;
-box-sizing:border-box;
-}
-
-/* separa mejor los botones */
-.CartelIndex .ColocBP{
-display:flex;
-flex-direction:column;
-gap:12px;
-margin-top:20px;
-}
-
-/* pequeños ajustes de texto */
-.CartelIndex .TextP1{
-margin-bottom:10px;
-}
-
-.CartelIndex .TextP2{
-margin-bottom:10px;
-}
-
-
-#LogoP{
-width: 85px;
-}
-
-#LogoE{
-width: 120px;
-}
-
-.menu-botones{
-display: flex;
-gap: 10px;
-margin-left: auto;
-}
-
-.BotonBa{
-text-decoration: none;
-color: white;
-font-size: 18px;
-cursor: pointer;
-padding: 10px 15px;
-border-radius: 5px;
-}
-
-nav a:hover{
-color: #CFE5B4;
-}
-
-.CartelPresent{
+.CartelPresent {
     width: 100%;
     height: 600px;
     display: flex;
     flex-direction: column;
-    justify-content: center; 
+    justify-content: center;
     align-items: center;
     position: relative;
 }
 
-.TextP11{
-    font-size: 35px;
+/* Variante index */
+.CartelIndex {
+    min-height: 500px;
+    justify-content: space-between;
+    padding: 140px 20px 60px;
+    overflow: hidden;
 }
 
-.TextP12{
-    font-size: 20px;
-    line-height: 1.6;
+.CartelIndex .ColocBP {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-top: 20px;
 }
 
-.ImagenIndex{
+/* Variante páginas internas (Preparando / Emergente) */
+.CartelInterna {
+    height: 400px;
+    margin-top: 10px;
+    margin-bottom: 60px;
+}
+
+.ImagenIndex {
     width: 100%;
     height: 550px;
     position: absolute;
@@ -131,63 +124,84 @@ color: #CFE5B4;
     z-index: -1;
 }
 
-.TextB{
-    color: rgb(22, 1, 1);
-    font-family: "Old Standard TT", serif;
-    font-weight: 400;
-    font-style: normal;
+.ImagenPr {
+    height: 400px;
 }
 
-.TextP1{
-    color:  #F8FAF4;
+/* Textos del hero */
+.TextP1 {
+    color: #F8FAF4;
     font-size: 50px;
-    margin-top: 0px;
+    margin-top: 0;
     text-shadow: 2px 2px 8px rgba(0,0,0,0.7);
 }
 
-.TextP2{
+.TextP2 {
     color: #F8FAF4;
     font-size: 28px;
     margin-top: 22px;
-     font-weight: 1600;
     text-shadow: 0 1px 3px rgba(0,0,0,0.35);
 }
 
-.ColocBP{
-    display: flex;
-    gap: 20px;
-    margin-top: 10px;
-}
+/* =====================
+   BOTONES
+   ===================== */
 
-.BotonP{
+.BotonP {
     display: inline-block;
-
     text-decoration: none;
     font-size: 18px;
     font-weight: 600;
     color: #2F3E2E;
-
     background-color: #CFE5B4;
     padding: 12px 24px;
-
-    border-radius: 6px;   /* más cuadrado */
+    border-radius: 6px;
     border: 3px solid #B7D49C;
-
     cursor: pointer;
-
     box-shadow: 0px 4px 12px rgba(0,0,0,0.15);
-
     transition: all 0.25s ease;
     text-align: center;
 }
 
-.BotonP:hover{
+.BotonP:hover {
     background-color: #BFDDA0;
     transform: translateY(-2px);
     box-shadow: 0px 8px 18px rgba(0,0,0,0.2);
 }
 
-.CartelPresent2{
+.ColocBP {
+    display: flex;
+    gap: 20px;
+    margin-top: 10px;
+}
+
+.BotonConcer {
+    display: block;
+    width: 90%;
+    margin: 20px auto;
+    padding: 12px 15px;
+    text-align: center;
+    text-decoration: none;
+    font-size: 15px;
+    font-weight: 600;
+    color: #2F3E2E;
+    background-color: #DCECC8;
+    border: 1px solid #C8DDB0;
+    border-radius: 30px;
+    transition: all 0.25s ease;
+}
+
+.BotonConcer:hover {
+    background-color: #CFE5B4;
+    transform: translateY(-2px);
+    box-shadow: 0px 6px 15px rgba(0,0,0,0.12);
+}
+
+/* =====================
+   SECCIÓN MISIÓN (index)
+   ===================== */
+
+.CartelPresent2 {
     width: 42%;
     max-width: 1260px;
     padding: 40px;
@@ -199,134 +213,71 @@ color: #CFE5B4;
     position: relative;
 }
 
+.TextP11 { font-size: 35px; }
 
-/* BOTÓN PRINCIPAL */
-#BotonDevocional{
+.TextP12 {
+    font-size: 20px;
+    line-height: 1.6;
+}
+
+/* Devocional - toggle */
+#toggleDevocional { display: none; }
+
+#BotonDevocional {
     font-size: 26px;
     width: 240px;
-
     background: linear-gradient(145deg, #EBF4DD, #CFE5B4);
     color: #3B4953;
-
     border: 2px solid #90AB8B;
     border-radius: 12px;
-
     padding: 14px 20px;
-
     box-shadow: 0 6px 14px rgba(0,0,0,0.15);
     transition: all 0.25s ease;
     cursor: pointer;
 }
 
-/* HOVER */
-#BotonDevocional:hover{
-    transform: translateY(-2px);
-    box-shadow: 0 10px 20px rgba(0,0,0,0.25);
-}
+#BotonDevocional:hover  { transform: translateY(-2px); box-shadow: 0 10px 20px rgba(0,0,0,0.25); }
+#BotonDevocional:active { transform: translateY(1px); }
 
-/* CLICK */
-#BotonDevocional:active{
-    transform: translateY(1px);
-}
+.cerrar { display: none; }
 
-/* OCULTAR CHECKBOX */
-#toggleDevocional{
-    display: none;
-}
+#toggleDevocional:checked + .BotonConcer .abrir  { display: none; }
+#toggleDevocional:checked + .BotonConcer .cerrar { display: inline; }
 
-/* DEVOCIONAL */
-.Devocional{
+.Devocional {
     max-height: 0;
     overflow: hidden;
-
     margin-top: 20px;
     padding: 0 25px;
-
     border: 3px solid #C8DDB0;
     border-radius: 15px;
     background: #F7FBEF;
-
     line-height: 1.6;
-    scroll-behavior: smooth;
     opacity: 0;
     transition: all 0.4s ease;
 }
 
-/* CUANDO SE ABRE */
-#toggleDevocional:checked ~ .Devocional{
-    max-height: 100vh; /* 👈 clave */
+#toggleDevocional:checked ~ .Devocional {
+    max-height: 100vh;
     padding: 25px;
     opacity: 1;
-    overflow-y: auto; /* 👈 permite scroll si es largo */
+    overflow-y: auto;
 }
 
-/* TEXTO BOTÓN */
-.cerrar{
-    display: none;
-}
-
-#toggleDevocional:checked + .BotonConcer .abrir{
-    display: none;
-}
-
-#toggleDevocional:checked + .BotonConcer .cerrar{
-    display: inline;
-}
-
-/* BOTÓN BASE */
-.BotonConcer{
-    display: block;
-    width: 90%;
-    margin: 20px auto;
-
-    padding: 12px 15px;
-
-    text-align: center;
-    text-decoration: none;
-
-    font-size: 15px;
-    font-weight: 600;
-
-    color: #2F3E2E;
-    background-color: #DCECC8;
-
-    border: 1px solid #C8DDB0;
-    border-radius: 30px;
-
-    transition: all 0.25s ease;
-}
-
-/* HOVER BOTÓN BASE */
-.BotonConcer:hover{
-    background-color: #CFE5B4;
-    transform: scale(1.03);
-}
-
-/* SCROLL GENERAL DEL DEVOCIONAL */
-.Devocional::-webkit-scrollbar{
-    width: 8px;
-}
-
-/* FONDO DE LA BARRA */
-.Devocional::-webkit-scrollbar-track{
-    background: #EBF4DD;
-    border-radius: 10px;
-}
-
-/* BARRA (la que se mueve) */
-.Devocional::-webkit-scrollbar-thumb{
+.Devocional::-webkit-scrollbar { width: 8px; }
+.Devocional::-webkit-scrollbar-track { background: #EBF4DD; border-radius: 10px; }
+.Devocional::-webkit-scrollbar-thumb {
     background: linear-gradient(180deg, #90AB8B, #5A7863);
     border-radius: 10px;
-    border: 2px solid #EBF4DD; /* efecto flotante */
+    border: 2px solid #EBF4DD;
 }
+.Devocional::-webkit-scrollbar-thumb:hover { background: #3B4953; }
 
-/* HOVER (cuando pasás el mouse) */
-.Devocional::-webkit-scrollbar-thumb:hover{
-    background: #3B4953;
-}
+/* =====================
+   CARTELES (index)
+   ===================== */
 
-
-.ContCarteles{
+.ContCarteles {
     display: flex;
     justify-content: center;
     gap: 80px;
@@ -335,28 +286,23 @@ color: #CFE5B4;
     max-width: 1200px;
 }
 
-.CartelesIndi{
+.CartelesIndi {
     width: 60%;
-    height: auto;
     text-align: center;
-
     padding: 25px;
     border-radius: 25px;
-
-    background-color: #90AB8B; 
+    background-color: #90AB8B;
     border: 1px solid #D6E3C3;
-
     box-shadow: 0px 6px 18px rgba(0,0,0,0.08);
-
     transition: transform 0.25s ease, box-shadow 0.25s ease;
 }
 
-.CartelesIndi:hover{
+.CartelesIndi:hover {
     transform: translateY(-6px);
     box-shadow: 0px 12px 25px rgba(0,0,0,0.15);
 }
 
-.ImgP2{
+.ImgP2 {
     width: 500px;
     height: 300px;
     object-fit: cover;
@@ -364,523 +310,278 @@ color: #CFE5B4;
     margin-top: 5px;
 }
 
+.TextCI1 { font-size: 28px; }
+.TextCI2 { font-size: 17px; padding: 0 30px; }
 
+/* =====================
+   HORARIOS (index)
+   ===================== */
 
-.BotonConcer:hover{
-   background-color: #CFE5B4;
-   transform: translateY(-2px);
-   box-shadow: 0px 6px 15px rgba(0,0,0,0.12);
-}
-
-.TextCI1{
-    font-size: 28px;
-    
-}
-
-.TextCI2{
-    font-size: 17px;
-    padding: 0 30px;
-}
-
-/* CONTENEDOR GENERAL */
-.HorariosPI{
-    width: min(90%,1200px);
+.HorariosPI {
+    width: min(90%, 1200px);
     margin: 80px auto;
     text-align: center;
 }
 
-/* GRID MEJOR QUE FLEX PARA ESTO */
-.ContHorarios{
+.ContHorarios {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px,1fr));
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
     gap: 35px;
     margin-top: 40px;
 }
 
-/* CADA TARJETA */
-.ContHorarios > div{
-    padding: 20px;
-}
+.ContHorarios > div { padding: 20px; }
 
-/* TITULO + ICONO */
-.TituloHorario{
+.TituloHorario {
     display: flex;
     align-items: center;
     gap: 10px;
     margin-bottom: 8px;
 }
 
-.TituloHorario h2{
+.TituloHorario h2 {
     margin: 0;
     font-size: 1.5rem;
 }
 
-.LogoIndx{
+.LogoIndx {
     width: 55px;
     flex-shrink: 0;
 }
 
-/* HORARIOS EN UNA SOLA LINEA */
-.ContHorarios p{
+.ContHorarios p {
     margin: 0;
     font-size: 15px;
-    white-space: nowrap; /* todos en una sola fila */
+    white-space: nowrap;
 }
 
+/* =====================
+   FOOTER (index)
+   ===================== */
 
-.ContFI{
+.ContFI {
     width: 80%;
     max-width: 800px;
-    margin: 120px auto 0 auto;
+    margin: 120px auto 0;
     text-align: center;
     padding: 40px;
     border-top: 1px solid black;
 }
 
-.TextF{
-    font-size: 30px;
-}
+.TextF { font-size: 30px; }
 
-/* Pagina Iglesia...........................................................................................................*/
+/* =====================
+   PÁGINA PREPARANDO
+   ===================== */
 
-
-.CartelPresentp{
-   height: 400px;
-    margin-top: 10px;
-    margin-bottom: 60px;
-}
-
-.ImagenPr{
-    height: 400px;
-}
-
-.Preparando{
+.Preparando {
     width: 80%;
-    margin: 60px 0px 60px 280px; 
+    margin: 60px 0 60px 280px;
     display: grid;
     grid-template-columns: 1fr 1fr;
     grid-template-rows: auto auto;
     gap: 20px 40px;
 }
 
-.Preparando h2{
-    grid-column: 1;
-    grid-row: 1;
-}
-
-.Preparando p{
-    grid-column: 1;
-    grid-row: 2;
-    line-height: 1.7;
-}
-
-.Preparando img{
+.Preparando h2 { grid-column: 1; grid-row: 1; }
+.Preparando p  { grid-column: 1; grid-row: 2; line-height: 1.7; }
+.Preparando img {
     grid-column: 2;
-    grid-row: 1 / 3; /* ocupa las dos filas */
+    grid-row: 1 / 3;
     width: 100%;
     max-width: 450px;
     border-radius: 20px;
 }
 
-.TextP3{
-    font-size: 40px;
-    font-style:oblique;
-}
+.TextP3 { font-size: 40px; font-style: oblique; }
+.TextP4 { font-size: 20px; }
 
-.TextP4{
-    font-size: 20px;
-}
-
-/* CONTENEDOR GENERAL */
-
-.Ministerios{
+.Ministerios {
     width: 85%;
     max-width: 1300px;
     margin: 80px auto;
-
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 35px;
 }
 
-
-/* TITULO PRINCIPAL */
-
-.Ministerios > h2{
-    grid-column: 1 / -1; /* ocupa todas las columnas */
+.Ministerios > h2 {
+    grid-column: 1 / -1;
     text-align: center;
     margin-bottom: 20px;
     font-size: 50px;
-    text-decoration:underline 4px;
+    text-decoration: underline 4px;
 }
 
-
-/* TARJETA INDIVIDUAL */
-
-.MinisterioIndi{
+.MinisterioIndi {
     background-color: #F3F7EA;
-
     padding: 30px 25px;
-
     border-radius: 18px;
-
     border: 1px solid #D6E2C7;
-
     text-align: center;
-
     display: flex;
     flex-direction: column;
     align-items: center;
+    transition: transform 0.2s, box-shadow 0.2s;
 }
 
+.MinisterioIndi:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+}
 
-/* ICONO */
-
-.LogoIgle{
+.LogoIgle {
     width: 50px;
     height: auto;
     margin-bottom: 10px;
 }
 
+.MinisterioIndi h2 { margin: 5px 0 8px; }
+.MinisterioIndi h3 { font-size: 16px; margin: 3px 0; font-weight: normal; }
+.MinisterioIndi p  { margin-top: 15px; line-height: 1.6; }
 
-/* TITULO DE CADA TARJETA */
-
-.MinisterioIndi h2{
-    margin: 5px 0 8px 0;
-}
-
-
-/* SUBTITULOS */
-
-.MinisterioIndi h3{
-    font-size: 16px;
-    margin: 3px 0;
-    font-weight: normal;
-}
-
-
-/* TEXTO */
-
-.MinisterioIndi p{
-    margin-top: 15px;
-    line-height: 1.6;
-}
-
-
-/* EFECTO HOVER SUAVE */
-
-.MinisterioIndi:hover{
-    transform: translateY(-5px);
-    box-shadow: 0 8px 20px rgba(0,0,0,0.08);
-    transition: 0.2s;
-}
-
-/* CONTENEDOR PRINCIPAL */
-.Visitanos{
+.Visitanos {
     background-color: #90AB8B;
     padding: 40px 20px;
     text-align: center;
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 20px; 
+    gap: 20px;
     border-radius: 15px;
-    color: #fff; 
+    color: #fff;
 }
 
-/* H2 principal */
-.Visitanos > h2{
-    font-size: 36px;
-    margin: 0;
-}
+.Visitanos > h2 { font-size: 36px; margin: 0; }
+.Visitanos > h3 { font-size: 20px; margin: 0; line-height: 1.5; }
 
-/* H3 principal */
-.Visitanos > h3{
-    font-size: 20px;
-    margin: 0;
-    line-height: 1.5;
-}
-
-/* CONTENEDORES INTERNOS (Dirección / Contacto) */
-.VisitanosI{
+.VisitanosInterno {
     display: flex;
-    flex-direction: column; 
-    align-items: center;    
+    justify-content: center;
+    gap: 60px;
+    flex-wrap: wrap;
+}
+
+.VisitanosI {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     margin: 10px 20px;
 }
 
-/* Contenedor de las dos secciones a la par */
-.VisitanosInterno{
-    display: flex;
-    justify-content: center;
-    gap: 60px; 
-    flex-wrap: wrap; 
-}
+.VisitanosI h2 { font-size: 24px; margin-bottom: 5px; }
+.VisitanosI p  { font-size: 18px; margin: 0; }
 
-/* H2 interno */
-.VisitanosI h2{
-    font-size: 24px;
-    margin-bottom: 5px;
-}
+/* =====================
+   PÁGINA EMERGENTE
+   ===================== */
 
-/* P interno */
-.VisitanosI p{
-    font-size: 18px;
-    margin: 0;
-}
-
-
-/* Pagina Centro ..................................................................................................................*/
-
-.CartelPresentC{
+.CartelPresentC {
     width: 85%;
     max-width: 1200px;
     margin: 80px auto;
-
     display: grid;
-    grid-template-columns: 1fr 1.5fr; /* imagen más chica que texto */
+    grid-template-columns: 1fr 1.5fr;
     gap: 40px;
     align-items: center;
 }
 
-/* IMAGEN */
+.CartelPresentC img { width: 100%; height: 100%; object-fit: cover; border-radius: 20px; }
+.CartelPresentC h2  { margin-bottom: 15px; }
+.CartelPresentC p   { line-height: 1.7; }
 
-.CartelPresentC img{
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    border-radius: 20px;
-}
-
-/* TEXTO */
-
-.CartelPresentC h2{
-    margin-bottom: 15px;
-}
-
-.CartelPresentC p{
-    line-height: 1.7;
-}
-
-/* CONTENEDOR GENERAL */
-
-.Caracteristicas{
+.Caracteristicas {
     width: 90%;
     max-width: 1400px;
     margin: 80px auto;
-
     display: grid;
-    grid-template-columns: repeat(4, 1fr); /* 🔥 4 columnas */
+    grid-template-columns: repeat(4, 1fr);
     gap: 30px;
 }
 
-/* TITULO PRINCIPAL */
-
-.Caracteristicas > h2{
+.Caracteristicas > h2 {
     grid-column: 1 / -1;
     text-align: center;
     margin-bottom: 20px;
 }
 
+.TxtTC  { font-size: 40px; }
 
-/* TARJETAS */
-
-.CaractIndi{
+.CaractIndi {
     background-color: #F3F7EA;
-
     padding: 25px;
-
     border-radius: 18px;
-
     border: 1px solid #D6E2C7;
-
     display: flex;
     flex-direction: column;
-
     text-align: left;
 }
 
+.CaractIndi img { width: 50px; margin-bottom: 10px; align-self: flex-start; }
+.CaractIndi h3  { margin: 5px 0 10px; }
+.CaractIndi p   { line-height: 1.6; }
 
-/* LOGO */
-
-.CaractIndi img{
-    width: 50px;
-    margin-bottom: 10px;
-    align-self: flex-start; /* izquierda */
-}
-
-
-/* TITULO */
-
-.CaractIndi h3{
-    margin: 5px 0 10px 0;
-}
-
-
-/* TEXTO */
-
-.CaractIndi p{
-    line-height: 1.6;
-}
-
-
-
-/* ============================= */
-/* CONTENEDOR PRINCIPAL */
-/* ============================= */
-
-.InfoC{
+.InfoC {
     width: 90%;
     max-width: 1300px;
     margin: 80px auto;
-
     display: grid;
-    grid-template-columns: 1fr 1fr; /* izquierda / derecha */
+    grid-template-columns: 1fr 1fr;
     gap: 60px;
     align-items: start;
 }
 
+.TextIC { font-size: 35px; }
 
-/* ============================= */
-/* LISTA (IZQUIERDA) */
-/* ============================= */
+.ListaP { width: 100%; }
+.ListaP h2 { margin-bottom: 25px; }
 
-.ListaP{
-    width: 100%;
-}
-
-
-/* TITULO */
-
-.ListaP h2{
-    margin-bottom: 25px;
-}
-
-
-/* UL LIMPIO */
-
-.ListaP ul{
+.ListaP ul {
     list-style: none;
     padding: 0;
     margin: 0;
 }
 
-
-/* ITEMS */
-
-.ListaP li{
+.ListaP li {
     display: grid;
     grid-template-columns: 50px 1fr;
     grid-template-rows: auto auto;
-
     column-gap: 15px;
     row-gap: 5px;
-
     margin-bottom: 25px;
     align-items: start;
-
     padding-bottom: 15px;
     border-bottom: 1px solid #D6E2C7;
 }
 
+.ListaP li img { grid-row: 1 / 3; width: 40px; }
+.ListaP li h3  { margin: 0; }
+.ListaP li p   { margin: 0; line-height: 1.6; }
 
-/* IMAGEN */
+.HorariosC { width: 100%; }
+.HorariosC h2 { margin-bottom: 25px; }
 
-.ListaP li img{
-    grid-row: 1 / 3; /* ocupa alto de h3 + p */
-    width: 40px;
-}
-
-
-/* TITULO ITEM */
-
-.ListaP li h3{
-    margin: 0;
-}
-
-
-/* TEXTO */
-
-.ListaP li p{
-    margin: 0;
-    line-height: 1.6;
-}
-
-
-/* ============================= */
-/* HORARIOS (DERECHA) */
-/* ============================= */
-
-.HorariosC{
-    width: 100%;
-}
-
-
-/* TITULO */
-
-.HorariosC h2{
-    margin-bottom: 25px;
-}
-
-
-/* FILA DE HORARIO */
-
-.HorarioCi{
+.HorarioCi {
     display: flex;
-    justify-content: space-between; /* 🔥 izquierda / derecha */
+    justify-content: space-between;
     align-items: center;
     padding: 20px 0;
-    border-bottom: 1px solid #D6E2C7; /* línea tipo <hr> */
+    border-bottom: 1px solid #D6E2C7;
 }
 
+.HorarioCi h3 { margin: 0; }
+.HorarioCi h3:first-child { font-weight: bold; }
+.HorarioCi h3:last-child  { text-align: right; }
 
-/* TEXTO GENERAL */
-
-.HorarioCi h3{
-    margin: 0;
-}
-
-
-/* HORA (IZQUIERDA) */
-
-.HorarioCi h3:first-child{
-    font-weight: bold;
-}
-
-
-/* DESCRIPCIÓN (DERECHA) */
-
-.HorarioCi h3:last-child{
-    text-align: right;
-}
-
-.TxtTC{
-    font-size: 40px;
-}
-
-.TextIC{
-    font-size: 35px;
-}
-
-
-/* CONTENEDOR */
-
-.FAQ{
+.FAQ {
     width: 80%;
     max-width: 900px;
     margin: 80px auto;
 }
 
-/* TITULO */
+.FAQ h2 { text-align: center; margin-bottom: 30px; }
 
-.FAQ h2{
-    text-align: center;
-    margin-bottom: 30px;
-}
-
-/* BLOQUE */
-
-.FAQ details{
+.FAQ details {
     background-color: #F3F7EA;
     margin-bottom: 15px;
     border-radius: 10px;
@@ -888,566 +589,466 @@ color: #CFE5B4;
     overflow: hidden;
 }
 
-
-/* PREGUNTA */
-
-.FAQ summary{
+.FAQ summary {
     padding: 15px 20px;
     font-weight: bold;
     font-size: 18px;
     cursor: pointer;
-
     display: flex;
     justify-content: space-between;
     align-items: center;
-
-    list-style: none; /* ❌ saca flecha default */
+    list-style: none;
 }
 
+.FAQ summary::-webkit-details-marker { display: none; }
+.FAQ summary::after { content: "▼"; font-size: 14px; transition: transform 0.3s ease; }
+.FAQ details[open] summary::after { transform: rotate(180deg); }
+.FAQ p { padding: 0 20px 15px; margin: 0; line-height: 1.6; }
 
-/* OCULTAR FLECHA NATIVA (importante para algunos navegadores) */
-
-.FAQ summary::-webkit-details-marker{
-    display: none;
-}
-
-
-/* FLECHA PERSONALIZADA */
-
-.FAQ summary::after{
-    content: "▼";
-    font-size: 14px;
-    transition: transform 0.3s ease;
-}
-
-
-/* CUANDO ESTÁ ABIERTO */
-
-.FAQ details[open] summary::after{
-    transform: rotate(180deg); /* 🔥 gira hacia arriba */
-}
-
-
-/* RESPUESTA */
-
-.FAQ p{
-    padding: 0 20px 15px 20px;
-    margin: 0;
-    line-height: 1.6;
-}
-
-
-/* ============================= */
-/* CONTENEDOR GENERAL */
-/* ============================= */
-
-.Testimonios{
+.Testimonios {
     width: 85%;
     max-width: 1200px;
     margin: 80px auto;
     text-align: center;
 }
 
+.TextTT { text-decoration: underline; }
+.Testimonios > h2 { margin-bottom: 40px; }
 
-/* ============================= */
-/* TITULO */
-/* ============================= */
-
-.Testimonios > h2{
-    margin-bottom: 40px;
-}
-
-
-/* ============================= */
-/* CONTENEDOR DE TARJETAS */
-/* ============================= */
-
-.ContTestimonios{
+.ContTestimonios {
     display: flex;
     justify-content: center;
     gap: 40px;
 }
 
-
-/* ============================= */
-/* TARJETAS */
-/* ============================= */
-
-.TestimonioInd{
+.TestimonioInd {
     flex: 1;
     max-width: 700px;
     min-height: 300px;
-
     background-color: #F3F7EA;
-
     padding: 35px 25px;
-
     border-radius: 18px;
     border: 1px solid #D6E2C7;
-
     text-align: left;
 }
 
-/* ============================= */
-/* TEXTOS */
-/* ============================= */
+.TestimonioInd h2 { margin-bottom: 5px; font-size: 20px; }
+.TestimonioInd h3 { font-size: 18px; margin-bottom: 15px; font-weight: normal; }
+.TestimonioInd p  { line-height: 1.7; font-size: 18px; }
 
-.TestimonioInd h2{
-    margin-bottom: 5px;
-        font-size: 20px;
-}
-
-.TestimonioInd h3{
-    font-size: 15px;
-    margin-bottom: 15px;
-    font-weight: normal;
-        font-size: 18px;
-}
-
-.TestimonioInd p{
-    line-height: 1.7;
-    font-size: 18px;
-}
-
-/* ============================= */
-/* CONTENEDOR PRINCIPAL */
-/* ============================= */
-
-.FinalE{
+.FinalE {
     width: 100%;
-    background-color: #90AB8B; /* 🔥 color que pediste */
-
+    background-color: #90AB8B;
     padding: 60px 20px;
-
     text-align: center;
 }
 
+.TextEmF { font-size: 25px; }
+.FinalE h2 { margin-bottom: 20px; }
+.FinalE > h3 { max-width: 800px; margin: 0 auto 40px; line-height: 1.6; }
 
-/* ============================= */
-/* TITULOS */
-/* ============================= */
-
-.FinalE h2{
-    margin-bottom: 20px;
-}
-
-.FinalE > h3{
-    max-width: 800px;
-    margin: 0 auto 40px auto;
-    line-height: 1.6;
-}
-
-
-/* ============================= */
-/* CONTENEDOR DE BLOQUES */
-/* ============================= */
-
-.ContInfoEF{
+.ContInfoEF {
     display: flex;
     justify-content: center;
     gap: 60px;
     flex-wrap: wrap;
-
-    align-items: flex-start; /* 🔥 clave */
+    align-items: flex-start;
 }
 
-/* ============================= */
-/* BLOQUES INDIVIDUALES */
-/* ============================= */
-
-.InfoEF{
+.InfoEF {
     width: 250px;
-
     display: flex;
     flex-direction: column;
     align-items: center;
-
     text-align: center;
 }
 
+.InfoEF img { width: 60px; margin-bottom: 15px; }
+.InfoEF h3  { margin: 5px 0; }
 
-/* ICONO */
+/* =====================
+   RESPONSIVE — un solo bloque
+   ===================== */
 
-.InfoEF img{
-    width: 60px;
-    margin-bottom: 15px;
+@media (max-width: 768px) {
+
+    /* NAV */
+    nav {
+        flex-wrap: wrap;
+        height: auto;
+        padding: 5px 8px;
+    }
+
+    #LogoP { width: 55px; }
+    #LogoE { width: 70px; }
+
+    .menu-botones {
+        flex-wrap: wrap;
+        justify-content: center;
+        flex: 1;
+        gap: 6px;
+    }
+
+    .BotonBa { font-size: 14px; padding: 6px 8px; }
+    .BotonBa:last-child { width: 100%; text-align: center; margin-top: 4px; }
+
+    /* HERO */
+    .CartelPresent {
+        height: auto;
+        min-height: 400px;
+        padding: 120px 20px 40px;
+        text-align: center;
+    }
+
+    .CartelIndex {
+        margin-top: 40px;
+        padding: 140px 15px 70px;
+        min-height: 520px;
+    }
+
+    .TextP1 { font-size: 32px; }
+    .TextP2 { font-size: 18px; }
+
+    .ColocBP { flex-direction: column; gap: 10px; }
+    .BotonP  { font-size: 16px; padding: 10px 18px; }
+    .ImagenIndex { height: 450px; }
+
+    /* MISIÓN */
+    .CartelPresent2 { width: 90%; padding: 20px; }
+    #BotonDevocional { width: 180px; font-size: 22px; }
+
+    /* CARTELES */
+    .ContCarteles { flex-direction: column; gap: 30px; width: 90%; }
+    .CartelesIndi { width: 92%; margin: auto; padding: 18px; }
+    .ImgP2 { width: 100%; height: 200px; }
+
+    /* HORARIOS */
+    .ContHorarios {
+        grid-template-columns: 1fr;
+        gap: 35px;
+        justify-items: center;
+    }
+
+    .ContHorarios > div {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        width: 100%;
+    }
+
+    .TituloHorario { justify-content: center; margin-bottom: 10px; }
+    .TituloHorario h2 { font-size: 1.4rem; }
+    .LogoIndx { width: 48px; }
+    .ContHorarios p { font-size: 14px; text-align: center; margin: 0 auto; }
+
+    /* FOOTER */
+    .ContFI { width: 90%; padding: 20px; }
+    .TextF { font-size: 24px; }
+
+    /* PREPARANDO */
+    .Preparando {
+        width: 90%;
+        margin: 90px auto;
+        grid-template-columns: 1fr;
+    }
+
+    .Preparando img { grid-column: 1; grid-row: 3; max-width: 100%; }
+
+    /* MINISTERIOS */
+    .Ministerios { grid-template-columns: 1fr; width: 90%; }
+    .Ministerios > h2 { font-size: 36px; }
+    .MinisterioIndi { padding: 20px; }
+
+    /* EMERGENTE — cartel texto/imagen */
+    .CartelPresentC {
+        grid-template-columns: 1fr;
+        gap: 20px;
+        text-align: center;
+        margin-top: 40px;
+    }
+
+    .CartelPresentC img { height: 250px; }
+
+    /* CARACTERÍSTICAS */
+    .Caracteristicas { grid-template-columns: 1fr; width: 90%; }
+    .CaractIndi { text-align: center; align-items: center; }
+    .CaractIndi img { align-self: center; }
+
+    /* INFO */
+    .InfoC { grid-template-columns: 1fr; gap: 40px; }
+    .ListaP li { grid-template-columns: 40px 1fr; }
+
+    /* HORARIOS EMERGENTE */
+    .HorarioCi { flex-direction: column; align-items: flex-start; gap: 5px; }
+    .HorarioCi h3:last-child { text-align: left; }
+
+    /* TEXTOS */
+    .TxtTC { font-size: 28px; }
+    .TextIC { font-size: 24px; }
+
+    /* FAQ */
+    .FAQ { width: 90%; }
+    .FAQ summary { font-size: 16px; }
+
+    /* TESTIMONIOS */
+    .ContTestimonios { flex-direction: column; gap: 20px; }
+    .TestimonioInd { max-width: 100%; }
+
+    /* CONTACTO */
+    .ContInfoEF { flex-direction: column; gap: 30px; }
+    .InfoEF { width: 100%; }
 }
 
-
-/* TEXTOS */
-
-.InfoEF h3{
-    margin: 5px 0;
+@media (max-width: 360px) {
+    .CartelPresent  { padding-top: 130px; }
+    .Preparando     { width: 90%; margin: 80px auto; grid-template-columns: 1fr; }
+    .ContHorarios p { font-size: 13px; }
 }
 
-.TextEmF{
-    font-size: 25px;
+/* =====================
+   FORMULARIO
+   ===================== */
+
+.form-page {
+    padding-top: 110px;
+    padding-bottom: 60px;
 }
 
-
-
-/* ========================= */
-/* RESPONSIVE PARA CELULARES................................................................ */
-/* ========================= */
-
-@media (max-width: 768px){
-
-body{
-overflow-x:hidden;
+.form-container {
+    width: min(90%, 820px);
+    margin: 0 auto;
 }
 
-/* NAV */
-
-nav{
-display:flex;
-flex-wrap:wrap;
-align-items:center;
-justify-content:space-between;
-height:auto;
-padding:5px 8px;
+/* Encabezado */
+.form-header {
+    text-align: center;
+    margin-bottom: 40px;
 }
 
-/* logos */
-#LogoP{
-width:55px;
+.form-header h1 {
+    font-size: 32px;
+    margin-bottom: 6px;
 }
 
-#LogoE{
-width:70px;
+.form-header h2 {
+    font-size: 20px;
+    font-weight: 400;
+    margin: 0 0 10px;
 }
 
-/* contenedor de botones */
-.menu-botones{
-display:flex;
-flex-wrap:wrap;
-justify-content:center;
-align-items:center;
-gap:6px;
-flex:1;
+.form-header p {
+    font-size: 14px;
+    color: #555;
+    margin: 0;
 }
 
-/* botones */
-.BotonBa{
-font-size:14px;
-padding:6px 8px;
+/* Secciones */
+.form-section {
+    background-color: #fff;
+    border: 1px solid #D6E2C7;
+    border-radius: 14px;
+    padding: 28px 32px;
+    margin-bottom: 22px;
 }
 
-/* el último botón baja abajo */
-.BotonBa:last-child{
-width:100%;
-text-align:center;
-margin-top:4px;
+.form-section-title {
+    font-size: 13px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1.2px;
+    color: #5A7863;
+    margin: 0 0 20px;
+    padding-bottom: 10px;
+    border-bottom: 2px solid #EBF4DD;
 }
 
-/* CARTEL PRINCIPAL */
-
-.CartelPresent{
-width:100%;
-height:auto;
-min-height:400px;
-display:flex;
-flex-direction:column;
-justify-content:center;
-align-items:center;
-text-align:center;
-padding:120px 20px 40px 20px; /* espacio arriba para el nav */
-box-sizing:border-box;
-position:relative; 
+/* Campos */
+.field {
+    margin-bottom: 20px;
 }
 
-.TextP1{
-font-size:32px;
+.field:last-child {
+    margin-bottom: 0;
 }
 
-.TextP2{
-font-size:18px;
+.field label {
+    display: block;
+    font-size: 15px;
+    margin-bottom: 7px;
+    line-height: 1.4;
 }
 
-.ColocBP{
-flex-direction:column;
-gap:10px;
+.field .req {
+    color: #c0392b;
+    margin-left: 3px;
 }
 
-.BotonP{
-font-size:16px;
-padding:10px 18px;
+.field input[type="text"],
+.field input[type="date"],
+.field input[type="number"] {
+    width: 100%;
+    padding: 10px 14px;
+    border: 1px solid #C8DDB0;
+    border-radius: 8px;
+    font-family: "Old Standard TT", serif;
+    font-size: 15px;
+    background-color: #F7FBEF;
+    color: rgb(22, 1, 1);
+    transition: border-color 0.2s, box-shadow 0.2s;
+    box-sizing: border-box;
 }
 
-
-/* IMAGEN PRINCIPAL */
-
-.ImagenIndex{
-height:450px;
+.field input[type="text"]:focus,
+.field input[type="date"]:focus,
+.field input[type="number"]:focus {
+    outline: none;
+    border-color: #5A7863;
+    box-shadow: 0 0 0 3px rgba(90,120,99,0.12);
 }
 
-
-/* DEVOCIONAL */
-
-.CartelPresent2{
-width:90%;
-padding:20px;
+/* Fila de 2 campos */
+.field-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
 }
 
-#BotonDevocional{
-width:180px;
-font-size:22px;
+/* Etiqueta de opciones */
+.options-label {
+    display: block;
+    font-size: 15px;
+    margin-bottom: 10px;
+    line-height: 1.5;
 }
 
-
-/* CARTELES */
-
-.ContCarteles{
-flex-direction:column;
-gap:30px;
-width:90%;
+.options-label .req {
+    color: #c0392b;
+    margin-left: 3px;
 }
 
-.CartelesIndi{
-width:92%;
-margin:auto;
-padding:18px;
-box-sizing:border-box;
+/* Días de la semana */
+.days-grid {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 8px;
+    margin-top: 4px;
 }
 
-.ImgP2{
-width:100%;
-height:200px;
+.day-check {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 5px;
 }
 
-
-/* HORARIOS */
-
-.ContHorarios{
-flex-direction:column;
-align-items:center;
-gap:20px;
+.day-check span {
+    font-size: 12px;
+    color: #5A7863;
+    font-weight: 600;
 }
 
-.ContHorarios div{
-width:90%;
+.day-check input[type="checkbox"] {
+    width: 22px;
+    height: 22px;
+    accent-color: #5A7863;
+    cursor: pointer;
 }
 
-
-
-
-/* PREPARANDO (pagina 2) */
-
-.Preparando{
-width:90%;
-margin:90px auto;
-grid-template-columns:1fr;
+/* Grupo de radios */
+.radio-group {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin-top: 4px;
 }
 
-.Preparando img{
-grid-column:1;
-grid-row:3;
-max-width:100%;
+.radio-option {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 15px;
+    cursor: pointer;
 }
 
-
-/* MINISTERIOS */
-
-.Ministerios{
-grid-template-columns:1fr;
-width:90%;
+.radio-option input[type="radio"] {
+    width: 18px;
+    height: 18px;
+    accent-color: #5A7863;
+    cursor: pointer;
+    flex-shrink: 0;
 }
 
-.Ministerios > h2{
-font-size:36px;
+/* Fila "Otro:" */
+.otro-row {
+    display: flex;
+    align-items: center;
+    gap: 10px;
 }
 
-.MinisterioIndi{
-padding:20px;
+.otro-row input[type="radio"] {
+    width: 18px;
+    height: 18px;
+    accent-color: #5A7863;
+    cursor: pointer;
+    flex-shrink: 0;
 }
 
-
-/* FOOTER */
-
-.ContFI{
-width:90%;
-padding:20px;
+.otro-row label {
+    font-size: 15px;
+    white-space: nowrap;
 }
 
-.TextF{
-font-size:24px;
+.otro-row input[type="text"] {
+    flex: 1;
+    padding: 7px 12px;
+    border: 1px solid #C8DDB0;
+    border-radius: 8px;
+    font-family: "Old Standard TT", serif;
+    font-size: 14px;
+    background-color: #F7FBEF;
+    color: rgb(22, 1, 1);
+    transition: border-color 0.2s, box-shadow 0.2s;
+    box-sizing: border-box;
 }
 
+.otro-row input[type="text"]:focus {
+    outline: none;
+    border-color: #5A7863;
+    box-shadow: 0 0 0 3px rgba(90,120,99,0.12);
 }
 
-.TextTT{
-    text-decoration:underline;
+/* Botón enviar */
+.form-submit {
+    text-align: center;
+    margin-top: 32px;
 }
 
-/* ========================= */
-/* SECCIÓN CENTRO RESPONSIVE ...................................................................................................................................*/
-/* ========================= */
-
-@media (max-width: 768px){
-
-/* CARTEL CON IMAGEN + TEXTO */
-.CartelPresentC{
-    grid-template-columns:1fr;
-    gap:20px;
-    text-align:center;
-    margin-top:40px;
-    position:relative;
-    z-index:1;
+.btn-enviar {
+    display: inline-block;
+    padding: 14px 48px;
+    background-color: #5A7863;
+    color: #F8FAF4;
+    font-family: "Old Standard TT", serif;
+    font-size: 18px;
+    font-weight: 700;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    box-shadow: 0 4px 14px rgba(0,0,0,0.15);
+    transition: background-color 0.2s, transform 0.2s, box-shadow 0.2s;
 }
 
-.CartelPresentC img{
-    height:250px;
+.btn-enviar:hover {
+    background-color: #3B4953;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.2);
 }
 
-.CartelIndex{
-    margin-top:40px;
-    padding:140px 15px 70px;
-    min-height:520px;
-}
-
-
-/* CARACTERISTICAS */
-.Caracteristicas{
-    grid-template-columns:1fr;
-    width:90%;
-}
-
-.CaractIndi{
-    text-align:center;
-    align-items:center;
-}
-
-.CaractIndi img{
-    align-self:center;
-}
-
-
-/* INFO (LISTA + HORARIOS) */
-.InfoC{
-    grid-template-columns:1fr;
-    gap:40px;
-}
-
-
-/* LISTA */
-.ListaP li{
-    grid-template-columns:40px 1fr;
-}
-
-
-/* HORARIOS ANTIGUOS */
-.HorarioCi{
-    flex-direction:column;
-    align-items:flex-start;
-    gap:5px;
-}
-
-.HorarioCi h3:last-child{
-    text-align:left;
-}
-
-
-/* NUEVO BLOQUE HORARIOS */
-/* NUEVO BLOQUE HORARIOS */
-.HorariosPI{
-    width:90%;
-}
-
-.ContHorarios{
-    grid-template-columns:1fr;
-    gap:35px;
-    justify-items:center; /* centra cada tarjeta */
-}
-
-.ContHorarios > div{
-    display:flex;
-    flex-direction:column;
-    align-items:center; /* centra todo dentro */
-    text-align:center;
-    width:100%;
-}
-
-.TituloHorario{
-    justify-content:center;
-    align-items:center;
-    margin-bottom:10px;
-}
-
-.TituloHorario h2{
-    font-size:1.4rem;
-}
-
-.LogoIndx{
-    width:48px;
-}
-
-.ContHorarios p{
-    font-size:14px;
-    white-space:nowrap;
-    text-align:center;
-    margin:0 auto;
-}
-
-
-/* TEXTOS GRANDES */
-.TxtTC{
-    font-size:28px;
-}
-
-.TextIC{
-    font-size:24px;
-}
-
-
-/* FAQ */
-.FAQ{
-    width:90%;
-}
-
-.FAQ summary{
-    font-size:16px;
-}
-
-
-/* TESTIMONIOS */
-.ContTestimonios{
-    flex-direction:column;
-    gap:20px;
-}
-
-.TestimonioInd{
-    max-width:100%;
-}
-
-
-/* FINAL (CONTACTO) */
-.ContInfoEF{
-    flex-direction:column;
-    gap:30px;
-}
-
-.InfoEF{
-    width:100%;
-}
-
-}
-
-
-
-@media screen and (max-width:360px){
-
-.CartelPresent{
-    padding-top:130px;
-}
-
-.Preparando{
-    width:90%;
-    margin:80px auto;
-    grid-template-columns:1fr;
-}
-
-/* Ajuste extra para textos largos en horarios */
-.ContHorarios p{
-    font-size:13px;
-}
-
+/* Responsive formulario */
+@media (max-width: 600px) {
+    .form-section        { padding: 20px 18px; }
+    .field-row           { grid-template-columns: 1fr; }
+    .days-grid           { grid-template-columns: repeat(4, 1fr); }
+    .form-header h1      { font-size: 24px; }
 }
