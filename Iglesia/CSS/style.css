@@ -1,0 +1,1204 @@
+@import url('https://fonts.googleapis.com/css2?family=Old+Standard+TT:ital,wght@0,400;0,700;1,400&family=Source+Serif+4:ital,opsz,wght@0,8..60,200..900;1,8..60,200..900&display=swap');
+
+/* =====================
+   BASE
+   ===================== */
+
+*, *::before, *::after {
+    box-sizing: border-box;
+}
+
+html, body {
+    margin: 0;
+    height: 100%;
+}
+
+body {
+    background-color: #EBF4DD;
+    height: auto;
+    overflow-x: hidden;
+}
+
+/* =====================
+   TIPOGRAFÍA BASE
+   ===================== */
+
+.TextB {
+    color: rgb(22, 1, 1);
+    font-family: "Old Standard TT", serif;
+    font-weight: 400;
+    font-style: normal;
+}
+
+/* =====================
+   NAV
+   ===================== */
+
+nav {
+    background-color: #3B4953;
+    width: 100%;
+    height: 90px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 4;
+    box-shadow: 0px 4px 15px rgba(0,0,0,0.25);
+    border-bottom: 2px solid #2E3942;
+}
+
+#LogoP { width: 85px; }
+#LogoE { width: 120px; }
+
+.menu-botones {
+    display: flex;
+    gap: 10px;
+    margin-left: auto;
+}
+
+.BotonBa {
+    text-decoration: none;
+    color: white;
+    font-size: 18px;
+    cursor: pointer;
+    padding: 10px 15px;
+    border-radius: 5px;
+}
+
+.BotonBa:hover,
+nav a:hover {
+    color: #CFE5B4;
+}
+
+.BotonBa.activo {
+    color: #5A7863;
+    font-weight: 700;
+    border-bottom: 3px solid #90AB8B;
+}
+
+/* =====================
+   CARTEL PRINCIPAL (hero)
+   ===================== */
+
+.CartelPresent {
+    width: 100%;
+    height: 600px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+
+/* Variante index */
+.CartelIndex {
+    min-height: 500px;
+    justify-content: space-between;
+    padding: 140px 20px 60px;
+    overflow: hidden;
+    justify-content: center;
+    gap: 4px;
+}
+
+.CartelIndex .ColocBP {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-top: 20px;
+}
+
+/* Variante páginas internas (Preparando / Emergente) */
+.CartelInterna {
+    height: 400px;
+    margin-top: 10px;
+    margin-bottom: 60px;
+}
+
+.ImagenIndex {
+    width: 100%;
+    height: 550px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    object-fit: cover;
+    z-index: -1;
+}
+
+.ImagenPr {
+    height: 400px;
+}
+
+/* Textos del hero */
+.TextP1 {
+    color: #F8FAF4;
+    font-size: 50px;
+    margin-top: 0;
+    text-shadow: 2px 2px 8px rgba(0,0,0,0.7);
+}
+
+.TextP2 {
+    color: #F8FAF4;
+    font-size: 28px;
+    margin-top: 22px;
+    text-shadow: 0 1px 3px rgba(0,0,0,0.35);
+}
+
+/* =====================
+   BOTONES
+   ===================== */
+
+.BotonP {
+    display: inline-block;
+    text-decoration: none;
+    font-size: 18px;
+    font-weight: 600;
+    color: #2F3E2E;
+    background-color: #CFE5B4;
+    padding: 12px 24px;
+    border-radius: 6px;
+    border: 3px solid #B7D49C;
+    cursor: pointer;
+    box-shadow: 0px 4px 12px rgba(0,0,0,0.15);
+    transition: all 0.25s ease;
+    text-align: center;
+}
+
+.BotonP:hover {
+    background-color: #BFDDA0;
+    transform: translateY(-2px);
+    box-shadow: 0px 8px 18px rgba(0,0,0,0.2);
+}
+
+.ColocBP {
+    display: flex;
+    gap: 20px;
+    margin-top: 10px;
+}
+
+.BotonConcer {
+    display: block;
+    width: 90%;
+    margin: 20px auto;
+    padding: 12px 15px;
+    text-align: center;
+    text-decoration: none;
+    font-size: 15px;
+    font-weight: 600;
+    color: #2F3E2E;
+    background-color: #DCECC8;
+    border: 1px solid #C8DDB0;
+    border-radius: 30px;
+    transition: all 0.25s ease;
+}
+
+.BotonConcer:hover {
+    background-color: #CFE5B4;
+    transform: translateY(-2px);
+    box-shadow: 0px 6px 15px rgba(0,0,0,0.12);
+}
+
+/* =====================
+   SECCIÓN MISIÓN (index)
+   ===================== */
+
+.CartelPresent2 {
+    width: 42%;
+    max-width: 1260px;
+    padding: 40px;
+    margin: 30px auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    position: relative;
+}
+
+.TextP11 { font-size: 35px; }
+
+.TextP12 {
+    font-size: 20px;
+    line-height: 1.6;
+    margin-top: 0px;
+}
+
+/* Devocional - toggle */
+#toggleDevocional { display: none; }
+
+#BotonDevocional {
+    font-size: 26px;
+    width: 240px;
+    background: linear-gradient(145deg, #EBF4DD, #CFE5B4);
+    color: #3B4953;
+    border: 2px solid #90AB8B;
+    border-radius: 12px;
+    padding: 14px 20px;
+    box-shadow: 0 6px 14px rgba(0,0,0,0.15);
+    transition: all 0.25s ease;
+    cursor: pointer;
+}
+
+#BotonDevocional:hover  { transform: translateY(-2px); box-shadow: 0 10px 20px rgba(0,0,0,0.25); }
+#BotonDevocional:active { transform: translateY(1px); }
+
+.cerrar { display: none; }
+
+#toggleDevocional:checked + .BotonConcer .abrir  { display: none; }
+#toggleDevocional:checked + .BotonConcer .cerrar { display: inline; }
+
+.Devocional {
+    max-height: 0;
+    overflow: hidden;
+    margin-top: 20px;
+    padding: 0 25px;
+    border: 3px solid #C8DDB0;
+    border-radius: 15px;
+    background: #F7FBEF;
+    line-height: 1.6;
+    opacity: 0;
+    transition: all 0.4s ease;
+}
+
+#toggleDevocional:checked ~ .Devocional {
+    max-height: 100vh;
+    padding: 25px;
+    opacity: 1;
+    overflow-y: auto;
+}
+
+.Devocional::-webkit-scrollbar { width: 8px; }
+.Devocional::-webkit-scrollbar-track { background: #EBF4DD; border-radius: 10px; }
+.Devocional::-webkit-scrollbar-thumb {
+    background: linear-gradient(180deg, #90AB8B, #5A7863);
+    border-radius: 10px;
+    border: 2px solid #EBF4DD;
+}
+.Devocional::-webkit-scrollbar-thumb:hover { background: #3B4953; }
+
+
+/* =====================
+   EVENTOS ESPECIALES
+   ===================== */
+
+.EventosEspeciales {
+    width: 85%;
+    max-width: 1300px;
+    margin: 80px auto;
+}
+
+.EventosEspeciales > h2 {
+    text-align: center;
+    font-size: 50px;
+    text-decoration: underline 4px;
+    margin-bottom: 40px;
+}
+
+.EventosEspecialesCont {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+}
+
+.EventoIndividual {
+    background-color: #F3F7EA;
+    border: 1px solid #D6E2C7;
+    border-radius: 18px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.EventoIndividual:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+}
+
+.EventoIndividual img {
+    width: 100%;
+
+    object-fit: contain;
+    display: block;
+    background-color: #D6E2C7; /* placeholder cuando no hay imagen */
+}
+
+.EventoInfo {
+    padding: 20px 22px;
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+}
+
+.EventoInfo h3 {
+    font-size: 20px;
+    margin: 0 0 12px;
+    color: #3B4953;
+}
+
+.EventoInfo ul {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 14px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.EventoInfo ul li {
+    font-size: 15px;
+    line-height: 1.5;
+    padding-left: 18px;
+    position: relative;
+}
+
+.EventoInfo ul li::before {
+    content: "✦";
+    position: absolute;
+    left: 0;
+    color: #5A7863;
+    font-size: 11px;
+    top: 3px;
+}
+
+.EventoNota {
+    margin: auto 0 0;
+    font-weight: 700;
+    font-size: 15px;
+    color: #5A7863;
+    padding-top: 10px;
+    border-top: 1px solid #D6E2C7;
+}
+
+
+
+/* =====================
+   CARTELES (index)
+   ===================== */
+
+.ContCarteles {
+    display: flex;
+    justify-content: center;
+    gap: 80px;
+    margin: 60px auto;
+    width: 80%;
+    max-width: 1200px;
+}
+
+.CartelesIndi {
+    width: 60%;
+    text-align: center;
+    padding: 25px;
+    border-radius: 25px;
+    background-color: #90AB8B;
+    border: 1px solid #D6E3C3;
+    box-shadow: 0px 6px 18px rgba(0,0,0,0.08);
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.CartelesIndi:hover {
+    transform: translateY(-6px);
+    box-shadow: 0px 12px 25px rgba(0,0,0,0.15);
+}
+
+.ImgP2 {
+    width: 500px;
+    height: 300px;
+    object-fit: cover;
+    border-radius: 40px;
+    margin-top: 5px;
+}
+
+.TextCI1 { font-size: 28px; }
+.TextCI2 { font-size: 17px; padding: 0 30px; }
+
+/* =====================
+   HORARIOS (index)
+   ===================== */
+
+.HorariosPI {
+    width: min(90%, 1200px);
+    margin: 80px auto;
+    text-align: center;
+}
+
+.ContHorarios {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 35px;
+    margin-top: 40px;
+}
+
+.ContHorarios > div { padding: 20px; }
+
+.TituloHorario {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 8px;
+}
+
+.TituloHorario h2 {
+    margin: 0;
+    font-size: 1.5rem;
+}
+
+.LogoIndx {
+    width: 55px;
+    flex-shrink: 0;
+}
+
+.ContHorarios p {
+    margin: 0;
+    font-size: 15px;
+    white-space: nowrap;
+}
+
+/* =====================
+   FOOTER (index)
+   ===================== */
+
+.ContFI {
+    width: 80%;
+    max-width: 800px;
+    margin: 120px auto 0;
+    text-align: center;
+    padding: 40px;
+    border-top: 1px solid black;
+}
+
+.TextF { font-size: 30px; }
+
+/* =====================
+   PÁGINA PREPARANDO
+   ===================== */
+
+.Preparando {
+    width: 80%;
+    margin: 60px 0 60px 280px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: auto 1fr;   /* ← la fila del p ocupa el espacio restante */
+    gap: 20px 40px;
+    align-items: start;             /* ← evita que la imagen se estire */
+}
+
+.Preparando h2  { grid-column: 1; grid-row: 1; align-self: end; }   /* ← h2 pegado al p */
+.Preparando p   { grid-column: 1; grid-row: 2; line-height: 1.7; align-self: start; }
+.Preparando img {
+    grid-column: 2;
+    grid-row: 1 / 3;
+    width: 100%;
+    max-width: 450px;
+    border-radius: 20px;
+    align-self: center;             /* ← imagen centrada respecto al bloque de texto */
+}
+
+.TextP3 { font-size: 40px; font-style: oblique; }
+.TextP4 { font-size: 18px; }
+
+.Ministerios {
+    width: 85%;
+    max-width: 1300px;
+    margin: 80px auto;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 35px;
+}
+
+.Ministerios > h2 {
+    grid-column: 1 / -1;
+    text-align: center;
+    margin-bottom: 20px;
+    font-size: 50px;
+    text-decoration: underline 4px;
+}
+
+.MinisterioIndi {
+    background-color: #F3F7EA;
+    padding: 30px 25px;
+    border-radius: 18px;
+    border: 1px solid #D6E2C7;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.MinisterioIndi:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+}
+
+.LogoIgle {
+    width: 50px;
+    height: auto;
+    margin-bottom: 10px;
+}
+
+.MinisterioIndi h2 { margin: 5px 0 8px; }
+.MinisterioIndi h3 { font-size: 16px; margin: 3px 0; font-weight: normal; }
+.MinisterioIndi p  { margin-top: 15px; line-height: 1.6; }
+
+.Visitanos {
+    background-color: #90AB8B;
+    padding: 40px 20px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    border-radius: 15px;
+    color: #fff;
+}
+
+.Visitanos > h2 { font-size: 36px; margin: 0; }
+.Visitanos > h3 { font-size: 20px; margin: 0; line-height: 1.5; }
+
+.VisitanosInterno {
+    display: flex;
+    justify-content: center;
+    gap: 60px;
+    flex-wrap: wrap;
+}
+
+.VisitanosI {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 10px 20px;
+}
+
+.VisitanosI h2 { font-size: 24px; margin-bottom: 5px; }
+.VisitanosI p  { font-size: 18px; margin: 0; }
+
+/* =====================
+   PÁGINA EMERGENTE
+   ===================== */
+
+.CartelPresentC {
+    width: 85%;
+    max-width: 1200px;
+    margin: 80px auto;
+    display: grid;
+    grid-template-columns: 1fr 1.5fr;
+    gap: 40px;
+    align-items: center;
+}
+
+.CartelPresentC img { width: 100%; height: 100%; object-fit: cover; border-radius: 20px; }
+.CartelPresentC h2  { margin-bottom: 15px; }
+.CartelPresentC p   { line-height: 1.7; }
+
+.Caracteristicas {
+    width: 90%;
+    max-width: 1400px;
+    margin: 80px auto;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 30px;
+}
+
+.Caracteristicas > h2 {
+    grid-column: 1 / -1;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.TxtTC  { font-size: 40px; }
+
+.CaractIndi {
+    background-color: #F3F7EA;
+    padding: 25px;
+    border-radius: 18px;
+    border: 1px solid #D6E2C7;
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+}
+
+.CaractIndi img { width: 50px; margin-bottom: 10px; align-self: flex-start; }
+.CaractIndi h3  { margin: 5px 0 10px; }
+.CaractIndi p   { line-height: 1.6; }
+
+.InfoC {
+    width: 90%;
+    max-width: 1300px;
+    margin: 80px auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
+    align-items: start;
+}
+
+.TextIC { font-size: 35px; }
+
+.ListaP { width: 100%; }
+.ListaP h2 { margin-bottom: 25px; }
+
+.ListaP ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.ListaP li {
+    display: grid;
+    grid-template-columns: 50px 1fr;
+    grid-template-rows: auto auto;
+    column-gap: 15px;
+    row-gap: 5px;
+    margin-bottom: 25px;
+    align-items: start;
+    padding-bottom: 15px;
+    border-bottom: 1px solid #D6E2C7;
+}
+
+.ListaP li img { grid-row: 1 / 3; width: 40px; }
+.ListaP li h3  { margin: 0; }
+.ListaP li p   { margin: 0; line-height: 1.6; }
+
+.HorariosC { width: 100%; }
+.HorariosC h2 { margin-bottom: 25px; }
+
+.HorarioCi {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 0;
+    border-bottom: 1px solid #D6E2C7;
+}
+
+.HorarioCi h3 { margin: 0; }
+.HorarioCi h3:first-child { font-weight: bold; }
+.HorarioCi h3:last-child  { text-align: right; }
+
+.FAQ {
+    width: 80%;
+    max-width: 900px;
+    margin: 80px auto;
+}
+
+.FAQ h2 { text-align: center; margin-bottom: 30px; }
+
+.FAQ details {
+    background-color: #F3F7EA;
+    margin-bottom: 15px;
+    border-radius: 10px;
+    border: 1px solid #D6E2C7;
+    overflow: hidden;
+}
+
+.FAQ summary {
+    padding: 15px 20px;
+    font-weight: bold;
+    font-size: 18px;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    list-style: none;
+}
+
+.FAQ summary::-webkit-details-marker { display: none; }
+.FAQ summary::after { content: "▼"; font-size: 14px; transition: transform 0.3s ease; }
+.FAQ details[open] summary::after { transform: rotate(180deg); }
+.FAQ p { padding: 0 20px 15px; margin: 0; line-height: 1.6; }
+
+.Testimonios {
+    width: 85%;
+    max-width: 1200px;
+    margin: 80px auto;
+    text-align: center;
+}
+
+.TextTT { text-decoration: underline; }
+.Testimonios > h2 { margin-bottom: 40px; }
+
+.ContTestimonios {
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+}
+
+.TestimonioInd {
+    flex: 1;
+    max-width: 700px;
+    min-height: 300px;
+    background-color: #F3F7EA;
+    padding: 35px 25px;
+    border-radius: 18px;
+    border: 1px solid #D6E2C7;
+    text-align: left;
+}
+
+.TestimonioInd h2 { margin-bottom: 5px; font-size: 20px; }
+.TestimonioInd h3 { font-size: 18px; margin-bottom: 15px; font-weight: normal; }
+.TestimonioInd p  { line-height: 1.7; font-size: 18px; }
+
+.FinalE {
+    width: 100%;
+    background-color: #90AB8B;
+    padding: 60px 20px;
+    text-align: center;
+}
+
+.TextEmF { font-size: 25px; }
+.FinalE h2 { margin-bottom: 20px; }
+.FinalE > h3 { max-width: 800px; margin: 0 auto 40px; line-height: 1.6; }
+
+.ContInfoEF {
+    display: flex;
+    justify-content: center;
+    gap: 60px;
+    flex-wrap: wrap;
+    align-items: flex-start;
+}
+
+.InfoEF {
+    width: 250px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+.InfoEF img { width: 60px; margin-bottom: 15px; }
+.InfoEF h3  { margin: 5px 0; }
+
+/* =====================
+   RESPONSIVE — un solo bloque
+   ===================== */
+
+@media (max-width: 768px) {
+
+    /* NAV */
+    nav {
+        flex-wrap: wrap;
+        height: auto;
+        padding: 5px 8px;
+    }
+
+    #LogoP { width: 55px; }
+    #LogoE { width: 70px; }
+
+    .menu-botones {
+        flex-wrap: wrap;
+        justify-content: center;
+        flex: 1;
+        gap: 6px;
+    }
+
+
+    .EventosEspecialesCont {
+        grid-template-columns: 1fr;
+    }
+
+    .EventosEspeciales > h2 {
+        font-size: 36px;
+    }
+
+
+    .BotonBa { font-size: 14px; padding: 6px 8px; }
+    .BotonBa:last-child { width: 100%; text-align: center; margin-top: 4px; }
+
+    /* HERO */
+    .CartelPresent {
+        height: auto;
+        min-height: 400px;
+        padding: 120px 20px 40px;
+        text-align: center;
+    }
+
+    .CartelIndex {
+        margin-top: 40px;
+        padding: 140px 15px 70px;
+        min-height: 520px;
+        
+    }
+
+    .TextP1 { font-size: 32px; }
+    .TextP2 { font-size: 18px; }
+
+    .ColocBP { flex-direction: column; gap: 10px; }
+    .BotonP  { font-size: 16px; padding: 10px 18px; }
+    .ImagenIndex { height: 450px; }
+
+    /* MISIÓN */
+    .CartelPresent2 { width: 90%; padding: 20px; }
+    #BotonDevocional { width: 180px; font-size: 22px; }
+
+    /* CARTELES */
+    .ContCarteles { flex-direction: column; gap: 30px; width: 90%; }
+    .CartelesIndi { width: 92%; margin: auto; padding: 18px; }
+    .ImgP2 { width: 100%; height: 200px; }
+
+    /* HORARIOS */
+    .ContHorarios {
+        grid-template-columns: 1fr;
+        gap: 35px;
+        justify-items: center;
+    }
+
+    .ContHorarios > div {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        width: 100%;
+    }
+
+    .TituloHorario { justify-content: center; margin-bottom: 10px; }
+    .TituloHorario h2 { font-size: 1.4rem; }
+    .LogoIndx { width: 48px; }
+    .ContHorarios p { font-size: 14px; text-align: center; margin: 0 auto; }
+
+    /* FOOTER */
+    .ContFI { width: 90%; padding: 20px; }
+    .TextF { font-size: 24px; }
+
+    /* PREPARANDO */
+    .Preparando {
+        width: 90%;
+        margin: 90px auto;
+        grid-template-columns: 1fr;
+    }
+
+    .Preparando img { grid-column: 1; grid-row: 3; max-width: 100%; }
+
+    /* MINISTERIOS */
+    .Ministerios { grid-template-columns: 1fr; width: 90%; }
+    .Ministerios > h2 { font-size: 36px; }
+    .MinisterioIndi { padding: 20px; }
+
+    /* EMERGENTE — cartel texto/imagen */
+    .CartelPresentC {
+        grid-template-columns: 1fr;
+        gap: 20px;
+        text-align: center;
+        margin-top: 40px;
+    }
+
+    .CartelPresentC img { height: 250px; }
+
+    /* CARACTERÍSTICAS */
+    .Caracteristicas { grid-template-columns: 1fr; width: 90%; }
+    .CaractIndi { text-align: center; align-items: center; }
+    .CaractIndi img { align-self: center; }
+
+    /* INFO */
+    .InfoC { grid-template-columns: 1fr; gap: 40px; }
+    .ListaP li { grid-template-columns: 40px 1fr; }
+
+    /* HORARIOS EMERGENTE */
+    .HorarioCi { flex-direction: column; align-items: flex-start; gap: 5px; }
+    .HorarioCi h3:last-child { text-align: left; }
+
+    /* TEXTOS */
+    .TxtTC { font-size: 28px; }
+    .TextIC { font-size: 24px; }
+
+    /* FAQ */
+    .FAQ { width: 90%; }
+    .FAQ summary { font-size: 16px; }
+
+    /* TESTIMONIOS */
+    .ContTestimonios { flex-direction: column; gap: 20px; }
+    .TestimonioInd { max-width: 100%; }
+
+    /* CONTACTO */
+    .ContInfoEF { flex-direction: column; gap: 30px; }
+    .InfoEF { width: 100%; }
+}
+
+@media (max-width: 360px) {
+    .CartelPresent  { padding-top: 130px; }
+    .Preparando     { width: 90%; margin: 80px auto; grid-template-columns: 1fr; }
+    .ContHorarios p { font-size: 13px; }
+}
+
+/* =====================
+   FORMULARIO
+   ===================== */
+
+.form-page {
+    padding-top: 110px;
+    padding-bottom: 60px;
+}
+
+.form-container {
+    width: min(90%, 820px);
+    margin: 0 auto;
+}
+
+/* Encabezado */
+.form-header {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.form-header h1 {
+    font-size: 32px;
+    margin-bottom: 6px;
+}
+
+.form-header h2 {
+    font-size: 20px;
+    font-weight: 400;
+    margin: 0 0 10px;
+}
+
+.form-header p {
+    font-size: 14px;
+    color: #555;
+    margin: 0;
+}
+
+/* Secciones */
+.form-section {
+    background-color: #fff;
+    border: 1px solid #D6E2C7;
+    border-radius: 14px;
+    padding: 28px 32px;
+    margin-bottom: 22px;
+}
+
+.form-section-title {
+    font-size: 13px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1.2px;
+    color: #5A7863;
+    margin: 0 0 20px;
+    padding-bottom: 10px;
+    border-bottom: 2px solid #EBF4DD;
+}
+
+/* Campos */
+.field {
+    margin-bottom: 20px;
+}
+
+.field:last-child {
+    margin-bottom: 0;
+}
+
+.field label {
+    display: block;
+    font-size: 15px;
+    margin-bottom: 7px;
+    line-height: 1.4;
+}
+
+.field .req {
+    color: #c0392b;
+    margin-left: 3px;
+}
+
+.field input[type="text"],
+.field input[type="date"],
+.field input[type="number"] {
+    width: 100%;
+    padding: 10px 14px;
+    border: 1px solid #C8DDB0;
+    border-radius: 8px;
+    font-family: "Old Standard TT", serif;
+    font-size: 15px;
+    background-color: #F7FBEF;
+    color: rgb(22, 1, 1);
+    transition: border-color 0.2s, box-shadow 0.2s;
+    box-sizing: border-box;
+}
+
+.field input[type="text"]:focus,
+.field input[type="date"]:focus,
+.field input[type="number"]:focus {
+    outline: none;
+    border-color: #5A7863;
+    box-shadow: 0 0 0 3px rgba(90,120,99,0.12);
+}
+
+/* Fila de 2 campos */
+.field-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+}
+
+/* Etiqueta de opciones */
+.options-label {
+    display: block;
+    font-size: 15px;
+    margin-bottom: 10px;
+    line-height: 1.5;
+}
+
+.options-label .req {
+    color: #c0392b;
+    margin-left: 3px;
+}
+
+/* Días de la semana */
+.days-grid {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 8px;
+    margin-top: 4px;
+}
+
+.day-check {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 5px;
+}
+
+.day-check span {
+    font-size: 12px;
+    color: #5A7863;
+    font-weight: 600;
+}
+
+.day-check input[type="checkbox"] {
+    width: 22px;
+    height: 22px;
+    accent-color: #5A7863;
+    cursor: pointer;
+}
+
+/* Grupo de radios */
+.radio-group {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin-top: 4px;
+}
+
+.radio-option {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 15px;
+    cursor: pointer;
+}
+
+.radio-option input[type="radio"] {
+    width: 18px;
+    height: 18px;
+    accent-color: #5A7863;
+    cursor: pointer;
+    flex-shrink: 0;
+}
+
+/* Fila "Aclaración:" */
+.aclaracion-row {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-top: 4px;
+    padding-left: 2px;
+}
+
+.aclaracion-row span {
+    font-size: 15px;
+    white-space: nowrap;
+}
+
+.aclaracion-row input[type="text"] {
+    flex: 1;
+    padding: 7px 12px;
+    border: 1px solid #C8DDB0;
+    border-radius: 8px;
+    font-family: "Old Standard TT", serif;
+    font-size: 14px;
+    background-color: #F7FBEF;
+    color: rgb(22, 1, 1);
+    transition: border-color 0.2s, box-shadow 0.2s;
+    box-sizing: border-box;
+}
+
+.aclaracion-row input[type="text"]:focus {
+    outline: none;
+    border-color: #5A7863;
+    box-shadow: 0 0 0 3px rgba(90,120,99,0.12);
+}
+
+/* Botón enviar */
+.form-submit {
+    text-align: center;
+    margin-top: 32px;
+}
+
+.btn-enviar {
+    display: inline-block;
+    padding: 14px 48px;
+    background-color: #5A7863;
+    color: #F8FAF4;
+    font-family: "Old Standard TT", serif;
+    font-size: 18px;
+    font-weight: 700;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    box-shadow: 0 4px 14px rgba(0,0,0,0.15);
+    transition: background-color 0.2s, transform 0.2s, box-shadow 0.2s;
+}
+
+.btn-enviar:hover {
+    background-color: #3B4953;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+}
+
+/* Select / Lista desplegable */
+.field select {
+    width: 100%;
+    padding: 10px 40px 10px 14px;
+    border: 1px solid #C8DDB0;
+    border-radius: 8px;
+    font-family: "Old Standard TT", serif;
+    font-size: 15px;
+    background-color: #F7FBEF;
+    color: rgb(22, 1, 1);
+    cursor: pointer;
+    transition: border-color 0.2s, box-shadow 0.2s;
+    box-sizing: border-box;
+
+    /* Flecha personalizada */
+    appearance: none;
+    -webkit-appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%235A7863' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 14px center;
+}
+
+.field select:focus {
+    outline: none;
+    border-color: #5A7863;
+    box-shadow: 0 0 0 3px rgba(90, 120, 99, 0.12);
+}
+
+.field select:hover {
+    border-color: #90AB8B;
+}
+
+/* Opción placeholder (la primera deshabilitada) */
+.field select option[value=""][disabled] {
+    color: #999;
+}
+
+/* Responsive formulario */
+@media (max-width: 600px) {
+    .form-section        { padding: 20px 18px; }
+    .field-row           { grid-template-columns: 1fr; }
+    .days-grid           { grid-template-columns: repeat(4, 1fr); }
+    .form-header h1      { font-size: 24px; }
+}
+
+
+@media (min-width: 769px) and (max-width: 1024px) {
+    .EventosEspecialesCont {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
