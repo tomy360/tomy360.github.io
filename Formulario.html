@@ -26,15 +26,10 @@
         <p>* Indica que la pregunta es obligatoria</p>
     </div>
 
-    <form action="https://api.web3forms.com/submit" method="POST">
+    <form>
 
-        <!-- Web3Forms access key -->
         <input type="hidden" name="access_key" value="83b26456-bc6a-4433-8f45-df827a9b973e">
-
-        <!-- Asunto dinámico — se completa con JS antes de enviar -->
         <input type="hidden" name="subject" id="asunto">
-
-        <!-- Redirigir a la misma página después de enviar -->
         <input type="hidden" name="redirect" value="false">
 
         <!-- DATOS PERSONALES -->
@@ -75,8 +70,32 @@
 
             <div class="field">
                 <label for="monitor">Monitor</label>
-                <input type="text" id="monitor" name="Monitor" placeholder="Nombre del monitor">
+                <select id="monitor" name="Monitor">
+                    <option value="" disabled selected>Seleccioná un monitor</option>
+                    <option value="Andrea">Andrea</option>
+                    <option value="Ariel">Ariel</option>
+                    <option value="Belén">Belén</option>
+                    <option value="Cathy">Cathy</option>
+                    <option value="Charlie">Charlie</option>
+                    <option value="Eduardo">Eduardo</option>
+                    <option value="Juan Manuel">Juan Manuel</option>
+                    <option value="Nahir">Nahir</option>
+                    <option value="Raúl">Raúl</option>
+                </select>
             </div>
+
+            <div class="field">
+                <span class="options-label">¿Tenés un mentor? Si es así, ¿quién es?</span>
+                <div class="radio-group">
+                    <label class="radio-option"><input type="radio" name="Mentor" value="Si"> Sí</label>
+                    <label class="radio-option"><input type="radio" name="Mentor" value="No"> No</label>
+                    <div class="aclaracion-row">
+                        <span>¿Quién es?</span>
+                        <input type="text" name="Mentor - nombre" placeholder="Nombre del mentor">
+                    </div>
+                </div>
+            </div>
+
         </div>
 
         <!-- ÁREA ESPIRITUAL -->
@@ -110,26 +129,24 @@
             </div>
 
             <div class="field">
-                <span class="options-label">¿Participas de algún discipulado o estudio bíblico? (Indicá cuáles y en qué iglesia en "Otro")<span class="req">*</span></span>
+                <span class="options-label">¿Participas de algún discipulado o estudio bíblico? (Indicá cuáles y en qué iglesia en "Aclaración")<span class="req">*</span></span>
                 <div class="radio-group">
                     <label class="radio-option"><input type="radio" name="Discipulado" value="Si" required> Sí</label>
                     <label class="radio-option"><input type="radio" name="Discipulado" value="No"> No</label>
-                    <div class="otro-row">
-                        <input type="radio" name="Discipulado" value="Otro" id="discipuladoOtro">
-                        <label for="discipuladoOtro">Otro:</label>
+                    <div class="aclaracion-row">
+                        <span>Aclaración:</span>
                         <input type="text" name="Discipulado - detalle" placeholder="Indicá cuáles estudios y en qué iglesia">
                     </div>
                 </div>
             </div>
 
             <div class="field">
-                <span class="options-label">¿Asistís a una reunión de iglesia? (En "Otro" indica cuál)<span class="req">*</span></span>
+                <span class="options-label">¿Asistís a una reunión de iglesia? (En "Aclaración" indica cuál)<span class="req">*</span></span>
                 <div class="radio-group">
                     <label class="radio-option"><input type="radio" name="Asistencia a iglesia" value="Si" required> Sí</label>
                     <label class="radio-option"><input type="radio" name="Asistencia a iglesia" value="No"> No</label>
-                    <div class="otro-row">
-                        <input type="radio" name="Asistencia a iglesia" value="Otro" id="iglesiaOtro">
-                        <label for="iglesiaOtro">Otro:</label>
+                    <div class="aclaracion-row">
+                        <span>Aclaración:</span>
                         <input type="text" name="Asistencia a iglesia - detalle" placeholder="Indicá cuál iglesia">
                     </div>
                 </div>
@@ -141,13 +158,12 @@
             <p class="form-section-title">Área de recuperación</p>
 
             <div class="field">
-                <span class="options-label">¿Asistís a un centro de recuperación? ¿Por qué problema? (Indicalo en "Otro")<span class="req">*</span></span>
+                <span class="options-label">¿Asistís a un centro de recuperación? ¿Por qué problema? (Indicalo en "Aclaración")<span class="req">*</span></span>
                 <div class="radio-group">
                     <label class="radio-option"><input type="radio" name="Centro de recuperacion" value="Si" required> Sí</label>
                     <label class="radio-option"><input type="radio" name="Centro de recuperacion" value="No"> No</label>
-                    <div class="otro-row">
-                        <input type="radio" name="Centro de recuperacion" value="Otro" id="centroOtro">
-                        <label for="centroOtro">Otro:</label>
+                    <div class="aclaracion-row">
+                        <span>Aclaración:</span>
                         <input type="text" name="Centro de recuperacion - detalle" placeholder="Indicá el problema">
                     </div>
                 </div>
@@ -188,39 +204,36 @@
             <p class="form-section-title">Área médica</p>
 
             <div class="field">
-                <span class="options-label">¿Estás en tratamiento psicológico? En "Otro" indica cuántas veces por semana.<span class="req">*</span></span>
+                <span class="options-label">¿Estás en tratamiento psicológico? En "Aclaración" indica cuántas veces por semana.<span class="req">*</span></span>
                 <div class="radio-group">
                     <label class="radio-option"><input type="radio" name="Tratamiento psicologico" value="Si" required> Sí</label>
                     <label class="radio-option"><input type="radio" name="Tratamiento psicologico" value="No"> No</label>
-                    <div class="otro-row">
-                        <input type="radio" name="Tratamiento psicologico" value="Otro" id="psicoOtro">
-                        <label for="psicoOtro">Otro:</label>
+                    <div class="aclaracion-row">
+                        <span>Aclaración:</span>
                         <input type="text" name="Tratamiento psicologico - detalle" placeholder="Ej: 2 veces por semana">
                     </div>
                 </div>
             </div>
 
             <div class="field">
-                <span class="options-label">¿Estás en tratamiento psiquiátrico? En "Otro" indica cuántas veces por semana.<span class="req">*</span></span>
+                <span class="options-label">¿Estás en tratamiento psiquiátrico? En "Aclaración" indica cuántas veces por semana.<span class="req">*</span></span>
                 <div class="radio-group">
                     <label class="radio-option"><input type="radio" name="Tratamiento psiquiatrico" value="Si" required> Sí</label>
                     <label class="radio-option"><input type="radio" name="Tratamiento psiquiatrico" value="No"> No</label>
-                    <div class="otro-row">
-                        <input type="radio" name="Tratamiento psiquiatrico" value="Otro" id="psiquiaOtro">
-                        <label for="psiquiaOtro">Otro:</label>
+                    <div class="aclaracion-row">
+                        <span>Aclaración:</span>
                         <input type="text" name="Tratamiento psiquiatrico - detalle" placeholder="Ej: 1 vez por semana">
                     </div>
                 </div>
             </div>
 
             <div class="field">
-                <span class="options-label">¿Tomás medicación? En "Otro" coloca cuál y cuántas veces por semana.<span class="req">*</span></span>
+                <span class="options-label">¿Tomás medicación? En "Aclaración" coloca cuál y cuántas veces por semana.<span class="req">*</span></span>
                 <div class="radio-group">
                     <label class="radio-option"><input type="radio" name="Medicacion" value="Si" required> Sí</label>
                     <label class="radio-option"><input type="radio" name="Medicacion" value="No"> No</label>
-                    <div class="otro-row">
-                        <input type="radio" name="Medicacion" value="Otro" id="medicOtro">
-                        <label for="medicOtro">Otro:</label>
+                    <div class="aclaracion-row">
+                        <span>Aclaración:</span>
                         <input type="text" name="Medicacion - detalle" placeholder="Ej: Rivotril, 1 vez al día">
                     </div>
                 </div>
@@ -233,7 +246,6 @@
 
     </form>
 
-    <!-- Mensaje de éxito (oculto por defecto) -->
     <div id="mensajeExito" style="display:none; text-align:center; margin-top:30px; padding:25px; background:#F3F7EA; border:1px solid #D6E2C7; border-radius:14px;">
         <h2 class="TextB" style="color:#5A7863;">¡Ficha enviada correctamente!</h2>
         <p class="TextB">Las respuestas fueron enviadas. Gracias.</p>
@@ -247,9 +259,13 @@
     form.addEventListener("submit", function (e) {
         e.preventDefault();
 
-        // Asunto dinámico
+        const boton = form.querySelector("button[type='submit']");
+        boton.disabled = true;
+        boton.textContent = "Enviando...";
+
         const nombre = document.getElementById("nombreApellido").value.trim() || "Sin nombre";
-        document.getElementById("asunto").value = "Evaluacion - " + nombre;
+        const monitor = document.getElementById("monitor").value || "Sin monitor";
+        document.getElementById("asunto").value = "Evaluacion - " + monitor + " - " + nombre;
 
         const data = new FormData(form);
 
@@ -264,10 +280,14 @@
                 document.getElementById("mensajeExito").style.display = "block";
                 window.scrollTo({ top: 0, behavior: "smooth" });
             } else {
+                boton.disabled = false;
+                boton.textContent = "Enviar ficha";
                 alert("Hubo un error al enviar. Por favor intentá de nuevo.");
             }
         })
         .catch(() => {
+            boton.disabled = false;
+            boton.textContent = "Enviar ficha";
             alert("Hubo un error de conexión. Por favor intentá de nuevo.");
         });
     });

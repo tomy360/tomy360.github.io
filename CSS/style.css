@@ -98,6 +98,8 @@ nav a:hover {
     justify-content: space-between;
     padding: 140px 20px 60px;
     overflow: hidden;
+    justify-content: center;
+    gap: 4px;
 }
 
 .CartelIndex .ColocBP {
@@ -218,6 +220,7 @@ nav a:hover {
 .TextP12 {
     font-size: 20px;
     line-height: 1.6;
+    margin-top: 0px;
 }
 
 /* Devocional - toggle */
@@ -272,6 +275,102 @@ nav a:hover {
     border: 2px solid #EBF4DD;
 }
 .Devocional::-webkit-scrollbar-thumb:hover { background: #3B4953; }
+
+
+/* =====================
+   EVENTOS ESPECIALES
+   ===================== */
+
+.EventosEspeciales {
+    width: 85%;
+    max-width: 1300px;
+    margin: 80px auto;
+}
+
+.EventosEspeciales > h2 {
+    text-align: center;
+    font-size: 50px;
+    text-decoration: underline 4px;
+    margin-bottom: 40px;
+}
+
+.EventosEspecialesCont {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+}
+
+.EventoIndividual {
+    background-color: #F3F7EA;
+    border: 1px solid #D6E2C7;
+    border-radius: 18px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.EventoIndividual:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+}
+
+.EventoIndividual img {
+    width: 100%;
+
+    object-fit: contain;
+    display: block;
+    background-color: #D6E2C7; /* placeholder cuando no hay imagen */
+}
+
+.EventoInfo {
+    padding: 20px 22px;
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+}
+
+.EventoInfo h3 {
+    font-size: 20px;
+    margin: 0 0 12px;
+    color: #3B4953;
+}
+
+.EventoInfo ul {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 14px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.EventoInfo ul li {
+    font-size: 15px;
+    line-height: 1.5;
+    padding-left: 18px;
+    position: relative;
+}
+
+.EventoInfo ul li::before {
+    content: "✦";
+    position: absolute;
+    left: 0;
+    color: #5A7863;
+    font-size: 11px;
+    top: 3px;
+}
+
+.EventoNota {
+    margin: auto 0 0;
+    font-weight: 700;
+    font-size: 15px;
+    color: #5A7863;
+    padding-top: 10px;
+    border-top: 1px solid #D6E2C7;
+}
+
+
 
 /* =====================
    CARTELES (index)
@@ -379,22 +478,24 @@ nav a:hover {
     margin: 60px 0 60px 280px;
     display: grid;
     grid-template-columns: 1fr 1fr;
-    grid-template-rows: auto auto;
+    grid-template-rows: auto 1fr;   /* ← la fila del p ocupa el espacio restante */
     gap: 20px 40px;
+    align-items: start;             /* ← evita que la imagen se estire */
 }
 
-.Preparando h2 { grid-column: 1; grid-row: 1; }
-.Preparando p  { grid-column: 1; grid-row: 2; line-height: 1.7; }
+.Preparando h2  { grid-column: 1; grid-row: 1; align-self: end; }   /* ← h2 pegado al p */
+.Preparando p   { grid-column: 1; grid-row: 2; line-height: 1.7; align-self: start; }
 .Preparando img {
     grid-column: 2;
     grid-row: 1 / 3;
     width: 100%;
     max-width: 450px;
     border-radius: 20px;
+    align-self: center;             /* ← imagen centrada respecto al bloque de texto */
 }
 
 .TextP3 { font-size: 40px; font-style: oblique; }
-.TextP4 { font-size: 20px; }
+.TextP4 { font-size: 18px; }
 
 .Ministerios {
     width: 85%;
@@ -689,6 +790,16 @@ nav a:hover {
         gap: 6px;
     }
 
+
+    .EventosEspecialesCont {
+        grid-template-columns: 1fr;
+    }
+
+    .EventosEspeciales > h2 {
+        font-size: 36px;
+    }
+
+
     .BotonBa { font-size: 14px; padding: 6px 8px; }
     .BotonBa:last-child { width: 100%; text-align: center; margin-top: 4px; }
 
@@ -704,6 +815,7 @@ nav a:hover {
         margin-top: 40px;
         padding: 140px 15px 70px;
         min-height: 520px;
+        
     }
 
     .TextP1 { font-size: 32px; }
@@ -979,27 +1091,21 @@ nav a:hover {
     flex-shrink: 0;
 }
 
-/* Fila "Otro:" */
-.otro-row {
+/* Fila "Aclaración:" */
+.aclaracion-row {
     display: flex;
     align-items: center;
     gap: 10px;
+    margin-top: 4px;
+    padding-left: 2px;
 }
 
-.otro-row input[type="radio"] {
-    width: 18px;
-    height: 18px;
-    accent-color: #5A7863;
-    cursor: pointer;
-    flex-shrink: 0;
-}
-
-.otro-row label {
+.aclaracion-row span {
     font-size: 15px;
     white-space: nowrap;
 }
 
-.otro-row input[type="text"] {
+.aclaracion-row input[type="text"] {
     flex: 1;
     padding: 7px 12px;
     border: 1px solid #C8DDB0;
@@ -1012,7 +1118,7 @@ nav a:hover {
     box-sizing: border-box;
 }
 
-.otro-row input[type="text"]:focus {
+.aclaracion-row input[type="text"]:focus {
     outline: none;
     border-color: #5A7863;
     box-shadow: 0 0 0 3px rgba(90,120,99,0.12);
@@ -1045,10 +1151,54 @@ nav a:hover {
     box-shadow: 0 8px 20px rgba(0,0,0,0.2);
 }
 
+/* Select / Lista desplegable */
+.field select {
+    width: 100%;
+    padding: 10px 40px 10px 14px;
+    border: 1px solid #C8DDB0;
+    border-radius: 8px;
+    font-family: "Old Standard TT", serif;
+    font-size: 15px;
+    background-color: #F7FBEF;
+    color: rgb(22, 1, 1);
+    cursor: pointer;
+    transition: border-color 0.2s, box-shadow 0.2s;
+    box-sizing: border-box;
+
+    /* Flecha personalizada */
+    appearance: none;
+    -webkit-appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%235A7863' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 14px center;
+}
+
+.field select:focus {
+    outline: none;
+    border-color: #5A7863;
+    box-shadow: 0 0 0 3px rgba(90, 120, 99, 0.12);
+}
+
+.field select:hover {
+    border-color: #90AB8B;
+}
+
+/* Opción placeholder (la primera deshabilitada) */
+.field select option[value=""][disabled] {
+    color: #999;
+}
+
 /* Responsive formulario */
 @media (max-width: 600px) {
     .form-section        { padding: 20px 18px; }
     .field-row           { grid-template-columns: 1fr; }
     .days-grid           { grid-template-columns: repeat(4, 1fr); }
     .form-header h1      { font-size: 24px; }
+}
+
+
+@media (min-width: 769px) and (max-width: 1024px) {
+    .EventosEspecialesCont {
+        grid-template-columns: repeat(2, 1fr);
+    }
 }
