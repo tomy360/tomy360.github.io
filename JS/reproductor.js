@@ -15,12 +15,14 @@
     const audio        = new Audio();
     let indice         = 0;
     let reproduciendo  = false;
+    let shuffle        = false;
 
     const elCancion   = document.getElementById("RepCancion");
     const elAutor     = document.getElementById("RepAutor");
     const elPlay      = document.getElementById("RepPlay");
     const elAnterior  = document.getElementById("RepAnterior");
     const elSiguiente = document.getElementById("RepSiguiente");
+    const elShuffle   = document.getElementById("RepShuffle");
     const elBarra     = document.getElementById("RepBarra");
     const elActual    = document.getElementById("RepActual");
     const elTotal     = document.getElementById("RepTotal");
@@ -30,6 +32,16 @@
     function formato(s) {
         s = Math.floor(s) || 0;
         return Math.floor(s / 60) + ":" + String(s % 60).padStart(2, "0");
+    }
+
+    function siguienteIndice(direccion) {
+        if (shuffle) {
+            let nuevo;
+            do { nuevo = Math.floor(Math.random() * canciones.length); }
+            while (canciones.length > 1 && nuevo === indice);
+            return nuevo;
+        }
+        return (indice + direccion + canciones.length) % canciones.length;
     }
 
     function cargar(i) {
@@ -58,6 +70,11 @@
         }
     }
 
+    function toggleShuffle() {
+        shuffle = !shuffle;
+        elShuffle.classList.toggle("activo", shuffle);
+    }
+
     audio.addEventListener("timeupdate", () => {
         if (!isNaN(audio.duration)) {
             elBarra.max          = Math.floor(audio.duration);
@@ -67,11 +84,12 @@
         }
     });
 
-    audio.addEventListener("ended", () => cargar(indice + 1));
+    audio.addEventListener("ended", () => cargar(siguienteIndice(1)));
 
     elPlay.addEventListener("click",      togglePlay);
-    elAnterior.addEventListener("click",  () => { reproduciendo = true; cargar(indice - 1); });
-    elSiguiente.addEventListener("click", () => { reproduciendo = true; cargar(indice + 1); });
+    elShuffle.addEventListener("click",   toggleShuffle);
+    elAnterior.addEventListener("click",  () => { reproduciendo = true; cargar(siguienteIndice(-1)); });
+    elSiguiente.addEventListener("click", () => { reproduciendo = true; cargar(siguienteIndice(1)); });
 
     elBarra.addEventListener("input", () => { audio.currentTime = elBarra.value; });
     elVol.addEventListener("input",   () => { audio.volume = elVol.value / 100; });

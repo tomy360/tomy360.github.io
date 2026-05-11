@@ -1033,6 +1033,15 @@ nav a:hover {
 
 .RepBtnPlay:hover { background: #3B4953; }
 
+.RepBtnShuffle { font-size: 20px; }
+
+.RepBtnShuffle.activo {
+    background: #5A7863;
+    color: #F8FAF4;
+    border-color: #3B4953;
+    box-shadow: 0 0 8px rgba(90,120,99,0.5);
+}
+
 .RepVolumen {
     display: flex;
     align-items: center;
