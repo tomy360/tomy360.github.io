@@ -251,21 +251,7 @@ nav a:hover {
 /* Devocional - toggle */
 #toggleDevocional { display: none; }
 
-#BotonDevocional {
-    font-size: 26px;
-    width: 240px;
-    background: linear-gradient(145deg, #EBF4DD, #CFE5B4);
-    color: #3B4953;
-    border: 2px solid #90AB8B;
-    border-radius: 12px;
-    padding: 14px 20px;
-    box-shadow: 0 6px 14px rgba(0,0,0,0.15);
-    transition: all 0.25s ease;
-    cursor: pointer;
-}
 
-#BotonDevocional:hover  { transform: translateY(-2px); box-shadow: 0 10px 20px rgba(0,0,0,0.25); }
-#BotonDevocional:active { transform: translateY(1px); }
 
 .cerrar { display: none; }
 
@@ -852,8 +838,7 @@ nav a:hover {
 
     /* MISIÓN */
     .CartelPresent2 { width: 90%; padding: 20px; }
-    #BotonDevocional { width: 180px; font-size: 22px; }
-
+    
     /* CARTELES */
     .ContCarteles { flex-direction: column; gap: 30px; width: 90%; }
     .CartelesIndi { width: 92%; margin: auto; padding: 18px; }
@@ -949,22 +934,7 @@ nav a:hover {
 
 #toggleMusica { display: none; }
 
-#BotonMusica {
-    font-size: 26px;
-    width: 240px;
-    background: linear-gradient(145deg, #EBF4DD, #CFE5B4);
-    color: #3B4953;
-    border: 2px solid #90AB8B;
-    border-radius: 12px;
-    padding: 14px 20px;
-    box-shadow: 0 6px 14px rgba(0,0,0,0.15);
-    transition: all 0.25s ease;
-    cursor: pointer;
-    margin-top: 0;
-}
 
-#BotonMusica:hover  { transform: translateY(-2px); box-shadow: 0 10px 20px rgba(0,0,0,0.25); }
-#BotonMusica:active { transform: translateY(1px); }
 
 #toggleMusica:checked + #BotonMusica .abrir  { display: none; }
 #toggleMusica:checked + #BotonMusica .cerrar { display: inline; }
