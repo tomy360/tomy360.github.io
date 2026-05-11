@@ -199,6 +199,31 @@ nav a:hover {
     box-shadow: 0px 6px 15px rgba(0,0,0,0.12);
 }
 
+/* Tamaño compartido para botones toggle (Devocional y Música) */
+.BtnToggle {
+    display: inline-block;
+    width: 220px;
+    white-space: nowrap;
+    font-size: 19px;
+    padding: 12px 20px;
+    border-radius: 12px;
+    background: linear-gradient(145deg, #EBF4DD, #CFE5B4);
+    border: 2px solid #90AB8B;
+    box-shadow: 0 6px 14px rgba(0,0,0,0.15);
+    margin: 10px auto;
+}
+
+.BtnToggle:hover { transform: translateY(-2px); box-shadow: 0 10px 20px rgba(0,0,0,0.25); }
+.BtnToggle:active { transform: translateY(1px); }
+
+@media (max-width: 480px) {
+    .BtnToggle {
+        width: 180px;
+        font-size: 16px;
+        padding: 10px 14px;
+    }
+}
+
 /* =====================
    SECCIÓN MISIÓN (index)
    ===================== */
@@ -226,24 +251,17 @@ nav a:hover {
 /* Devocional - toggle */
 #toggleDevocional { display: none; }
 
-#BotonDevocional,
-#BotonMusica {
-    font-size: 20px;
-    display: inline-block;
-    width: auto;
-    min-width: 200px;
-    max-width: 280px;
-    white-space: nowrap;
+#BotonDevocional {
+    font-size: 26px;
+    width: 240px;
     background: linear-gradient(145deg, #EBF4DD, #CFE5B4);
     color: #3B4953;
     border: 2px solid #90AB8B;
     border-radius: 12px;
-    padding: 12px 20px;
+    padding: 14px 20px;
     box-shadow: 0 6px 14px rgba(0,0,0,0.15);
     transition: all 0.25s ease;
     cursor: pointer;
-    margin: 10px auto;
-    text-align: center;
 }
 
 #BotonDevocional:hover  { transform: translateY(-2px); box-shadow: 0 10px 20px rgba(0,0,0,0.25); }
@@ -931,7 +949,19 @@ nav a:hover {
 
 #toggleMusica { display: none; }
 
-/* #BotonMusica fusionado con #BotonDevocional arriba */
+#BotonMusica {
+    font-size: 26px;
+    width: 240px;
+    background: linear-gradient(145deg, #EBF4DD, #CFE5B4);
+    color: #3B4953;
+    border: 2px solid #90AB8B;
+    border-radius: 12px;
+    padding: 14px 20px;
+    box-shadow: 0 6px 14px rgba(0,0,0,0.15);
+    transition: all 0.25s ease;
+    cursor: pointer;
+    margin-top: 0;
+}
 
 #BotonMusica:hover  { transform: translateY(-2px); box-shadow: 0 10px 20px rgba(0,0,0,0.25); }
 #BotonMusica:active { transform: translateY(1px); }
@@ -1360,15 +1390,5 @@ nav a:hover {
 @media (min-width: 769px) and (max-width: 1024px) {
     .EventosEspecialesCont {
         grid-template-columns: repeat(2, 1fr);
-    }
-}
-
-@media (max-width: 480px) {
-    #BotonDevocional,
-    #BotonMusica {
-        font-size: 17px;
-        min-width: 160px;
-        max-width: 260px;
-        padding: 11px 16px;
     }
 }
