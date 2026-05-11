@@ -227,13 +227,16 @@ nav a:hover {
 #toggleDevocional { display: none; }
 
 #BotonDevocional {
-    font-size: 26px;
-    width: 240px;
+    font-size: 20px;
+    width: auto;
+    min-width: 200px;
+    max-width: 280px;
+    white-space: nowrap;
     background: linear-gradient(145deg, #EBF4DD, #CFE5B4);
     color: #3B4953;
     border: 2px solid #90AB8B;
     border-radius: 12px;
-    padding: 14px 20px;
+    padding: 12px 20px;
     box-shadow: 0 6px 14px rgba(0,0,0,0.15);
     transition: all 0.25s ease;
     cursor: pointer;
@@ -925,13 +928,16 @@ nav a:hover {
 #toggleMusica { display: none; }
 
 #BotonMusica {
-    font-size: 26px;
-    width: 240px;
+    font-size: 20px;
+    width: auto;
+    min-width: 200px;
+    max-width: 280px;
+    white-space: nowrap;
     background: linear-gradient(145deg, #EBF4DD, #CFE5B4);
     color: #3B4953;
     border: 2px solid #90AB8B;
     border-radius: 12px;
-    padding: 14px 20px;
+    padding: 12px 20px;
     box-shadow: 0 6px 14px rgba(0,0,0,0.15);
     transition: all 0.25s ease;
     cursor: pointer;
@@ -1365,5 +1371,17 @@ nav a:hover {
 @media (min-width: 769px) and (max-width: 1024px) {
     .EventosEspecialesCont {
         grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 480px) {
+    #BotonDevocional,
+    #BotonMusica {
+        font-size: 17px;
+        min-width: 0;
+        max-width: 100%;
+        width: auto;
+        padding: 11px 16px;
+        white-space: nowrap;
     }
 }
