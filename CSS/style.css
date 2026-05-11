@@ -919,8 +919,164 @@ nav a:hover {
 }
 
 /* =====================
-   FORMULARIO
+   MÚSICA DE HOY – REPRODUCTOR
    ===================== */
+
+#toggleMusica { display: none; }
+
+#BotonMusica {
+    font-size: 26px;
+    width: 240px;
+    background: linear-gradient(145deg, #EBF4DD, #CFE5B4);
+    color: #3B4953;
+    border: 2px solid #90AB8B;
+    border-radius: 12px;
+    padding: 14px 20px;
+    box-shadow: 0 6px 14px rgba(0,0,0,0.15);
+    transition: all 0.25s ease;
+    cursor: pointer;
+    margin-top: 0;
+}
+
+#BotonMusica:hover  { transform: translateY(-2px); box-shadow: 0 10px 20px rgba(0,0,0,0.25); }
+#BotonMusica:active { transform: translateY(1px); }
+
+#toggleMusica:checked + #BotonMusica .abrir  { display: none; }
+#toggleMusica:checked + #BotonMusica .cerrar { display: inline; }
+
+.ReproductorMusica {
+    max-height: 0;
+    overflow: hidden;
+    opacity: 0;
+    width: 100%;
+    max-width: 420px;
+    margin: 10px auto 0;
+    background: #F7FBEF;
+    border: 3px solid #C8DDB0;
+    border-radius: 18px;
+    padding: 0 22px;
+    transition: all 0.4s ease;
+}
+
+#toggleMusica:checked ~ .ReproductorMusica {
+    max-height: 600px;
+    padding: 22px;
+    opacity: 1;
+    overflow-y: auto;
+}
+
+.RepInfo { text-align: center; margin-bottom: 10px; }
+
+.RepCancion {
+    font-size: 18px;
+    font-weight: 700;
+    color: #3B4953;
+    margin: 0 0 2px;
+}
+
+.RepAutor {
+    font-size: 13px;
+    color: #5A7863;
+    margin: 0;
+}
+
+.RepProgreso {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 14px;
+}
+
+.RepTiempo { font-size: 12px; color: #5A7863; white-space: nowrap; }
+
+.RepBarra {
+    flex: 1;
+    accent-color: #5A7863;
+    cursor: pointer;
+    height: 4px;
+}
+
+.RepControles {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 16px;
+    margin-bottom: 14px;
+}
+
+.RepBtn {
+    background: #DCECC8;
+    border: 1px solid #C8DDB0;
+    border-radius: 50%;
+    width: 44px;
+    height: 44px;
+    font-size: 18px;
+    cursor: pointer;
+    color: #3B4953;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s ease;
+    font-family: inherit;
+}
+
+.RepBtn:hover { background: #CFE5B4; transform: scale(1.08); }
+
+.RepBtnPlay {
+    width: 56px;
+    height: 56px;
+    font-size: 22px;
+    background: #5A7863;
+    color: #F8FAF4;
+    border-color: #3B4953;
+}
+
+.RepBtnPlay:hover { background: #3B4953; }
+
+.RepVolumen {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    justify-content: center;
+    margin-bottom: 16px;
+    font-size: 16px;
+}
+
+.RepBarraVol { width: 100px; accent-color: #5A7863; cursor: pointer; }
+
+.RepLista {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    border-top: 1px solid #C8DDB0;
+    max-height: 160px;
+    overflow-y: auto;
+}
+
+.RepLista li {
+    display: flex;
+    flex-direction: column;
+    padding: 10px 8px;
+    border-bottom: 1px solid #EBF4DD;
+    cursor: pointer;
+    border-radius: 8px;
+    transition: background 0.2s;
+}
+
+.RepLista li:hover,
+.RepLista li.activa { background: #DCECC8; }
+
+.RepListaTitulo { font-size: 14px; font-weight: 600; color: #3B4953; }
+.RepListaAutor  { font-size: 12px; color: #5A7863; }
+
+.ReproductorMusica::-webkit-scrollbar { width: 6px; }
+.ReproductorMusica::-webkit-scrollbar-track { background: #EBF4DD; border-radius: 10px; }
+.ReproductorMusica::-webkit-scrollbar-thumb {
+    background: linear-gradient(180deg, #90AB8B, #5A7863);
+    border-radius: 10px;
+}
+
+
 
 .form-page {
     padding-top: 110px;

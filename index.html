@@ -28,6 +28,12 @@
     <img class="ImagenIndex" src="./Imagenes/General.jpeg" alt="">
 </div>
 
+
+
+    <!-- S<iframe data-testid="embed-iframe" style="border-radius:12px" src="https://open.spotify.com/embed/playlist/30lfij88qpADc9wpqWl4oU?utm_source=generator&theme=0" width="40%" height="152" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe> -->
+
+
+
 <div class="CartelPresent2 TextB">
     <h2 class="TextP11">Nuestra Misión</h2>
     <h3 class="TextP12">
@@ -42,6 +48,36 @@
         <span class="abrir">Devocional</span>
         <span class="cerrar">Cerrar</span>
     </label>
+
+    <input type="checkbox" id="toggleMusica">
+
+    <label for="toggleMusica" class="BotonConcer" id="BotonMusica">
+        <span class="abrir">🎵 Música</span>
+        <span class="cerrar">Cerrar</span>
+    </label>
+
+    <div class="ReproductorMusica TextB">
+        <div class="RepInfo">
+            <p class="RepCancion" id="RepCancion">—</p>
+            <p class="RepAutor" id="RepAutor">—</p>
+        </div>
+        <div class="RepProgreso">
+            <span class="RepTiempo" id="RepActual">0:00</span>
+            <input type="range" class="RepBarra" id="RepBarra" value="0" min="0" step="1">
+            <span class="RepTiempo" id="RepTotal">0:00</span>
+        </div>
+        <div class="RepControles">
+            <button class="RepBtn" id="RepAnterior" title="Anterior">&#9198;</button>
+            <button class="RepBtn RepBtnPlay" id="RepPlay" title="Play/Pausa">&#9654;</button>
+            <button class="RepBtn" id="RepSiguiente" title="Siguiente">&#9197;</button>
+        </div>
+        <div class="RepVolumen">
+            <span>🔈</span>
+            <input type="range" class="RepBarraVol" id="RepBarraVol" value="80" min="0" max="100">
+            <span>🔊</span>
+        </div>
+        <ul class="RepLista" id="RepLista"></ul>
+    </div>
 
     <div class="Devocional TextB">
         <h2>📌 MIRA HACIA ADELANTE!</h2>
@@ -158,5 +194,6 @@ Qué cosas (hábitos, adicciones, decisiones o personas) te llevan a desviar tu 
     Email: signoreliraul42@gmail.com</p>
 </div>
 
+<script src="./JS/reproductor.js" defer></script>
 </body>
 </html>

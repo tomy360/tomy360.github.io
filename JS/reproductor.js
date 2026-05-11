@@ -1,0 +1,90 @@
+(async function () {
+
+    // Pide la lista de canciones a la API serverless
+    let canciones = [];
+    try {
+        const res = await fetch("/api/canciones");
+        canciones = await res.json();
+    } catch {
+        console.error("No se pudo cargar la lista de canciones.");
+        return;
+    }
+
+    if (!canciones.length) return;
+
+    const audio        = new Audio();
+    let indice         = 0;
+    let reproduciendo  = false;
+
+    const elCancion   = document.getElementById("RepCancion");
+    const elAutor     = document.getElementById("RepAutor");
+    const elPlay      = document.getElementById("RepPlay");
+    const elAnterior  = document.getElementById("RepAnterior");
+    const elSiguiente = document.getElementById("RepSiguiente");
+    const elBarra     = document.getElementById("RepBarra");
+    const elActual    = document.getElementById("RepActual");
+    const elTotal     = document.getElementById("RepTotal");
+    const elVol       = document.getElementById("RepBarraVol");
+    const elLista     = document.getElementById("RepLista");
+
+    function formato(s) {
+        s = Math.floor(s) || 0;
+        return Math.floor(s / 60) + ":" + String(s % 60).padStart(2, "0");
+    }
+
+    function cargar(i) {
+        indice = (i + canciones.length) % canciones.length;
+        const c = canciones[indice];
+        audio.src = c.src;
+        elCancion.textContent = c.titulo;
+        elAutor.textContent   = c.autor;
+        elBarra.value         = 0;
+        elActual.textContent  = "0:00";
+        elTotal.textContent   = "0:00";
+        document.querySelectorAll(".RepLista li").forEach((li, idx) =>
+            li.classList.toggle("activa", idx === indice));
+        if (reproduciendo) audio.play();
+    }
+
+    function togglePlay() {
+        if (reproduciendo) {
+            audio.pause();
+            reproduciendo = false;
+            elPlay.innerHTML = "&#9654;";
+        } else {
+            audio.play();
+            reproduciendo = true;
+            elPlay.innerHTML = "&#9646;&#9646;";
+        }
+    }
+
+    audio.addEventListener("timeupdate", () => {
+        if (!isNaN(audio.duration)) {
+            elBarra.max          = Math.floor(audio.duration);
+            elBarra.value        = Math.floor(audio.currentTime);
+            elActual.textContent = formato(audio.currentTime);
+            elTotal.textContent  = formato(audio.duration);
+        }
+    });
+
+    audio.addEventListener("ended", () => cargar(indice + 1));
+
+    elPlay.addEventListener("click",      togglePlay);
+    elAnterior.addEventListener("click",  () => { reproduciendo = true; cargar(indice - 1); });
+    elSiguiente.addEventListener("click", () => { reproduciendo = true; cargar(indice + 1); });
+
+    elBarra.addEventListener("input", () => { audio.currentTime = elBarra.value; });
+    elVol.addEventListener("input",   () => { audio.volume = elVol.value / 100; });
+
+    // Construir lista de canciones
+    canciones.forEach((c, i) => {
+        const li = document.createElement("li");
+        li.innerHTML = `<span class="RepListaTitulo">${c.titulo}</span><span class="RepListaAutor">${c.autor}</span>`;
+        li.addEventListener("click", () => { reproduciendo = true; cargar(i); });
+        elLista.appendChild(li);
+    });
+
+    audio.volume = elVol.value / 100;
+    cargar(0);
+
+})();
