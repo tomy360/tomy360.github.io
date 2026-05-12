@@ -201,16 +201,18 @@ nav a:hover {
 
 /* Tamaño compartido para botones toggle (Devocional y Música) */
 .BtnToggle {
-    display: inline-block;
-    width: 220px;
+    display: block !important;
+    width: 260px !important;
     white-space: nowrap;
-    font-size: 19px;
-    padding: 12px 20px;
-    border-radius: 12px;
+    font-size: 22px !important;
+    font-weight: 700;
+    padding: 18px 24px !important;
+    border-radius: 16px !important;
     background: linear-gradient(145deg, #EBF4DD, #CFE5B4);
     border: 2px solid #90AB8B;
     box-shadow: 0 6px 14px rgba(0,0,0,0.15);
-    margin: 10px auto;
+    margin: 12px auto !important;
+    text-align: center;
 }
 
 .BtnToggle:hover { transform: translateY(-2px); box-shadow: 0 10px 20px rgba(0,0,0,0.25); }
@@ -218,9 +220,9 @@ nav a:hover {
 
 @media (max-width: 480px) {
     .BtnToggle {
-        width: 200px;
-        font-size: 16px;
-        padding: 10px 14px;
+        width: 220px !important;
+        font-size: 19px !important;
+        padding: 15px 20px !important;
     }
 }
 
@@ -251,7 +253,21 @@ nav a:hover {
 /* Devocional - toggle */
 #toggleDevocional { display: none; }
 
+#BotonDevocional {
+    font-size: 26px;
+    width: 240px;
+    background: linear-gradient(145deg, #EBF4DD, #CFE5B4);
+    color: #3B4953;
+    border: 2px solid #90AB8B;
+    border-radius: 12px;
+    padding: 14px 20px;
+    box-shadow: 0 6px 14px rgba(0,0,0,0.15);
+    transition: all 0.25s ease;
+    cursor: pointer;
+}
 
+#BotonDevocional:hover  { transform: translateY(-2px); box-shadow: 0 10px 20px rgba(0,0,0,0.25); }
+#BotonDevocional:active { transform: translateY(1px); }
 
 .cerrar { display: none; }
 
@@ -838,7 +854,8 @@ nav a:hover {
 
     /* MISIÓN */
     .CartelPresent2 { width: 90%; padding: 20px; }
-    
+    #BotonDevocional { width: 180px; font-size: 22px; }
+
     /* CARTELES */
     .ContCarteles { flex-direction: column; gap: 30px; width: 90%; }
     .CartelesIndi { width: 92%; margin: auto; padding: 18px; }
@@ -934,7 +951,22 @@ nav a:hover {
 
 #toggleMusica { display: none; }
 
+#BotonMusica {
+    font-size: 26px;
+    width: 240px;
+    background: linear-gradient(145deg, #EBF4DD, #CFE5B4);
+    color: #3B4953;
+    border: 2px solid #90AB8B;
+    border-radius: 12px;
+    padding: 14px 20px;
+    box-shadow: 0 6px 14px rgba(0,0,0,0.15);
+    transition: all 0.25s ease;
+    cursor: pointer;
+    margin-top: 0;
+}
 
+#BotonMusica:hover  { transform: translateY(-2px); box-shadow: 0 10px 20px rgba(0,0,0,0.25); }
+#BotonMusica:active { transform: translateY(1px); }
 
 #toggleMusica:checked + #BotonMusica .abrir  { display: none; }
 #toggleMusica:checked + #BotonMusica .cerrar { display: inline; }

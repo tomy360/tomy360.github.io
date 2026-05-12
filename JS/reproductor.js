@@ -18,7 +18,7 @@
     let shuffle        = false;
 
     const elCancion   = document.getElementById("RepCancion");
-    const elAutor     = document.getElementById("RepAutor");
+    const elInterprete     = document.getElementById("RepInterprete");
     const elPlay      = document.getElementById("RepPlay");
     const elAnterior  = document.getElementById("RepAnterior");
     const elSiguiente = document.getElementById("RepSiguiente");
@@ -49,7 +49,7 @@
         const c = canciones[indice];
         audio.src = c.src;
         elCancion.textContent = c.titulo;
-        elAutor.textContent   = c.autor;
+        elInterprete.textContent   = c.interprete;
         elBarra.value         = 0;
         elActual.textContent  = "0:00";
         elTotal.textContent   = "0:00";
@@ -97,7 +97,7 @@
     // Construir lista de canciones
     canciones.forEach((c, i) => {
         const li = document.createElement("li");
-        li.innerHTML = `<span class="RepListaTitulo">${c.titulo}</span><span class="RepListaAutor">${c.autor}</span>`;
+        li.innerHTML = `<span class="RepListaTitulo">${c.titulo}</span><span class="RepListaAutor">${c.interprete}</span>`;
         li.addEventListener("click", () => { reproduciendo = true; cargar(i); });
         elLista.appendChild(li);
     });
