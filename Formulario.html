@@ -26,7 +26,7 @@
         <p>* Indica que la pregunta es obligatoria</p>
     </div>
 
-    <form>
+    <form autocomplete="off">
 
         <input type="hidden" name="access_key" value="83b26456-bc6a-4433-8f45-df827a9b973e">
         <input type="hidden" name="subject" id="asunto">
@@ -188,6 +188,14 @@
             </div>
 
             <div class="field">
+                <span class="options-label">¿Qué recaída tuviste?</span>
+                <div class="aclaracion-row">
+                    <span>Aclaración:</span>
+                    <input type="text" name="Recaida - detalle" placeholder="Indicá qué recaída tuviste">
+                </div>
+            </div>
+
+            <div class="field">
                 <span class="options-label">¿Te has propuesto alejarte de personas, grupos o ambientes que no te suman?<span class="req">*</span></span>
                 <div class="radio-group">
                     <label class="radio-option"><input type="radio" name="Alejarse de ambientes negativos" value="Si" required> Sí</label>
@@ -259,6 +267,8 @@
 </div>
 
 <script>
+    document.querySelectorAll('input, select, textarea').forEach(el => el.setAttribute('autocomplete', 'off'));
+
     const form = document.querySelector("form");
 
     form.addEventListener("submit", function (e) {

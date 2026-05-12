@@ -18,7 +18,7 @@ export default function handler(req, res) {
 
         return {
             titulo: partes[0]?.trim() || sinExtension,
-            interprete:  partes[1]?.trim() || "Desconocido",
+            interpretes:  partes[1]?.trim() || "Desconocido",
             src:    `/Musica/${nombre}`
         };
     });

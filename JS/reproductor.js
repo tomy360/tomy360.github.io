@@ -18,7 +18,7 @@
     let shuffle        = false;
 
     const elCancion   = document.getElementById("RepCancion");
-    const elInterprete     = document.getElementById("RepInterprete");
+    const elInterpretes     = document.getElementById("RepInterpretes");
     const elPlay      = document.getElementById("RepPlay");
     const elAnterior  = document.getElementById("RepAnterior");
     const elSiguiente = document.getElementById("RepSiguiente");
@@ -49,7 +49,7 @@
         const c = canciones[indice];
         audio.src = c.src;
         elCancion.textContent = c.titulo;
-        elInterprete.textContent   = c.interprete;
+        elInterpretes.textContent   = c.interpretes;
         elBarra.value         = 0;
         elActual.textContent  = "0:00";
         elTotal.textContent   = "0:00";
