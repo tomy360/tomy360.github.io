@@ -28,6 +28,7 @@
     const elTotal     = document.getElementById("RepTotal");
     const elVol       = document.getElementById("RepBarraVol");
     const elLista     = document.getElementById("RepLista");
+    const elDescargar = document.getElementById("RepDescargar");
 
     function formato(s) {
         s = Math.floor(s) || 0;
@@ -93,6 +94,14 @@
 
     elBarra.addEventListener("input", () => { audio.currentTime = elBarra.value; });
     elVol.addEventListener("input",   () => { audio.volume = elVol.value / 100; });
+    elDescargar.addEventListener("click", () => {
+        const a = document.createElement("a");
+        a.href = canciones[indice].src;
+        a.download = canciones[indice].src.split("/").pop();
+        document.body.appendChild(a);
+        a.click();
+        document.body.removeChild(a);
+    });
 
     // Construir lista de canciones
     canciones.forEach((c, i) => {
