@@ -193,5 +193,11 @@ Te animo a que estos 3 puntos, sirvan de autoevaluación. Que mi filo bendiga a 
 </div>
 
 <script src="./JS/reproductor.js" defer></script>
+<button id="scrollTop" title="Volver arriba">&#8593;</button>
+<script>
+const btn = document.getElementById("scrollTop");
+window.addEventListener("scroll", () => btn.classList.toggle("visible", window.scrollY > 300));
+btn.addEventListener("click", () => window.scrollTo({ top: 0, behavior: "smooth" }));
+</script>
 </body>
 </html>
