@@ -840,6 +840,14 @@ nav {
 
     .BotonBa { font-size: 14px; padding: 6px 10px; }
 
+    .EventosEspecialesCont {
+        grid-template-columns: 1fr;
+    }
+
+    .EventosEspeciales > h2 {
+        font-size: 36px;
+    }
+
     /* HERO */
     .CartelPresent {
         height: auto;
