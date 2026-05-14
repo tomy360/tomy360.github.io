@@ -1094,6 +1094,17 @@ nav a:hover {
 
 .RepListaTitulo { font-size: 14px; font-weight: 600; color: #3B4953; }
 .RepListaAutor  { font-size: 12px; color: #5A7863; }
+.RepListaRow {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+.RepListaNum {
+    font-size: 12px;
+    color: #5A7863;
+    font-weight: 700;
+    min-width: 20px;
+}
 
 .ReproductorMusica::-webkit-scrollbar { width: 6px; }
 .ReproductorMusica::-webkit-scrollbar-track { background: #EBF4DD; border-radius: 10px; }

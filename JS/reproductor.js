@@ -106,7 +106,7 @@
     // Construir lista de canciones
     canciones.forEach((c, i) => {
         const li = document.createElement("li");
-        li.innerHTML = `<span class="RepListaTitulo">${c.titulo}</span><span class="RepListaAutor">${c.interpretes}</span>`;
+        li.innerHTML = `<div class="RepListaRow"><span class="RepListaNum">${i + 1}</span><span class="RepListaTitulo">${c.titulo}</span></div><span class="RepListaAutor">${c.interpretes}</span>`;
         li.addEventListener("click", () => { reproduciendo = true; cargar(i); });
         elLista.appendChild(li);
     });
