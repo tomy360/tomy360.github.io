@@ -864,6 +864,7 @@ nav {
 
     /* MISIÓN */
     .CartelPresent2 { width: 90%; padding: 20px; }
+    .TextP12 { font-size: 15px; font-weight: 400; }
     #BotonDevocional,
     #BotonMusica { width: 180px; font-size: 22px; }
 
