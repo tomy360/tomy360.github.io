@@ -1,13 +1,18 @@
-// Scroll Reveal - Intersection Observer
-const animObserver = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-        if (entry.isIntersecting) {
-            entry.target.classList.add('anim-visible');
-        }
-    });
-}, { threshold: 0.15 });
+// Scroll Reveal - solo en desktop
+if (window.innerWidth > 768) {
+    const animObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('anim-visible');
+            }
+        });
+    }, { threshold: 0.15 });
 
-document.querySelectorAll('[data-anim]').forEach(el => animObserver.observe(el));
+    document.querySelectorAll('[data-anim]').forEach(el => animObserver.observe(el));
+} else {
+    // En mobile: todos visibles desde el inicio
+    document.querySelectorAll('[data-anim]').forEach(el => el.classList.add('anim-visible'));
+}
 
 // Navbar glassmorphism on scroll
 const nav = document.querySelector('nav');
