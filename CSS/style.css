@@ -164,19 +164,33 @@ nav.nav-scrolled {
    ===================== */
 
 .BotonP {
-    display: inline-block;
+    display: flex;
+    align-items: center;
+    gap: 10px;
     text-decoration: none;
     font-size: 18px;
     font-weight: 600;
     color: #2F3E2E;
-    background-color: #CFE5B4;
-    padding: 12px 24px;
+    padding: 3px 24px;
     border-radius: 6px;
     border: 3px solid #B7D49C;
     cursor: pointer;
+    background: radial-gradient(ellipse at 35% 40%, #E4F1D4, #CFE5B4);
     box-shadow: 0px 4px 12px rgba(0,0,0,0.15);
     transition: all 0.25s ease;
     text-align: center;
+}
+
+.BotonP img {
+    width: 45px;
+    height: 45px;
+    object-fit: contain;
+}
+
+.BotonArrow {
+    margin-left: auto;
+    font-size: 22px;
+    line-height: 1;
 }
 
 .BotonP:hover {
