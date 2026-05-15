@@ -19,12 +19,12 @@
 </nav>
 
 <div class="CartelPresent CartelInterna TextB">
-    <h2 class="TextP1">Nuestra Iglesia</h2>
-    <h3 class="TextP2">Una familia en Cristo, creciendo juntos en fe y amor</h3>
+    <h2 class="TextP1" data-anim>Nuestra Iglesia</h2>
+    <h3 class="TextP2" data-anim>Una familia en Cristo, creciendo juntos en fe y amor</h3>
     <img class="ImagenPr ImagenIndex" src="./Imagenes/General.jpeg" alt="">
 </div>
 
-<div class="Preparando TextB">
+<div class="Preparando TextB" data-anim>
     <h2 class="TextP3">¿Quiénes Somos?</h2>
     <p class="TextP4">
     La iglesia nació hace 5 años, en medio de la pandemia, cuando Dios llamó a sus pastores a encauzar sus vidas completamente a Cristo y no a un sistema eclesiástico o doctrinal. Todo comenzó a través de reuniones por Zoom, donde poco a poco se fueron sumando personas para recibir enseñanzas bíblicas y doctrinales centradas en Cristo como el Mesías, con el propósito de preparar el camino y quitar los obstáculos que muchas veces alejan a las personas de Dios. <br>
@@ -38,7 +38,7 @@
     <img src="./Imagenes/Pastores.jpeg" alt="Pastores">
 </div>
 
-<div class="Ministerios TextB">
+<div class="Ministerios TextB" data-anim>
     <h2>Nuestros Ministerios</h2>
 
     <div class="MinisterioIndi">
@@ -90,7 +90,9 @@
     </div>
 </div>
 
-<div class="Visitanos TextB">
+<div class="separador"></div>
+
+<div class="Visitanos TextB" data-anim>
     <h2>¡Te Esperamos!</h2>
     <h3>Eres bienvenido a visitarnos cualquier sábado. <br>
         Nuestra familia está lista para recibirte con los brazos abiertos.</h3>
@@ -106,11 +108,13 @@
     </div>
 </div>
 
-</body>
+
+<script src="./JS/animaciones.js" defer></script>
 <button id="scrollTop" title="Volver arriba">&#8593;</button>
 <script>
 const btn = document.getElementById("scrollTop");
 window.addEventListener("scroll", () => btn.classList.toggle("visible", window.scrollY > 300));
 btn.addEventListener("click", () => window.scrollTo({ top: 0, behavior: "smooth" }));
 </script>
+</body>
 </html>

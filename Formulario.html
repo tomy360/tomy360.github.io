@@ -20,7 +20,7 @@
 
 <div class="form-container">
 
-    <div class="form-header">
+    <div class="form-header" data-anim>
         <h1>Emergente Social</h1>
         <h2>Ficha Diaria de Autoevaluación</h2>
         <p>* Indica que la pregunta es obligatoria</p>
@@ -308,11 +308,12 @@
     });
 </script>
 
-</body>
+<script src="./JS/animaciones.js" defer></script>
 <button id="scrollTop" title="Volver arriba">&#8593;</button>
 <script>
 const btn = document.getElementById("scrollTop");
 window.addEventListener("scroll", () => btn.classList.toggle("visible", window.scrollY > 300));
 btn.addEventListener("click", () => window.scrollTo({ top: 0, behavior: "smooth" }));
 </script>
+</body>
 </html>

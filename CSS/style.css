@@ -40,7 +40,7 @@ h1, h2, h3, h4, h5, h6 {
    ===================== */
 
 nav {
-    background-color: rgba(59, 73, 83, 0.85);
+    background-color: #3B4953;
     width: 100%;
     height: 70px;
     padding: 0 30px;
@@ -51,10 +51,15 @@ nav {
     top: 0;
     left: 0;
     z-index: 1000;
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
-    box-shadow: 0px 2px 20px rgba(0,0,0,0.12);
+    transition: background 0.4s ease, backdrop-filter 0.4s ease, box-shadow 0.4s ease;
     border-bottom: 1px solid rgba(255,255,255,0.08);
+}
+
+nav.nav-scrolled {
+    background-color: rgba(59, 73, 83, 0.88);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+    box-shadow: 0px 2px 25px rgba(0,0,0,0.18);
 }
 
 #LogoP { width: 65px; }
@@ -1448,4 +1453,102 @@ nav {
         height: 38px;
         font-size: 18px;
     }
+}
+
+/* =====================
+   ANIMACIONES SCROLL REVEAL
+   ===================== */
+
+[data-anim] {
+    opacity: 0;
+    transform: translateY(40px);
+    transition: all 0.8s ease;
+}
+
+[data-anim].anim-visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+[data-anim="fade-left"] {
+    transform: translateX(-40px);
+}
+
+[data-anim="fade-left"].anim-visible {
+    transform: translateX(0);
+}
+
+[data-anim="fade-right"] {
+    transform: translateX(40px);
+}
+
+[data-anim="fade-right"].anim-visible {
+    transform: translateX(0);
+}
+
+[data-anim="zoom"] {
+    transform: scale(0.95);
+}
+
+[data-anim="zoom"].anim-visible {
+    transform: scale(1);
+}
+
+/* =====================
+   ZOOM SUTIL EN IMÁGENES
+   ===================== */
+
+.EventoIndividual img,
+.ImgP2,
+.Preparando img,
+.CartelPresentC img {
+    transition: transform 0.5s ease;
+}
+
+.EventoIndividual:hover img,
+.CartelesIndi:hover .ImgP2,
+.Preparando img:hover,
+.CartelPresentC:hover img {
+    transform: scale(1.03);
+}
+
+/* Hero image zoom on container hover */
+.CartelPresent:hover .ImagenIndex {
+    transform: scale(1.03);
+}
+
+.ImagenIndex {
+    transition: transform 0.6s ease;
+}
+
+/* =====================
+   SEPARADORES ANIMADOS
+   ===================== */
+
+.separador {
+    width: 80%;
+    max-width: 600px;
+    height: 2px;
+    margin: 60px auto;
+    background: linear-gradient(90deg, transparent, #90AB8B, transparent);
+    opacity: 0.6;
+}
+
+.separador-onda {
+    width: 100%;
+    height: 40px;
+    margin: 40px 0;
+    background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 40'%3E%3Cpath d='M0,20 C240,0 480,40 720,20 C960,0 1200,40 1440,20 L1440,40 L0,40Z' fill='%2390AB8B' opacity='0.15'/%3E%3C/svg%3E") repeat-x;
+    background-size: 720px 40px;
+    animation: ondaMov 6s linear infinite;
+}
+
+@keyframes ondaMov {
+    0% { background-position-x: 0; }
+    100% { background-position-x: 720px; }
+}
+
+@media (max-width: 768px) {
+    .separador { width: 90%; margin: 40px auto; }
+    .separador-onda { height: 30px; margin: 30px 0; }
 }

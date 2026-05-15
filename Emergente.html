@@ -19,13 +19,13 @@
 </nav>
 
 <div class="CartelPresent CartelInterna TextB">
-    <h2 class="TextP1">Centro de Recuperación</h2>
-    <h3 class="TextP2">Hay esperanza, hay sanidad, hay un nuevo comienzo</h3>
+    <h2 class="TextP1" data-anim>Centro de Recuperación</h2>
+    <h3 class="TextP2" data-anim>Hay esperanza, hay sanidad, hay un nuevo comienzo</h3>
     <a class="BotonP activo" href="./Formulario.html">Evaluacion Diaria</a>
     <img class="ImagenPr ImagenIndex" src="./Imagenes/General.jpeg" alt="">
 </div>
 
-<div class="CartelPresentC TextB">
+<div class="CartelPresentC TextB" data-anim>
     <div class="ImgCont">
         <img src="./Imagenes/Pulpito.jpeg" alt="">
     </div>
@@ -43,7 +43,9 @@
     </div>
 </div>
 
-<div class="Caracteristicas TextB">
+<div class="separador"></div>
+
+<div class="Caracteristicas TextB" data-anim>
     <h2 class="TxtTC">Características de Nuestro Programa</h2>
 
     <div class="CaractIndi">
@@ -71,7 +73,9 @@
     </div>
 </div>
 
-<div class="InfoC TextB">
+<div class="separador"></div>
+
+<div class="InfoC TextB" data-anim>
 
     <div class="ListaP">
         <ul>
@@ -125,7 +129,9 @@
 
 </div>
 
-<div class="FAQ TextB">
+<div class="separador"></div>
+
+<div class="FAQ TextB" data-anim>
     <h2>Preguntas Frecuentes</h2>
 
     <details>
@@ -149,7 +155,7 @@
     </details>
 </div>
 
-<div class="Testimonios TextB">
+<div class="Testimonios TextB" data-anim>
     <h2 class="TextTT">Testimonios de Transformación</h2>
 
     <div class="ContTestimonios">
@@ -172,7 +178,9 @@
     </div>
 </div>
 
-<div class="FinalE TextB">
+<div class="separador"></div>
+
+<div class="FinalE TextB" data-anim>
     <h2 class="TextEmF">¿Necesitas Ayuda?</h2>
     <h3 class="TextEmF">
         Si tú o un ser querido está luchando con una adicción, no esperes más.
@@ -198,11 +206,12 @@
     </div>
 </div>
 
-</body>
+<script src="./JS/animaciones.js" defer></script>
 <button id="scrollTop" title="Volver arriba">&#8593;</button>
 <script>
 const btn = document.getElementById("scrollTop");
 window.addEventListener("scroll", () => btn.classList.toggle("visible", window.scrollY > 300));
 btn.addEventListener("click", () => window.scrollTo({ top: 0, behavior: "smooth" }));
 </script>
+</body>
 </html>
