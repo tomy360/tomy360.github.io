@@ -193,6 +193,12 @@ nav.nav-scrolled {
     line-height: 1;
 }
 
+.BotonP.activo {
+    font-size: 28px;
+    padding: 14px 48px;
+    border-radius: 12px;
+}
+
 .BotonP:hover {
     background-color: #BFDDA0;
     transform: translateY(-2px);
