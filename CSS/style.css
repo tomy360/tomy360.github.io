@@ -886,7 +886,7 @@ nav.nav-scrolled {
     .TextP2 { font-size: 18px; }
 
     .ColocBP { flex-direction: column; gap: 10px; align-items: center; }
-    .BotonP  { width: auto; font-size: 16px; padding: 3px 18px; }
+    .BotonP  { display: inline-flex; font-size: 16px; padding: 3px 18px; }
     .ImagenIndex { height: 450px; }
 
     /* MISIÓN */
