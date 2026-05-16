@@ -6,7 +6,7 @@ if (window.innerWidth > 768) {
                 entry.target.classList.add('anim-visible');
             }
         });
-    }, { threshold: 0.15 });
+    }, { threshold: 0.03 });
 
     document.querySelectorAll('[data-anim]').forEach(el => animObserver.observe(el));
 } else {

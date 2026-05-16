@@ -891,9 +891,9 @@ nav.nav-scrolled {
     .TextP1 { font-size: 32px; }
     .TextP2 { font-size: 18px; }
 
-    .ColocBP { flex-direction: column; gap: 8px; align-items: center; width: 100%; }
-    .ColocBP .BotonP { display: flex; font-size: 15px; padding: 2px 14px; max-width: 320px; width: 100%; }
-    .ColocBP .BotonP img { width: 30px; height: 30px; }
+    .ColocBP { flex-direction: column; gap: 8px; align-items: stretch; width: 100%; }
+    .ColocBP .BotonP { display: flex; font-size: 15px; padding: 2px 12px; width: 100%; }
+    .ColocBP .BotonP img { width: 26px; height: 26px; }
     .ImagenIndex { height: 450px; }
 
     /* MISIÓN */
