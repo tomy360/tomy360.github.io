@@ -1,3 +1,6 @@
 {
-  "type": "module"
+  "type": "module",
+  "dependencies": {
+    "music-metadata": "^10.0.0"
+  }
 }

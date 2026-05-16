@@ -3,7 +3,7 @@
     // Pide la lista de canciones a la API serverless
     let canciones = [];
     try {
-        const res = await fetch("./lista.json");
+        const res = await fetch("/api/canciones");
         canciones = await res.json();
     } catch {
         console.error("No se pudo cargar la lista de canciones.");
