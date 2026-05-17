@@ -1159,6 +1159,21 @@ nav.nav-scrolled {
     padding-bottom: 60px;
 }
 
+.form-page label,
+.form-page .options-label,
+.form-page .radio-option,
+.form-page .aclaracion-row span,
+.form-page .day-check span,
+.form-page p,
+.form-page .form-header p {
+    font-weight: 700;
+}
+
+.form-page input,
+.form-page select {
+    font-weight: 700;
+}
+
 .form-container {
     width: min(90%, 820px);
     margin: 0 auto;
