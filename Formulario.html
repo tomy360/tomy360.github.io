@@ -407,27 +407,16 @@
 
         const boton = form.querySelector("button[type='submit']");
         boton.disabled = true;
-        boton.textContent = "Generando PDF...";
+        boton.textContent = "Enviando...";
 
         try {
             const pdfBlob = await generarPDF();
-            boton.textContent = "Enviando...";
 
             const nombre = document.getElementById("nombreApellido").value.trim() || "Sin nombre";
             const monitor = document.getElementById("monitor").value || "Sin monitor";
             document.getElementById("asunto").value = "Evaluacion - " + monitor + " - " + nombre;
 
-            // Descargar el PDF localmente
-            const url = URL.createObjectURL(pdfBlob);
-            const link = document.createElement("a");
-            link.href = url;
-            link.download = "Evaluacion_" + nombre.replace(/\s+/g, "_") + ".pdf";
-            document.body.appendChild(link);
-            link.click();
-            document.body.removeChild(link);
-            URL.revokeObjectURL(url);
-
-            // Adjuntar PDF al formulario antes de enviar
+            // Adjuntar PDF al formulario
             const pdfFile = new File([pdfBlob], "Evaluacion_" + nombre.replace(/\s+/g, "_") + ".pdf", { type: "application/pdf" });
             const dt = new DataTransfer();
             dt.items.add(pdfFile);
