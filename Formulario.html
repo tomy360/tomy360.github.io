@@ -267,45 +267,208 @@
 
 </div>
 
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
 <script>
     document.querySelectorAll('input, select, textarea').forEach(el => el.setAttribute('autocomplete', 'off'));
 
+    function getChecked(name) {
+        return [...document.querySelectorAll(`input[name="${name}"]:checked`)].map(c => c.value).join(", ") || "—";
+    }
+
+    function getRadio(name) {
+        const r = document.querySelector(`input[name="${name}"]:checked`);
+        return r ? r.value : "—";
+    }
+
+    function getVal(id) {
+        const el = document.getElementById(id);
+        return el ? el.value.trim() || "—" : "—";
+    }
+
+    function getSelectVal(name) {
+        const el = document.querySelector(`select[name="${name}"]`);
+        return el ? el.value || "—" : "—";
+    }
+
+    function getTextInput(name) {
+        const el = document.querySelector(`input[name="${name}"]`);
+        return el ? el.value.trim() || "—" : "—";
+    }
+
+    async function generarPDF() {
+        const { jsPDF } = window.jspdf;
+        const doc = new jsPDF();
+        let y = 20;
+        const lm = 15;
+        const pw = 180;
+
+        function title(text) {
+            doc.setFontSize(16);
+            doc.setFont("helvetica", "bold");
+            doc.text(text, lm, y);
+            y += 8;
+            doc.setDrawColor(90, 120, 99);
+            doc.setLineWidth(0.8);
+            doc.line(lm, y, lm + pw, y);
+            y += 6;
+        }
+
+        function section(text) {
+            if (y > 260) { doc.addPage(); y = 20; }
+            doc.setFontSize(13);
+            doc.setFont("helvetica", "bold");
+            doc.setTextColor(90, 120, 99);
+            doc.text(text, lm, y);
+            y += 6;
+            doc.setTextColor(0);
+        }
+
+        function field(label, value) {
+            if (y > 275) { doc.addPage(); y = 20; }
+            doc.setFontSize(10);
+            doc.setFont("helvetica", "bold");
+            doc.text(label + ":", lm, y);
+            doc.setFont("helvetica", "normal");
+            const val = String(value);
+            const lines = doc.splitTextToSize(val, pw - 50);
+            doc.text(lines, lm + 45, y);
+            y += 5 + (lines.length - 1) * 4;
+        }
+
+        function fieldLong(label, value) {
+            if (y > 275) { doc.addPage(); y = 20; }
+            doc.setFontSize(10);
+            doc.setFont("helvetica", "bold");
+            const lines = doc.splitTextToSize(value || "—", pw);
+            doc.text(label, lm, y);
+            y += 5;
+            doc.setFont("helvetica", "normal");
+            doc.text(lines, lm + 3, y);
+            y += 5 + lines.length * 4;
+        }
+
+        // ————— TÍTULO —————
+        doc.setFontSize(20);
+        doc.setFont("helvetica", "bold");
+        doc.setTextColor(59, 73, 83);
+        doc.text("Emergente Social", lm, y);
+        y += 8;
+        doc.setFontSize(14);
+        doc.text("Ficha Diaria de Autoevaluación", lm, y);
+        y += 8;
+        doc.setTextColor(0);
+        const fecha = getVal("fecha");
+        doc.setFontSize(10);
+        doc.setFont("helvetica", "normal");
+        doc.text("Fecha: " + (fecha || new Date().toISOString().split("T")[0]), lm, y);
+        y += 10;
+
+        // ————— DATOS PERSONALES —————
+        section("Datos Personales");
+        field("Nombre y Apellido", getVal("nombreApellido"));
+        field("Fecha de nacimiento", getVal("fechaNacimiento"));
+        field("Edad", getVal("edad"));
+        field("Dirección", getVal("direccion"));
+        field("Tiempo en el programa", getVal("tiempoPrograma"));
+        field("Monitor", getSelectVal("Monitor"));
+        field("Mentor", getRadio("Mentor") === "Si" ? "Sí (" + getTextInput("Mentor - nombre") + ")" : "No");
+        y += 4;
+
+        // ————— ÁREA ESPIRITUAL —————
+        section("Área Espiritual");
+        field("Días de oración", getChecked("Oracion"));
+        field("Lectura bíblica", getChecked("Lectura biblica"));
+        field("Discipulado", getRadio("Discipulado") === "Si" ? "Sí (" + getTextInput("Discipulado - detalle") + ")" : "No");
+        field("Asiste a iglesia", getRadio("Asistencia a iglesia") === "Si" ? "Sí (" + getTextInput("Asistencia a iglesia - detalle") + ")" : "No");
+        y += 4;
+
+        // ————— ÁREA DE RECUPERACIÓN —————
+        section("Área de Recuperación");
+        field("Centro de recuperación", getRadio("Centro de recuperacion") === "Si" ? "Sí (" + getTextInput("Centro de recuperacion - detalle") + ")" : "No");
+        field("Días de abstinencia", getChecked("Abstinencia"));
+        field("Recaída", getTextInput("Recaida - detalle"));
+        field("Alejarse de ambientes negativos", getRadio("Alejarse de ambientes negativos"));
+        field("Inversión en sanarse", getRadio("Inversion en sanarse"));
+        y += 4;
+
+        // ————— ÁREA MÉDICA —————
+        section("Área Médica");
+        field("Tratamiento psicológico", getRadio("Tratamiento psicologico") === "Si" ? "Sí (" + getTextInput("Tratamiento psicologico - detalle") + ")" : "No");
+        field("Tratamiento psiquiátrico", getRadio("Tratamiento psiquiatrico") === "Si" ? "Sí (" + getTextInput("Tratamiento psiquiatrico - detalle") + ")" : "No");
+        field("Medicación", getRadio("Medicacion") === "Si" ? "Sí (" + getTextInput("Medicacion - detalle") + ")" : "No");
+
+        return doc.output("blob");
+    }
+
     const form = document.querySelector("form");
 
-    form.addEventListener("submit", function (e) {
+    form.addEventListener("submit", async function (e) {
         e.preventDefault();
 
         const boton = form.querySelector("button[type='submit']");
         boton.disabled = true;
-        boton.textContent = "Enviando...";
+        boton.textContent = "Generando PDF...";
 
-        const nombre = document.getElementById("nombreApellido").value.trim() || "Sin nombre";
-        const monitor = document.getElementById("monitor").value || "Sin monitor";
-        document.getElementById("asunto").value = "Evaluacion - " + monitor + " - " + nombre;
+        try {
+            const pdfBlob = await generarPDF();
+            boton.textContent = "Enviando...";
 
-        const data = new FormData(form);
+            const nombre = document.getElementById("nombreApellido").value.trim() || "Sin nombre";
+            const monitor = document.getElementById("monitor").value || "Sin monitor";
+            document.getElementById("asunto").value = "Evaluacion - " + monitor + " - " + nombre;
 
-        fetch("https://api.web3forms.com/submit", {
-            method: "POST",
-            body: data
-        })
-        .then(res => res.json())
-        .then(json => {
-            if (json.success) {
-                form.style.display = "none";
-                document.getElementById("mensajeExito").style.display = "block";
-                window.scrollTo({ top: 0, behavior: "smooth" });
-            } else {
+            // Descargar el PDF localmente
+            const url = URL.createObjectURL(pdfBlob);
+            const link = document.createElement("a");
+            link.href = url;
+            link.download = "Evaluacion_" + nombre.replace(/\s+/g, "_") + ".pdf";
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+            URL.revokeObjectURL(url);
+
+            // Adjuntar PDF al formulario antes de enviar
+            const pdfFile = new File([pdfBlob], "Evaluacion_" + nombre.replace(/\s+/g, "_") + ".pdf", { type: "application/pdf" });
+            const dt = new DataTransfer();
+            dt.items.add(pdfFile);
+            let fileInput = document.querySelector('input[name="attachment"]');
+            if (!fileInput) {
+                fileInput = document.createElement('input');
+                fileInput.type = 'file';
+                fileInput.name = 'attachment';
+                fileInput.style.display = 'none';
+                form.appendChild(fileInput);
+            }
+            fileInput.files = dt.files;
+
+            const data = new FormData(form);
+
+            fetch("https://api.web3forms.com/submit", {
+                method: "POST",
+                body: data
+            })
+            .then(res => res.json())
+            .then(json => {
+                if (json.success) {
+                    form.style.display = "none";
+                    document.getElementById("mensajeExito").style.display = "block";
+                    window.scrollTo({ top: 0, behavior: "smooth" });
+                } else {
+                    boton.disabled = false;
+                    boton.textContent = "Enviar ficha";
+                    alert("Hubo un error al enviar. Por favor intentá de nuevo.");
+                }
+            })
+            .catch(() => {
                 boton.disabled = false;
                 boton.textContent = "Enviar ficha";
-                alert("Hubo un error al enviar. Por favor intentá de nuevo.");
-            }
-        })
-        .catch(() => {
+                alert("Hubo un error de conexión. Por favor intentá de nuevo.");
+            });
+        } catch {
             boton.disabled = false;
             boton.textContent = "Enviar ficha";
-            alert("Hubo un error de conexión. Por favor intentá de nuevo.");
-        });
+            alert("Error al generar el PDF. Intentá de nuevo.");
+        }
     });
 </script>
 
