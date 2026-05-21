@@ -34,6 +34,8 @@ export default async function handler(req, res) {
         }
     }));
 
+    canciones.sort((a, b) => a.titulo.localeCompare(b.titulo, "es"));
+
     res.setHeader("Cache-Control", "no-store");
     res.status(200).json(canciones);
 }
