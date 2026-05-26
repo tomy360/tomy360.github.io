@@ -15,11 +15,13 @@ document.addEventListener("DOMContentLoaded", function () {
     logo.addEventListener("click", function (e) {
         e.stopPropagation();
         modal.style.display = "flex";
-        user.value = "";
-        pass.value = "";
-        token.value = "";
+        user.value = localStorage.getItem("admin_user") || "";
+        pass.value = localStorage.getItem("admin_pass") || "";
+        token.value = localStorage.getItem("gh_token") || "";
         error.textContent = "";
-        user.focus();
+        if (!user.value) user.focus();
+        else if (!pass.value) pass.focus();
+        else token.focus();
     });
 
     function cerrarModal() { modal.style.display = "none"; }
@@ -39,7 +41,9 @@ document.addEventListener("DOMContentLoaded", function () {
             return;
         }
         if (u === "Admin1" && p === "bocalomas1B*") {
-            sessionStorage.setItem("gh_token", t);
+            localStorage.setItem("gh_token", t);
+            localStorage.setItem("admin_user", u);
+            localStorage.setItem("admin_pass", p);
             window.location.href = "./admin.html";
         } else {
             error.textContent = "Usuario o contraseña incorrectos.";
