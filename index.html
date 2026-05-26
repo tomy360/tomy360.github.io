@@ -175,7 +175,7 @@
 <script>
 async function cargarDevocional() {
     try {
-        const r = await fetch("./data/devocional.json");
+        const r = await fetch("./data/devocional.json?t=" + Date.now());
         const d = await r.json();
         const el = document.getElementById("devocional-contenido");
         el.innerHTML = "<h2>" + d.titulo + "</h2><p>" + d.contenido + "</p>";
@@ -184,7 +184,7 @@ async function cargarDevocional() {
 
 async function cargarEventos() {
     try {
-        const r = await fetch("./data/eventos.json");
+        const r = await fetch("./data/eventos.json?t=" + Date.now());
         const eventos = await r.json();
         const cont = document.getElementById("eventos-contenido");
         cont.innerHTML = "";
