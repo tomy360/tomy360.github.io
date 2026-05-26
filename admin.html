@@ -78,7 +78,10 @@
         </div>
         <div class="admin-field">
             <label>Ruta de imagen (ej: ./Imagenes/Eventos/xxx.jpeg)</label>
-            <input type="text" id="evImagen" placeholder="./Imagenes/Eventos/">
+            <div class="admin-field-row">
+                <input type="text" id="evImagen" placeholder="./Imagenes/Eventos/" style="flex:2">
+                <input type="file" id="evImagenFile" accept="image/*" style="flex:1">
+            </div>
         </div>
         <div class="admin-field">
             <label>Ítems (uno por línea)</label>
@@ -294,10 +297,26 @@ musicaSubir.addEventListener("click", async function () {
 const evTitulo = document.getElementById("evTitulo");
 const evNota = document.getElementById("evNota");
 const evImagen = document.getElementById("evImagen");
+const evImagenFile = document.getElementById("evImagenFile");
 const evItems = document.getElementById("evItems");
 const evAgregar = document.getElementById("evAgregar");
 const evStatus = document.getElementById("evStatus");
 const eventosLista = document.getElementById("eventosLista");
+
+evImagenFile.addEventListener("change", function () {
+    const file = this.files[0];
+    if (!file) return;
+    const reader = new FileReader();
+    reader.onload = async function (e) {
+        const base64 = e.target.result.split(",")[1];
+        const ruta = "Imagenes/Eventos/" + file.name;
+        evImagen.value = "Subiendo...";
+        const ok = await putFileBinary(ruta, base64, "Subir " + file.name);
+        if (ok) evImagen.value = "./" + ruta;
+        else evImagen.value = "./Imagenes/Eventos/";
+    };
+    reader.readAsDataURL(file);
+});
 
 async function cargarEventosAdmin() {
     const eventos = await getJson("data/eventos.json") || [];

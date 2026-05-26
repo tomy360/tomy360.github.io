@@ -1,10 +1,14 @@
 [
   {
+    "imagen": "./Imagenes/Eventos/Pre.jpeg",
+    "titulo": "Nuestra Reunion!!",
+    "items": ["Que tus hijos se acerquen aún más a Dios"],
+    "nota": "¡Que no se lo pierdan!"
+  },
+  {
     "imagen": "./Imagenes/Eventos/Nueva serie.jpeg",
     "titulo": "Avengers Assemble",
-    "items": [
-      "Nueva Serie"
-    ],
+    "items": ["Nueva Serie"],
     "nota": "¡Te esperamos!"
   },
   {
