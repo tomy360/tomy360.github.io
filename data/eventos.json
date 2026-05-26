@@ -1,0 +1,25 @@
+[
+  {
+    "imagen": "./Imagenes/Eventos/Pre.jpeg",
+    "titulo": "Nuestra Reunion!!",
+    "items": ["Que tus hijos se acerquen aún más a Dios"],
+    "nota": "¡Que no se lo pierdan!"
+  },
+  {
+    "imagen": "./Imagenes/Eventos/Nueva serie.jpeg",
+    "titulo": "Avengers Assemble",
+    "items": ["Nueva Serie"],
+    "nota": "¡Te esperamos!"
+  },
+  {
+    "imagen": "./Imagenes/Eventos/RetiroMujeres.jpeg",
+    "titulo": "Retiro de mujeres",
+    "items": [
+      "Se viene nuestra primera, de muchas charlas enriquecedoras para nuestro espíritu y alma.",
+      "Agendá esta fecha: viernes 15 de Mayo, 18:30 hs.",
+      "Sin costo, solo traer algo rico para compartir.",
+      "Anotate con tu líder 😉"
+    ],
+    "nota": "¡No podés faltar!"
+  }
+]

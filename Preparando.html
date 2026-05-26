@@ -9,6 +9,18 @@
 </head>
 <body>
 
+<div id="loginModal" class="modal-overlay">
+    <div class="modal-box">
+        <span class="modal-cerrar" id="modalCerrar">&times;</span>
+        <h2>Acceso Administrativo</h2>
+        <input type="text" id="loginUser" placeholder="Usuario" autocomplete="off">
+        <input type="password" id="loginPass" placeholder="Contraseña">
+        <input type="password" id="loginToken" placeholder="Token de GitHub">
+        <button id="loginBtn">Ingresar</button>
+        <p id="loginError" class="modal-error"></p>
+    </div>
+</div>
+
 <nav>
     <img class="Logo" id="LogoP" src="./Imagenes/Iconos/Preparando.png" alt="Logo Preparando el Camino">
     <div class="menu-botones">
@@ -111,6 +123,7 @@
 
 
 <script src="./JS/animaciones.js" defer></script>
+<script src="./JS/admin-login.js" defer></script>
 <button id="scrollTop" title="Volver arriba">&#8593;</button>
 <script>
 const btn = document.getElementById("scrollTop");
