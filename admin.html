@@ -99,7 +99,7 @@
 </div>
 
 <script>
-const TOKEN = sessionStorage.getItem("gh_token");
+const TOKEN = localStorage.getItem("gh_token");
 if (!TOKEN) window.location.href = "./index.html";
 const OWNER = "tomy360";
 const REPO = "tomy360.github.io";
@@ -354,7 +354,6 @@ cargarMusica();
 cargarEventosAdmin();
 
 document.getElementById("adminLogout").addEventListener("click", function () {
-    sessionStorage.removeItem("gh_token");
     window.location.href = "./index.html";
 });
 </script>
