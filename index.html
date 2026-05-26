@@ -9,18 +9,6 @@
 </head>
 <body>
 
-<div id="loginModal" class="modal-overlay">
-    <div class="modal-box">
-        <span class="modal-cerrar" id="modalCerrar">&times;</span>
-        <h2>Acceso Administrativo</h2>
-        <input type="text" id="loginUser" placeholder="Usuario" autocomplete="off">
-        <input type="password" id="loginPass" placeholder="Contraseña">
-        <input type="password" id="loginToken" placeholder="Token de GitHub">
-        <button id="loginBtn">Ingresar</button>
-        <p id="loginError" class="modal-error"></p>
-    </div>
-</div>
-
 <nav>
     <img class="Logo" id="LogoP" src="./Imagenes/Iconos/Preparando.png" alt="Logo Preparando el Camino">
     <div class="menu-botones">
@@ -90,9 +78,22 @@
         <ul class="RepLista" id="RepLista"></ul>
     </div>
 
-    <div class="Devocional TextB" id="devocional-contenido">
-        <h2>Cargando devocional...</h2>
-        <p></p>
+    <div class="Devocional TextB">
+        <h2>📌LISTOS PARA EL ENTRENAMIENTO ESPIRITUAL</h2>
+        <p>
+Ningún atleta gana una medalla olímpica quedándose en el sillón. El crecimiento espiritual tampoco ocurre por casualidad; requiere intencionalidad. Hoy Dios nos llama a despertar nuestra disposición para ser entrenados por Él. No es una carga, es el camino a la madurez. <br>
+
+"Mejor entrénate para ser un buen cristiano".  1 Timoteo 4:7b (TLA)<br><br>
+
+El entrenamiento duele porque estira nuestros límites. Disciplinas como la oración diaria, el perdón y el estudio de la Biblia incomodan nuestra naturaleza perezosa. Sin embargo, la disposición del corazón lo cambia todo. Cuando le decís a Dios "estoy listo para que me formes", el Espíritu Santo transforma el esfuerzo en fruto. Dejás de actuar por obligación y empezás a crecer por amor.<br>
+
+”Ciertamente, ninguna disciplina al presente parece ser causa de gozo, sino de tristeza; pero después da fruto apacible de justicia a los que en ella han sido ejercitados". Hebreos 12:11 (NVI)<br>
+
+
+El ejercicio físico beneficia el cuerpo, pero el entrenamiento espiritual transforma tu eternidad.<br><br>
+
+Oramos🙏🏼<br> Amado Padre, hoy rindo mi comodidad. Dame la disposición de un atleta de la fe. Limpia mi vida, enséñame tus disciplinas y ayúdame a perseverar aunque duela, sabiendo que el resultado final será Tu carácter en mí. Amén
+        </p>
     </div>
 </div>
 
@@ -120,8 +121,47 @@
 
 <div class="EventosEspeciales TextB" data-anim>
     <h2>Eventos especiales</h2>
-    <div class="EventosEspecialesCont" id="eventos-contenido">
-        <p>Cargando eventos...</p>
+    <div class="EventosEspecialesCont">
+
+
+
+        <div class="EventoIndividual">
+            <img src="./Imagenes/Eventos/Pre.jpeg" alt="Nueva Serie">
+            <div class="EventoInfo">
+                <h3>Nuestra Reunion!!</h3>
+                <ul>
+                    <li>Que tus hijos se acerquen aún más a Dios</li>
+                </ul>
+                <p class="EventoNota">¡Que no se lo pierdan!</p>
+            </div>
+        </div>
+
+
+        <div class="EventoIndividual">
+            <img src="./Imagenes/Eventos/Nueva serie.jpeg" alt="Nueva Serie">
+            <div class="EventoInfo">
+                <h3>Avengers Assemble</h3>
+                <ul>
+                    <li>Nueva Serie</li>
+                </ul>
+                <p class="EventoNota">¡Te esperamos!</p>
+            </div>
+        </div>
+
+        <div class="EventoIndividual">
+            <img src="./Imagenes/Eventos/RetiroMujeres.jpeg" alt="Retiro de mujeres">
+            <div class="EventoInfo">
+                <h3>Retiro de mujeres</h3>
+                <ul>
+                    <li>Se viene nuestra primera, de muchas charlas enriquecedoras para nuestro espíritu y alma.</li>
+                    <li>Agendá esta fecha: viernes 15 de Mayo, 18:30 hs.</li>
+                    <li>Sin costo, solo traer algo rico para compartir.</li>
+                    <li>Anotate con tu líder 😉</li>
+                </ul>
+                <p class="EventoNota">¡No podés faltar!</p>
+            </div>
+        </div>
+
     </div>
 </div>
 
@@ -171,39 +211,6 @@
 
 <script src="./JS/reproductor.js" defer></script>
 <script src="./JS/animaciones.js" defer></script>
-<script src="./JS/admin-login.js" defer></script>
-<script>
-const DATA_BASE = "https://raw.githubusercontent.com/tomy360/tomy360.github.io/main/data";
-
-async function cargarDevocional() {
-    try {
-        const r = await fetch(DATA_BASE + "/devocional.json?t=" + Date.now());
-        const d = await r.json();
-        const el = document.getElementById("devocional-contenido");
-        el.innerHTML = "<h2>" + d.titulo + "</h2><p>" + d.contenido + "</p>";
-    } catch { console.error("Error al cargar devocional"); }
-}
-
-async function cargarEventos() {
-    try {
-        const r = await fetch(DATA_BASE + "/eventos.json?t=" + Date.now());
-        const eventos = await r.json();
-        const cont = document.getElementById("eventos-contenido");
-        cont.innerHTML = "";
-        eventos.forEach(e => {
-            const div = document.createElement("div");
-            div.className = "EventoIndividual";
-            let items = "";
-            (e.items || []).forEach(i => items += "<li>" + i + "</li>");
-            div.innerHTML = '<img src="' + e.imagen + '" alt="' + e.titulo + '"><div class="EventoInfo"><h3>' + e.titulo + '</h3><ul>' + items + '</ul><p class="EventoNota">' + e.nota + '</p></div>';
-            cont.appendChild(div);
-        });
-    } catch { console.error("Error al cargar eventos"); }
-}
-
-cargarDevocional();
-cargarEventos();
-</script>
 <button id="scrollTop" title="Volver arriba">&#8593;</button>
 <script>
 const btn = document.getElementById("scrollTop");
