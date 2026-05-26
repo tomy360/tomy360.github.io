@@ -1,10 +1,14 @@
 [
   {
+    "imagen": "./Imagenes/Eventos/Pre.jpeg",
+    "titulo": "Nuestra Reunion!!",
+    "items": ["Que tus hijos se acerquen aún más a Dios"],
+    "nota": "¡Que no se lo pierdan!"
+  },
+  {
     "imagen": "./Imagenes/Eventos/Nueva serie.jpeg",
     "titulo": "Avengers Assemble",
-    "items": [
-      "Nueva Serie"
-    ],
+    "items": ["Nueva Serie"],
     "nota": "¡Te esperamos!"
   },
   {
@@ -17,15 +21,5 @@
       "Anotate con tu líder 😉"
     ],
     "nota": "¡No podés faltar!"
-  },
-  {
-    "imagen": "./Imagenes/Eventos/Pres.jpeg",
-    "titulo": "Los pre",
-    "items": [
-      "Juegos",
-      "Aprendizaje",
-      "Y consejos"
-    ],
-    "nota": "Que no se lo pierdan"
   }
 ]

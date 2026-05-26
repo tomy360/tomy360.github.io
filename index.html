@@ -173,9 +173,11 @@
 <script src="./JS/animaciones.js" defer></script>
 <script src="./JS/admin-login.js" defer></script>
 <script>
+const DATA_BASE = "https://raw.githubusercontent.com/tomy360/tomy360.github.io/main/data";
+
 async function cargarDevocional() {
     try {
-        const r = await fetch("./data/devocional.json?t=" + Date.now());
+        const r = await fetch(DATA_BASE + "/devocional.json?t=" + Date.now());
         const d = await r.json();
         const el = document.getElementById("devocional-contenido");
         el.innerHTML = "<h2>" + d.titulo + "</h2><p>" + d.contenido + "</p>";
@@ -184,7 +186,7 @@ async function cargarDevocional() {
 
 async function cargarEventos() {
     try {
-        const r = await fetch("./data/eventos.json?t=" + Date.now());
+        const r = await fetch(DATA_BASE + "/eventos.json?t=" + Date.now());
         const eventos = await r.json();
         const cont = document.getElementById("eventos-contenido");
         cont.innerHTML = "";
