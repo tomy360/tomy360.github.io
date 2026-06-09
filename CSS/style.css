@@ -586,13 +586,14 @@ nav.nav-scrolled {
    ===================== */
 
 .Preparando {
-    width: 80%;
-    margin: 60px 0 60px 280px;
+    width: 85%;
+    max-width: 1100px;
+    margin: 80px auto;
     display: grid;
     grid-template-columns: 1fr 1fr;
-    grid-template-rows: auto 1fr;   /* ← la fila del p ocupa el espacio restante */
+    grid-template-rows: auto 1fr;
     gap: 20px 40px;
-    align-items: start;             /* ← evita que la imagen se estire */
+    align-items: start;
 }
 
 .Preparando h2  { grid-column: 1; grid-row: 1; align-self: end; }   /* ← h2 pegado al p */
@@ -1486,6 +1487,11 @@ nav.nav-scrolled {
 @media (min-width: 769px) and (max-width: 1024px) {
     .EventosEspecialesCont {
         grid-template-columns: repeat(2, 1fr);
+    }
+
+    .Preparando {
+        width: 90%;
+        gap: 20px;
     }
 }
 
