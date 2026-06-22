@@ -1,413 +1,231 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <script>if(localStorage.getItem('recetario-modo-noche')==='1')document.documentElement.classList.add('modo-noche')</script>
-  <style>body{background:#FDF8F0}html.modo-noche body{background:#1a1f12}</style>
-  <link rel="stylesheet" href="./CSS/estilo.css">
-  <link rel="stylesheet" href="./CSS/auth.css">
-  <style>.nav-cta,.nav-mobile-cta{display:none}</style>
-  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🍳</text></svg>">
-  <title>Recetas del día</title>
-  <script defer src="./JS/supabase.js?v=2"></script>
-  <script defer src="./JS/datos.js?v=2"></script>
-  <script defer src="./JS/db.js?v=2"></script>
-  <script defer src="./JS/timer.js?v=2"></script>
-  <script defer src="./JS/auth.js?v=2"></script>
-  <script defer src="./JS/recetas.js?v=2"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./CSS/style.css">
+    <link rel="icon" type="image/png" href="./Imagenes/Iconos/Preparando.png">
+    <title>Preparando El Camino</title>
 </head>
 <body>
 
-<!-- SPINNER DE CARGA -->
-<div id="spinner-global">
-  <span class="spinner-icono">🍳</span>
-  <span class="spinner-texto">Cargando recetas...</span>
-  <div class="spinner-barra-track">
-    <div class="spinner-barra-fill"></div>
-  </div>
-</div>
-<!-- FIN SPINNER -->
-
 <nav>
-  <div class="nav-inner">
-
-    <a class="nav-logo" href="./index.html">
-      <span class="nav-logo-icon">🍳</span>
-      <span>Recetas del día</span>
-    </a>
-
+    <img class="Logo" id="LogoP" src="./Imagenes/Iconos/Preparando.png" alt="Logo Preparando el Camino">
     <div class="menu-botones">
-      <a class="BotonBa activo" href="./index.html">Inicio</a>
-      <div class="nav-dropdown">
-        <a class="BotonBa" href="./index.html?tipo=Todos">🍽️ Comidas</a>
-        <div class="nav-dropdown-menu">
-          <a class="BotonBa" href="./index.html?tipo=Desayuno">Desayuno</a>
-          <a class="BotonBa" href="./index.html?tipo=Almuerzo">Almuerzo</a>
-          <a class="BotonBa" href="./index.html?tipo=Cena">Cena</a>
-          <a class="BotonBa" href="./index.html?tipo=Media Tarde">Media Tarde</a>
-          <a class="BotonBa" href="./index.html?tipo=Indefinido">Indefinido</a>
-          <a class="BotonBa" href="./index.html?tipo=Postre">Postre</a>
-          <a class="BotonBa" href="./index.html?tipo=Acompa%C3%B1amiento">Acompañamiento</a>
-        </div>
-      </div>
-      <div class="nav-dropdown">
-        <a class="BotonBa" href="javascript:void(0)">🥗 Dietas</a>
-        <div class="nav-dropdown-menu">
-          <a class="BotonBa" href="javascript:void(0)" data-href="./index.html?dieta=Diab%C3%A9ticos" data-nav-dieta="Diabéticos">Diabéticos</a>
-          <a class="BotonBa" href="javascript:void(0)" data-href="./index.html?dieta=Cel%C3%ADacos" data-nav-dieta="Celíacos">Celíacos</a>
-        </div>
-      </div>
-      <a class="BotonBa" href="./planificador.html">📅 Planificador</a>
-      <a class="BotonBa" href="./consejos.html">💡 Consejos</a>
-      <button class="nav-dark-btn nav-timer-btn" onclick="abrirTimer()" title="Abrir temporizador">⏱️</button>
-      <button class="nav-dark-btn" id="btnModoNoche" aria-label="Activar modo noche" title="Modo noche">🌕</button>
+        <a class="BotonBa activo" href="./index.html">Inicio</a>
+        <a class="BotonBa" href="./Preparando.html">Iglesia</a>
+        <a class="BotonBa" href="./Emergente.html">Emergente social</a>
     </div>
-
-    <div class="nav-cta">
-      <a class="BotonP" href="./agregar.html">+ Añadir Receta</a>
-    </div>
-
-    <button class="nav-hamburger" id="navHamburger" aria-label="Abrir menú" aria-expanded="false">
-      <span></span>
-      <span></span>
-      <span></span>
-    </button>
-
-  </div>
-
-  <div class="nav-mobile-menu" id="navMobileMenu" role="navigation">
-    <a class="nav-mobile-link activo" href="./index.html">
-      <span class="nav-mobile-icon">🏠</span> Inicio
-    </a>
-    <div class="nav-mobile-submenu">
-      <a class="nav-mobile-link nav-mobile-submenu-trigger" role="button" tabindex="0">
-        <span class="nav-mobile-icon">🍽️</span> Comidas <span class="submenu-arrow">▾</span>
-      </a>
-      <div class="nav-mobile-submenu-items">
-        <a class="nav-mobile-link" href="./index.html?tipo=Desayuno">
-          <span class="nav-mobile-icon">☀️</span> Desayuno
-        </a>
-        <a class="nav-mobile-link" href="./index.html?tipo=Almuerzo">
-          <span class="nav-mobile-icon">🥗</span> Almuerzo
-        </a>
-        <a class="nav-mobile-link" href="./index.html?tipo=Cena">
-          <span class="nav-mobile-icon">🌙</span> Cena
-        </a>
-        <a class="nav-mobile-link" href="./index.html?tipo=Media Tarde">
-          <span class="nav-mobile-icon">🕑</span> Media Tarde
-        </a>
-        <a class="nav-mobile-link" href="./index.html?tipo=Indefinido">
-          <span class="nav-mobile-icon">❓</span> Indefinido
-        </a>
-        <a class="nav-mobile-link" href="./index.html?tipo=Postre">
-          <span class="nav-mobile-icon">🍰</span> Postre
-        </a>
-        <a class="nav-mobile-link" href="./index.html?tipo=Acompa%C3%B1amiento">
-          <span class="nav-mobile-icon">🥬</span> Acompañamiento
-        </a>
-      </div>
-    </div>
-    <div class="nav-mobile-submenu">
-      <a class="nav-mobile-link nav-mobile-submenu-trigger" role="button" tabindex="0">
-        <span class="nav-mobile-icon">🥗</span> Dietas <span class="submenu-arrow">▾</span>
-      </a>
-      <div class="nav-mobile-submenu-items">
-        <a class="nav-mobile-link" href="javascript:void(0)" data-href="./index.html?dieta=Diab%C3%A9ticos" data-nav-dieta="Diabéticos">
-          <span class="nav-mobile-icon">🩸</span> Diabéticos
-        </a>
-        <a class="nav-mobile-link" href="javascript:void(0)" data-href="./index.html?dieta=Cel%C3%ADacos" data-nav-dieta="Celíacos">
-          <span class="nav-mobile-icon">🌾</span> Celíacos
-        </a>
-      </div>
-    </div>
-    <a class="nav-mobile-link" href="./planificador.html">
-      <span class="nav-mobile-icon">📅</span> Planificador
-    </a>
-    <a class="nav-mobile-link" href="./consejos.html">
-      <span class="nav-mobile-icon">💡</span> Consejos
-    </a>
-    <a class="nav-mobile-link" role="button" tabindex="0" onclick="abrirTimer()">
-      <span class="nav-mobile-icon">⏱️</span> Temporizador
-    </a>
-    <a class="nav-mobile-link" role="button" tabindex="0" id="btnModoNocheMobile">
-      <span class="nav-mobile-icon" id="iconoModoNocheMobile">🌕</span> <span id="textoModoNocheMobile">Modo noche</span>
-    </a>
-    <div class="nav-mobile-divider"></div>
-    <div class="nav-mobile-cta">
-      <a class="BotonP" href="./agregar.html">+ Añadir Receta</a>
-    </div>
-  </div>
+    <img class="Logo" id="LogoE" src="./Imagenes/Iconos/Emergente.png" alt="Logo Centro Emergente">
 </nav>
 
-<div class="nav-overlay" id="navOverlay"></div>
-
-<div class="contenedor">
-
-  <div class="encabezado">
-    <div class="encabezado-titulo">
-      <h1>Tus Recetas</h1>
-      <p>Encuentra inspiración para cualquier momento del día.</p>
+<div class="CartelPresent CartelIndex TextB">
+    <h2 class="TextP1" data-anim>Bienvenidos a la iglesia Preparando el camino</h2>
+    <h3 class="TextP2" data-anim>Un lugar de fe, amor y restauración</h3>
+    <div class="ColocBP" data-anim>
+        <a class="BotonP" href="./Preparando.html"><img src="./Imagenes/Iconos/BotonI.png" alt=""> Iglesia Preparando el camino <span class="BotonArrow">→</span></a>
+        <a class="BotonP" href="./Emergente.html"><img src="./Imagenes/Iconos/BotonE.png" alt=""> Centro Emergente social <span class="BotonArrow">→</span></a>
     </div>
-    <div class="encabezado-acciones">
-      <div class="buscador">
-        <span class="buscador-icono">🔍</span>
-        <input type="text" id="buscador" placeholder="Buscar por nombre o ingrediente...">
-      </div>
-      <button class="btn-filtro" id="btnAleatorio">🎲 ¿Qué cocino hoy?</button>
-      <div class="ordenar-wrapper">
-        <button class="btn-filtro" id="btnOrdenar">🔽 Ordenar</button>
-        <div class="ordenar-dropdown oculto" id="ordenarDropdown">
-          <button class="ordenar-opcion" data-orden="momento" data-texto="📋 Momento">📋 Momento</button>
-          <button class="ordenar-opcion" data-orden="dificultad" data-texto="📊 Dificultad">📊 Dificultad</button>
-          <button class="ordenar-opcion" data-orden="tiempo" data-texto="⏱️ Tiempo">⏱️ Tiempo</button>
-        </div>
-      </div>
-      <button class="btn-filtro" id="btnFiltros">📊 Filtros</button>
-      <a class="btn-filtro btn-agregar-mobile" id="btnAgregarMobile" href="agregar.html">+ Añadir Receta</a>
-    </div>
-  </div>
-
-  <div class="sugerencia-aleatoria oculto" id="sugerenciaAleatoria">
-    <div class="sugerencia-inner">
-      <span class="sugerencia-icono">🎲</span>
-      <div class="sugerencia-texto">
-        <span class="sugerencia-label">¡Hoy podrías cocinar...</span>
-        <a class="sugerencia-receta" id="sugerenciaLink" href=""></a>
-      </div>
-      <button class="sugerencia-cerrar" id="sugerenciaCerrar">✕</button>
-    </div>
-  </div>
-
-  <div class="panel-filtros" id="panelFiltros">
-    <div class="panel-filtros-header">
-      <h3>Filtros Avanzados</h3>
-      <div class="panel-filtros-acciones">
-        <button class="btn-limpiar-header" id="btnLimpiarFiltros" title="Limpiar filtros">⟳</button>
-        <button class="btn-cerrar" id="btnCerrarFiltros">✕</button>
-      </div>
-    </div>
-    <div class="filtros-grid">
-      <div class="filtro-grupo plegado">
-        <button class="filtro-header" type="button">
-          <span>Momento del dia</span>
-          <span class="filtro-flecha">▼</span>
-        </button>
-        <div class="filtro-opciones" id="filtrosTipo"></div>
-      </div>
-      <div class="filtro-grupo plegado">
-        <button class="filtro-header" type="button">
-          <span>Dificultad</span>
-          <span class="filtro-flecha">▼</span>
-        </button>
-        <div class="filtro-opciones" id="filtrosDificultad"></div>
-      </div>
-      <div class="filtro-grupo plegado">
-        <button class="filtro-header" type="button">
-          <span>Tiempo de preparación</span>
-          <span class="filtro-flecha">▼</span>
-        </button>
-        <div class="filtro-opciones" id="filtrosTiempo"></div>
-      </div>
-      <div class="filtro-grupo plegado">
-        <button class="filtro-header" type="button">
-          <span>Porciones</span>
-          <span class="filtro-flecha">▼</span>
-        </button>
-        <div class="filtro-opciones" id="filtrosPorciones"></div>
-      </div>
-      <div class="filtro-grupo plegado">
-        <button class="filtro-header" type="button">
-          <span>Puntuación</span>
-          <span class="filtro-flecha">▼</span>
-        </button>
-        <div class="filtro-opciones" id="filtrosPuntuacion"></div>
-      </div>
-      <div class="filtro-grupo plegado">
-        <button class="filtro-header" type="button">
-          <span>Favoritos</span>
-          <span class="filtro-flecha">▼</span>
-        </button>
-        <div class="filtro-opciones" id="filtrosFavorito"></div>
-      </div>
-      <div class="filtro-grupo plegado">
-        <button class="filtro-header" type="button">
-          <span>Autor</span>
-          <span class="filtro-flecha">▼</span>
-        </button>
-        <div class="filtro-opciones" id="filtrosAutor"></div>
-      </div>
-      <div class="filtro-grupo plegado">
-        <button class="filtro-header" type="button">
-          <span>Categorías</span>
-          <span class="filtro-flecha">▼</span>
-        </button>
-        <div class="filtro-opciones" id="filtrosCategorias"></div>
-      </div>
-      <div class="filtro-grupo plegado">
-        <button class="filtro-header" type="button">
-          <span>Dieta especial</span>
-          <span class="filtro-flecha">▼</span>
-        </button>
-        <div class="filtro-opciones" id="filtrosDieta"></div>
-      </div>
-    </div>
-  </div>
-
-  <div class="grid-recetas" id="gridRecetas"></div>
-
-  <div class="sin-resultados oculto" id="sinResultados">
-    <div class="sin-resultados-icono">🔍</div>
-    <h3>No se encontraron recetas</h3>
-    <p>Prueba a buscar con otros términos o ajusta los filtros para ver más resultados.</p>
-    <button class="btn-limpiar" onclick="limpiarFiltros()">Limpiar filtros</button>
-  </div>
-
+    <img class="ImagenIndex" src="./Imagenes/General.jpeg" alt="">
 </div>
 
-  <!-- TIMER MODAL -->
-  <div class="modal oculto" id="modalTimer" onclick="if(event.target===this)cerrarTimer()">
-    <div class="modal-contenido modal-timer">
-      <button class="modal-cerrar" onclick="cerrarTimer()">✕</button>
-      <h3>⏱️ Temporizador</h3>
-      <div class="timer-display" id="timerDisplay">10:00</div>
-      <div class="timer-barra-track"><div class="timer-barra-fill" id="timerBarra" style="width:100%"></div></div>
-      <div class="timer-acciones">
-        <button class="btn-accion" id="timerBoton" onclick="toggleTimer()">▶</button>
-        <button class="btn-accion" onclick="reiniciarTimer()">⟳</button>
-        <div class="timer-presets">
-          <button class="btn-categoria" onclick="abrirTimer('5 min')">5</button>
-          <button class="btn-categoria" onclick="abrirTimer('10 min')">10</button>
-          <button class="btn-categoria" onclick="abrirTimer('15 min')">15</button>
-          <button class="btn-categoria" onclick="abrirTimer('20 min')">20</button>
-          <button class="btn-categoria" onclick="abrirTimer('25 min')">25</button>
-          <button class="btn-categoria" onclick="abrirTimer('30 min')">30</button>
-          <button class="btn-categoria" onclick="abrirTimer('35 min')">35</button>
-          <button class="btn-categoria" onclick="abrirTimer('40 min')">40</button>
-          <button class="btn-categoria" onclick="abrirTimer('45 min')">45</button>
-          <button class="btn-categoria" onclick="abrirTimer('50 min')">50</button>
-          <button class="btn-categoria" onclick="abrirTimer('55 min')">55</button>
-          <button class="btn-categoria" onclick="abrirTimer('60 min')">60</button>
-          <button class="btn-categoria" onclick="abrirTimer('65 min')">65</button>
-          <button class="btn-categoria" onclick="abrirTimer('70 min')">70</button>
-          <button class="btn-categoria" onclick="abrirTimer('75 min')">75</button>
-          <button class="btn-categoria" onclick="abrirTimer('80 min')">80</button>
-          <button class="btn-categoria" onclick="abrirTimer('85 min')">85</button>
-          <button class="btn-categoria" onclick="abrirTimer('90 min')">90</button>
-          <button class="btn-categoria" onclick="abrirTimer('95 min')">95</button>
-          <button class="btn-categoria" onclick="abrirTimer('100 min')">100</button>
-          <button class="btn-categoria" onclick="abrirTimer('105 min')">105</button>
-          <button class="btn-categoria" onclick="abrirTimer('110 min')">110</button>
-          <button class="btn-categoria" onclick="abrirTimer('115 min')">115</button>
-          <button class="btn-categoria" onclick="abrirTimer('120 min')">120</button>
-        </div>
-      </div>
-      <div class="timer-alarma oculto" id="timerAlarma">🔔 ¡Tiempo cumplido!</div>
-    </div>
-  </div>
 
+
+<div class="CartelPresent2 TextB" data-anim>
+    <h2 class="TextP11">Nuestra Misión</h2>
+    <h3 class="TextP12">
+        Somos una iglesia que busca alcanzar y discipular personas de diferentes maneras, compartiendo una palabra que restaura al ser humano, lo lleva al arrepentimiento y permite que Cristo sea formado en cada vida.<br>
+        Trabajamos a través de los grupos de discipulado, el centro de recuperación, la fundación, los encuentros de los viernes con preadolescentes y las actividades de los sábados, manteniendo un acompañamiento constante de lunes a sábado. <br>
+        Nuestro principal fundamento es llevar a las personas a Cristo, no al pastor ni a una doctrina humana, sino a la enseñanza de la Biblia.
+    </h3>
+
+    <input type="checkbox" id="toggleDevocional">
+
+    <label for="toggleDevocional" class="BotonConcer" id="BotonDevocional">
+        <span class="abrir">📖 Devocional</span>
+        <span class="cerrar">Cerrar</span>
+    </label>
+
+    <input type="checkbox" id="toggleMusica">
+
+    <label for="toggleMusica" class="BotonConcer" id="BotonMusica">
+        <span class="abrir">🎵 Música</span>
+        <span class="cerrar">Cerrar</span>
+    </label>
+
+    <div class="ReproductorMusica TextB">
+        <div class="RepInfo">
+            <p class="RepCancion" id="RepCancion">—</p>
+            <p class="RepInterpretes" id="RepInterpretes">—</p>
+        </div>
+        <div class="RepProgreso">
+            <span class="RepTiempo" id="RepActual">0:00</span>
+            <input type="range" class="RepBarra" id="RepBarra" value="0" min="0" step="1">
+            <span class="RepTiempo" id="RepTotal">0:00</span>
+        </div>
+        <div class="RepControles">
+            <button class="RepBtn" id="RepAnterior" title="Anterior">&#9198;</button>
+            <button class="RepBtn RepBtnPlay" id="RepPlay" title="Play/Pausa">&#9654;</button>
+            <button class="RepBtn" id="RepSiguiente" title="Siguiente">&#9197;</button>
+        </div>
+        <div class="RepVolumen">
+            <span>🔈</span>
+            <input type="range" class="RepBarraVol" id="RepBarraVol" value="80" min="0" max="100">
+            <span>🔊</span>
+            <button class="RepBtn RepBtnShuffle" id="RepShuffle" title="Aleatorio">&#8635;</button>
+            <button class="RepBtn" id="RepDescargar" title="Descargar canción">&#10515;</button>
+        </div>
+        <ul class="RepLista" id="RepLista"></ul>
+    </div>
+
+    <div class="Devocional TextB">
+        <h2>📌RENOVANDO LA INTIMIDAD CON DIOS</h2>
+
+Lo único que le pido al Señor, lo que más anhelo, es vivir en la casa del Señor todos los días de mi vida, deleitándome en la perfección del Señor y meditando dentro de Su templo.
+<span class="dev-version">Salmo 27:4</span>
+
+Esto lo decía David antes que pasara por una cantidad de hechos que cambiarían su vida de intimidad con Dios. <br>
+Hechos de pecado y homicidio, en desobediencia a Dios, lo llevaron a un estado de culpa que nunca hubiera imaginado.<br>
+
+David se gozaba en alabar y pasar tiempo hermoso con Dios; pero lo hechó a perder, dejando de lado su comunión con su Dios.<br>
+
+Cuando fue confrontado con su pecado y con las consecuencias, se sintió muy mal, y pidiéndole perdón a su Señor, pudo ver de nuevo el amor y misericordia que Dios tenía por él.<br>
+
+Siempre contamos con una nueva oportunidad cuando vamos arrepentidos y pidiéndole perdón de corazón, y comenzando a buscar Su presencia e intimidad que nos va transformando como Él quiere.<br><br>
+
+Bienaventurados los de limpio corazón, porque ellos verán a Dios.
+<span class="dev-version">Mateo 5:8</span>
+
+Nuestro corazón debe permanecer siempre limpio; de esa manera estaremos en condiciones permanentes de entrar a Su presencia e intimidad y poder ser instruidos y guiados para Su obra, en todo lo que Él dará a Sus hijos en poder y autoridad, para completar Su propósito en la tierra.
+
+<span class="dev-oracion">🙏🏼 <strong>Oramos</strong><br>
+Gracias, Padre, porque nunca rechazas a Tus hijos cuando vamos a Tu presencia para pedir perdón de corazón. Renovamos nuestra intimidad contigo, que nos dará crecimiento espiritual y podremos disfrutar de toda la plenitud de vida en Ti, en el nombre de Jesús, amén!</span>
+        </p>
+    </div>
 </div>
 
-<footer>
-  <div class="contenedor">
-    <p>Recetas del día — Tu app de recetas personales.</p>
-  </div>
-</footer>
+<div class="ContCarteles" data-anim>
+    <div class="CartelesIndi TextB">
+        <img class="ImgP2" src="./Imagenes/Igle.jpeg" alt="Nuestra iglesia">
+        <h2 class="TextCI1">Nuestra Iglesia</h2>
+        <p class="TextCI2">
+            Un espacio de adoración, comunión y crecimiento espiritual <br><br>
+            Te invitamos a compartir cada semana junto a nuestra congregación, donde buscamos adorar a Dios, aprender de Su Palabra y crecer espiritualmente en comunidad.
+        </p>
+        <a class="BotonConcer" href="./Preparando.html">Conoce más</a>
+    </div>
 
-<button id="scrollTop" title="Volver arriba">↑</button>
+    <div class="CartelesIndi TextB">
+        <img class="ImgP2" src="./Imagenes/Acompañemos.jpeg" alt="Centro de Recuperación">
+        <h2 class="TextCI1">Centro de Recuperación</h2>
+        <p class="TextCI2">
+            Un camino hacia la sanidad y nueva vida <br><br>
+            Ofrecemos un programa integral de recuperación basado en principios cristianos para personas que luchan con adicciones.
+        </p>
+        <a class="BotonConcer" href="./Emergente.html">Conoce más</a>
+    </div>
+</div>
+
+<div class="EventosEspeciales TextB" data-anim>
+    <h2>Eventos especiales</h2>
+    <div class="EventosEspecialesCont">
+
+
+
+        <div class="EventoIndividual">
+            <img src="./Imagenes/Eventos/RetiroF.jpeg" alt="Retiro de mujeres">
+            <div class="EventoInfo">
+                <h3>Retiro de Matrimonios</h3>
+                <ul>
+                    <li>Volver al pacto.</li>
+                    <li>Tiempo de reconexión, restauración y renovación!.</li>
+                    <li>Agendá esta fecha: Domingo 7 de Junio, 11:00 hs.</li>
+                    <li>Anotate con tu líder 😉</li>
+                </ul>
+                <p class="EventoNota">¡No pueden perderselo!</p>
+            </div>
+        </div>
+
+
+        <div class="EventoIndividual">
+            <img src="./Imagenes/Eventos/Nueva serie.jpeg" alt="Nueva Serie">
+            <div class="EventoInfo">
+                <h3>Avengers Assemble</h3>
+                <ul>
+                    <li>Nueva Serie</li>
+                </ul>
+                <p class="EventoNota">¡Te esperamos!</p>
+            </div>
+        </div>
+
+        <div class="EventoIndividual">
+            <img src="./Imagenes/Eventos/RetiroMujeres.jpeg" alt="Retiro de mujeres">
+            <div class="EventoInfo">
+                <h3>Retiro de mujeres</h3>
+                <ul>
+                    <li>Se viene nuestra primera, de muchas charlas enriquecedoras para nuestro espíritu y alma.</li>
+                    <li>Agendá esta fecha: viernes 15 de Mayo, 18:30 hs.</li>
+                    <li>Sin costo, solo traer algo rico para compartir.</li>
+                    <li>Anotate con tu líder 😉</li>
+                </ul>
+                <p class="EventoNota">¡No podés faltar!</p>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+
+<div class="separador"></div>
+
+<div class="HorariosPI TextB" data-anim>
+    <h2>Horarios de Servicio</h2>
+    <div class="ContHorarios">
+        <div>
+            <div class="TituloHorario">
+                <img class="LogoIndx" src="./Imagenes/Iconos/Charla.png" alt="">
+                <h2>Lunes</h2>
+            </div>
+            <p>Emergente social: 19:30 Hs</p>
+        </div>
+        <div>
+            <div class="TituloHorario">
+                <img class="LogoIndx" src="./Imagenes/Iconos/Lugar.png" alt="">
+                <h2>Miércoles</h2>
+            </div>
+            <p>Estudio Bíblico: 20:00 Hs</p>
+        </div>
+        <div>
+            <div class="TituloHorario">
+                <img class="LogoIndx" src="./Imagenes/Iconos/Reunidos.png" alt="">
+                <h2>Viernes</h2>
+            </div>
+            <p>Reunión de Pre-Adolescentes: 18:30 Hs</p>
+        </div>
+        <div>
+            <div class="TituloHorario">
+                <img class="LogoIndx" src="./Imagenes/Iconos/Igle.png" alt="">
+                <h2>Sábado</h2>
+            </div>
+            <p>Servicio Principal: 20:00 Hs</p>
+        </div>
+    </div>
+</div>
+
+<div class="ContFI TextB">
+    <h2 class="TextF">¡¡Visítanos!!</h2>
+    <p>Juan B. Alberdi 135 <br>
+    Teléfono: (261) 596-0948 <br>
+    Email: signoreliraul42@gmail.com</p>
+</div>
+
+<script src="./JS/reproductor.js" defer></script>
+<script src="./JS/animaciones.js" defer></script>
+<button id="scrollTop" title="Volver arriba">&#8593;</button>
 <script>
 const btn = document.getElementById("scrollTop");
 window.addEventListener("scroll", () => btn.classList.toggle("visible", window.scrollY > 300));
 btn.addEventListener("click", () => window.scrollTo({ top: 0, behavior: "smooth" }));
-</script>
-
-<script>
-(function () {
-  var CLAVE = 'recetario-modo-noche';
-  var btnD = document.getElementById('btnModoNoche');
-  var btnM = document.getElementById('btnModoNocheMobile');
-  var iconoM = document.getElementById('iconoModoNocheMobile');
-  var textoM = document.getElementById('textoModoNocheMobile');
-
-  function activar() {
-    document.documentElement.classList.add('modo-noche');
-    btnD.textContent = '\u2600\uFE0F';
-    btnD.setAttribute('aria-label', 'Desactivar modo noche');
-    btnD.setAttribute('title', 'Modo d\u00EDa');
-    if (iconoM) iconoM.textContent = '\u2600\uFE0F';
-    if (textoM) textoM.textContent = 'Modo d\u00EDa';
-    localStorage.setItem(CLAVE, '1');
-  }
-
-  function desactivar() {
-    document.documentElement.classList.remove('modo-noche');
-    btnD.textContent = '\uD83C\uDF15';
-    btnD.setAttribute('aria-label', 'Activar modo noche');
-    btnD.setAttribute('title', 'Modo noche');
-    if (iconoM) iconoM.textContent = '\uD83C\uDF15';
-    if (textoM) textoM.textContent = 'Modo noche';
-    localStorage.removeItem(CLAVE);
-  }
-
-  function toggle() {
-    document.documentElement.classList.contains('modo-noche') ? desactivar() : activar();
-  }
-
-  if (localStorage.getItem(CLAVE) === '1') activar();
-
-  btnD.addEventListener('click', toggle);
-  if (btnM) {
-    btnM.addEventListener('click', function (e) { e.preventDefault(); toggle(); });
-  }
-})();
-</script>
-
-<script>
-(function () {
-  const hamburger = document.getElementById('navHamburger');
-  const menu      = document.getElementById('navMobileMenu');
-  const overlay   = document.getElementById('navOverlay');
-
-  function abrir() {
-    hamburger.classList.add('abierto');
-    menu.classList.add('visible');
-    overlay.classList.add('visible');
-    hamburger.setAttribute('aria-expanded', 'true');
-    document.body.style.overflow = 'hidden';
-  }
-
-  function cerrar() {
-    hamburger.classList.remove('abierto');
-    menu.classList.remove('visible');
-    overlay.classList.remove('visible');
-    hamburger.setAttribute('aria-expanded', 'false');
-    document.body.style.overflow = '';
-  }
-
-  hamburger.addEventListener('click', function () {
-    menu.classList.contains('visible') ? cerrar() : abrir();
-  });
-
-  overlay.addEventListener('click', cerrar);
-
-  document.addEventListener('keydown', function (e) {
-    if (e.key === 'Escape') cerrar();
-  });
-
-  window.addEventListener('resize', function () {
-    if (window.innerWidth > 860) cerrar();
-  });
-
-  document.querySelectorAll('.nav-mobile-submenu-trigger').forEach(function (trigger) {
-    trigger.addEventListener('click', function () {
-      var items = this.nextElementSibling;
-      if (items) {
-        items.classList.toggle('visible');
-        this.classList.toggle('abierto');
-      }
-    });
-  });
-})();
 </script>
 </body>
 </html>
