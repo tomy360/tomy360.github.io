@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script>if(localStorage.getItem('recetario-modo-noche')==='1')document.documentElement.classList.add('modo-noche')</script>
+  <style>body{background:#FDF8F0}html.modo-noche body{background:#1a1f12}</style>
+  <link rel="stylesheet" href="./CSS/estilo.css">
+  <link rel="stylesheet" href="./CSS/auth.css">
+  <style>.nav-cta,.nav-mobile-cta{display:none}</style>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🍳</text></svg>">
+  <title>Consejos de cocina — Recetas del día</title>
+  <script defer src="./JS/supabase.js?v=2"></script>
+  <script defer src="./JS/datos.js?v=2"></script>
+  <script defer src="./JS/db.js?v=2"></script>
+  <script defer src="./JS/timer.js?v=2"></script>
+  <script defer src="./JS/auth.js?v=2"></script>
+  <script defer src="./JS/emojis.js?v=2"></script>
+  <script defer src="./JS/consejos.js?v=2"></script>
+</head>
+<body>
+
+<nav>
+  <div class="nav-inner">
+
+    <a class="nav-logo" href="./index.html">
+      <span class="nav-logo-icon">🍳</span>
+      <span>Recetas del día</span>
+    </a>
+
+    <div class="menu-botones">
+      <a class="BotonBa" href="./index.html">Inicio</a>
+      <div class="nav-dropdown">
+        <a class="BotonBa" href="./index.html?tipo=Todos">🍽️ Comidas</a>
+        <div class="nav-dropdown-menu">
+          <a class="BotonBa" href="./index.html?tipo=Desayuno">Desayuno</a>
+          <a class="BotonBa" href="./index.html?tipo=Almuerzo">Almuerzo</a>
+          <a class="BotonBa" href="./index.html?tipo=Cena">Cena</a>
+          <a class="BotonBa" href="./index.html?tipo=Media Tarde">Media Tarde</a>
+          <a class="BotonBa" href="./index.html?tipo=Indefinido">Indefinido</a>
+          <a class="BotonBa" href="./index.html?tipo=Postre">Postre</a>
+          <a class="BotonBa" href="./index.html?tipo=Acompa%C3%B1amiento">Acompañamiento</a>
+        </div>
+      </div>
+      <div class="nav-dropdown">
+        <a class="BotonBa" href="javascript:void(0)">🥗 Dietas</a>
+        <div class="nav-dropdown-menu">
+          <a class="BotonBa" href="javascript:void(0)" data-href="./index.html?dieta=Diab%C3%A9ticos" data-nav-dieta="Diabéticos">Diabéticos</a>
+          <a class="BotonBa" href="javascript:void(0)" data-href="./index.html?dieta=Cel%C3%ADacos" data-nav-dieta="Celíacos">Celíacos</a>
+        </div>
+      </div>
+      <a class="BotonBa" href="./planificador.html">📅 Planificador</a>
+      <a class="BotonBa activo" href="./consejos.html">💡 Consejos</a>
+      <button class="nav-dark-btn nav-timer-btn" onclick="abrirTimer()" title="Abrir temporizador">⏱️</button>
+      <button class="nav-dark-btn" id="btnModoNoche" aria-label="Activar modo noche" title="Modo noche">🌕</button>
+    </div>
+
+    <div class="nav-cta">
+      <a class="BotonP" href="./agregar.html">+ Añadir Receta</a>
+    </div>
+
+    <button class="nav-hamburger" id="navHamburger" aria-label="Abrir menú" aria-expanded="false">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+
+  </div>
+
+  <div class="nav-mobile-menu" id="navMobileMenu" role="navigation">
+    <a class="nav-mobile-link" href="./index.html">
+      <span class="nav-mobile-icon">🏠</span> Inicio
+    </a>
+    <div class="nav-mobile-submenu">
+      <a class="nav-mobile-link nav-mobile-submenu-trigger" role="button" tabindex="0">
+        <span class="nav-mobile-icon">🍽️</span> Comidas <span class="submenu-arrow">▾</span>
+      </a>
+      <div class="nav-mobile-submenu-items">
+        <a class="nav-mobile-link" href="./index.html?tipo=Desayuno">
+          <span class="nav-mobile-icon">☀️</span> Desayuno
+        </a>
+        <a class="nav-mobile-link" href="./index.html?tipo=Almuerzo">
+          <span class="nav-mobile-icon">🥗</span> Almuerzo
+        </a>
+        <a class="nav-mobile-link" href="./index.html?tipo=Cena">
+          <span class="nav-mobile-icon">🌙</span> Cena
+        </a>
+        <a class="nav-mobile-link" href="./index.html?tipo=Media Tarde">
+          <span class="nav-mobile-icon">🕑</span> Media Tarde
+        </a>
+        <a class="nav-mobile-link" href="./index.html?tipo=Indefinido">
+          <span class="nav-mobile-icon">❓</span> Indefinido
+        </a>
+        <a class="nav-mobile-link" href="./index.html?tipo=Postre">
+          <span class="nav-mobile-icon">🍰</span> Postre
+        </a>
+        <a class="nav-mobile-link" href="./index.html?tipo=Acompa%C3%B1amiento">
+          <span class="nav-mobile-icon">🥬</span> Acompañamiento
+        </a>
+      </div>
+    </div>
+    <div class="nav-mobile-submenu">
+      <a class="nav-mobile-link nav-mobile-submenu-trigger" role="button" tabindex="0">
+        <span class="nav-mobile-icon">🥗</span> Dietas <span class="submenu-arrow">▾</span>
+      </a>
+      <div class="nav-mobile-submenu-items">
+        <a class="nav-mobile-link" href="javascript:void(0)" data-href="./index.html?dieta=Diab%C3%A9ticos" data-nav-dieta="Diabéticos">
+          <span class="nav-mobile-icon">🩸</span> Diabéticos
+        </a>
+        <a class="nav-mobile-link" href="javascript:void(0)" data-href="./index.html?dieta=Cel%C3%ADacos" data-nav-dieta="Celíacos">
+          <span class="nav-mobile-icon">🌾</span> Celíacos
+        </a>
+      </div>
+    </div>
+    <a class="nav-mobile-link" href="./planificador.html">
+      <span class="nav-mobile-icon">📅</span> Planificador
+    </a>
+    <a class="nav-mobile-link activo" href="./consejos.html">
+      <span class="nav-mobile-icon">💡</span> Consejos
+    </a>
+    <a class="nav-mobile-link" role="button" tabindex="0" onclick="abrirTimer()">
+      <span class="nav-mobile-icon">⏱️</span> Temporizador
+    </a>
+    <a class="nav-mobile-link" role="button" tabindex="0" id="btnModoNocheMobile">
+      <span class="nav-mobile-icon" id="iconoModoNocheMobile">🌕</span> <span id="textoModoNocheMobile">Modo noche</span>
+    </a>
+    <div class="nav-mobile-divider"></div>
+    <div class="nav-mobile-cta">
+      <a class="BotonP" href="./agregar.html">+ Añadir Receta</a>
+    </div>
+  </div>
+</nav>
+
+<div class="nav-overlay" id="navOverlay"></div>
+
+<div class="consejos-page">
+  <div class="consejos-toolbar">
+    <div>
+      <h1>💡 Consejos de cocina</h1>
+      <p style="color:var(--texto-suave);margin:0.25rem 0 0;">Notas, trucos y recomendaciones que vas descubriendo.</p>
+    </div>
+    <button class="consejos-toggle-btn oculto" id="btnToggleConsejo" title="Agregar consejo">+</button>
+  </div>
+
+  <div class="consejos-encabezado-filtros">
+    <div class="consejos-buscador">
+      <span class="consejos-buscador-icono">🔍</span>
+      <input type="text" id="buscadorConsejos" placeholder="Buscar consejos por título o contenido...">
+    </div>
+    <button class="btn-filtro" id="btnToggleCategorias">📂 Categorías de consejos</button>
+    <div class="consejos-filtros-categoria oculto" id="filtrosCategoriaConsejo"></div>
+  </div>
+
+  <div class="consejos-form-wrapper oculto" id="consejosFormWrapper">
+    <div class="consejos-form" id="consejosForm">
+      <h4 style="margin:0 0 1rem;">✏️ Nuevo consejo</h4>
+      <div class="form-campo">
+        <label for="campoTituloConsejo">Título</label>
+        <div class="toolbar-formato">
+          <button type="button" class="tf-btn" onclick="formatearTexto(document.getElementById('campoTituloConsejo'),'**','**')" title="Negrita (**)"><b>B</b></button>
+          <button type="button" class="tf-btn" onclick="formatearTexto(document.getElementById('campoTituloConsejo'),'__','__')" title="Subrayado (__)"><u>U</u></button>
+          <button type="button" class="tf-btn" onclick="formatearTexto(document.getElementById('campoTituloConsejo'),'• ','')" title="Lista">•</button>
+          <button type="button" class="tf-btn" onclick="abrirEmojiPopup('campoTituloConsejo')" title="Emojis">😀</button>
+        </div>
+        <input type="text" id="campoTituloConsejo" spellcheck="true" lang="es" autocorrect="on" placeholder="Ej: Cómo pelar ajos fácilmente" style="width:100%;padding:0.65rem 1rem;border:1px solid var(--borde);border-radius:0.75rem;font-size:0.9rem;outline:none;box-sizing:border-box;">
+      </div>
+      <div class="form-campo">
+        <label for="campoCategoriaConsejo">Categoría</label>
+        <select id="campoCategoriaConsejo" style="width:100%;padding:0.65rem 1rem;border:1px solid var(--borde);border-radius:0.75rem;font-size:0.9rem;outline:none;box-sizing:border-box;background:var(--blanco);color:var(--texto);">
+          <option value="">Sin categoría</option>
+        </select>
+      </div>
+      <div class="form-campo oculto">
+        <label for="campoNombreConsejo">Tu nombre</label>
+        <input type="text" id="campoNombreConsejo" placeholder="Tu nombre" style="width:100%;padding:0.65rem 1rem;border:1px solid var(--borde);border-radius:0.75rem;font-size:0.9rem;outline:none;box-sizing:border-box;">
+      </div>
+      <div class="form-campo">
+        <label for="campoContenidoConsejo">Contenido</label>
+        <div class="toolbar-formato">
+          <button type="button" class="tf-btn" data-tag="bold" title="Negrita (**)"><b>B</b></button>
+          <button type="button" class="tf-btn" data-tag="underline" title="Subrayado (__)"><u>U</u></button>
+          <button type="button" class="tf-btn" onclick="formatearTexto(document.getElementById('campoContenidoConsejo'),'• ','')" title="Lista">•</button>
+          <button type="button" class="tf-btn" onclick="abrirEmojiPopup('campoContenidoConsejo')" title="Emojis">😀</button>
+        </div>
+        <textarea id="campoContenidoConsejo" spellcheck="true" lang="es" autocorrect="on" placeholder="Escribe tu consejo aquí..."></textarea>
+      </div>
+      <div class="form-acciones">
+        <button class="btn-guardar" id="btnGuardarConsejo">💾 Guardar consejo</button>
+        <button class="btn-cancelar oculto" id="btnCancelarConsejo" type="button">Cancelar</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="consejos-grid" id="consejosGrid"></div>
+  <p class="sin-resultados oculto" id="sinConsejos" style="text-align:center;padding:3rem;color:var(--texto-suave);">Aún no hay consejos. ¡Escribe el primero!</p>
+</div>
+
+<!-- TIMER MODAL -->
+<div class="modal oculto" id="modalTimer" onclick="if(event.target===this)cerrarTimer()">
+  <div class="modal-contenido modal-timer">
+    <button class="modal-cerrar" onclick="cerrarTimer()">✕</button>
+    <h3>⏱️ Temporizador</h3>
+    <div class="timer-display" id="timerDisplay">10:00</div>
+    <div class="timer-barra-track"><div class="timer-barra-fill" id="timerBarra" style="width:100%"></div></div>
+    <div class="timer-acciones">
+      <button class="btn-accion" id="timerBoton" onclick="toggleTimer()">▶</button>
+      <button class="btn-accion" onclick="reiniciarTimer()">⟳</button>
+      <div class="timer-presets">
+        <button class="btn-categoria" onclick="abrirTimer('5 min')">5</button>
+        <button class="btn-categoria" onclick="abrirTimer('10 min')">10</button>
+        <button class="btn-categoria" onclick="abrirTimer('15 min')">15</button>
+        <button class="btn-categoria" onclick="abrirTimer('20 min')">20</button>
+        <button class="btn-categoria" onclick="abrirTimer('25 min')">25</button>
+        <button class="btn-categoria" onclick="abrirTimer('30 min')">30</button>
+        <button class="btn-categoria" onclick="abrirTimer('35 min')">35</button>
+        <button class="btn-categoria" onclick="abrirTimer('40 min')">40</button>
+        <button class="btn-categoria" onclick="abrirTimer('45 min')">45</button>
+        <button class="btn-categoria" onclick="abrirTimer('50 min')">50</button>
+        <button class="btn-categoria" onclick="abrirTimer('55 min')">55</button>
+        <button class="btn-categoria" onclick="abrirTimer('60 min')">60</button>
+        <button class="btn-categoria" onclick="abrirTimer('65 min')">65</button>
+        <button class="btn-categoria" onclick="abrirTimer('70 min')">70</button>
+        <button class="btn-categoria" onclick="abrirTimer('75 min')">75</button>
+        <button class="btn-categoria" onclick="abrirTimer('80 min')">80</button>
+        <button class="btn-categoria" onclick="abrirTimer('85 min')">85</button>
+        <button class="btn-categoria" onclick="abrirTimer('90 min')">90</button>
+        <button class="btn-categoria" onclick="abrirTimer('95 min')">95</button>
+        <button class="btn-categoria" onclick="abrirTimer('100 min')">100</button>
+        <button class="btn-categoria" onclick="abrirTimer('105 min')">105</button>
+        <button class="btn-categoria" onclick="abrirTimer('110 min')">110</button>
+        <button class="btn-categoria" onclick="abrirTimer('115 min')">115</button>
+        <button class="btn-categoria" onclick="abrirTimer('120 min')">120</button>
+      </div>
+    </div>
+    <div class="timer-alarma oculto" id="timerAlarma">🔔 ¡Tiempo cumplido!</div>
+  </div>
+</div>
+
+<footer>
+  <div class="contenedor">
+    <p>Recetas del día — Tu app de recetas personales.</p>
+  </div>
+</footer>
+
+<button id="scrollTop" title="Volver arriba">↑</button>
+<script>
+const btn = document.getElementById("scrollTop");
+window.addEventListener("scroll", () => btn.classList.toggle("visible", window.scrollY > 300));
+btn.addEventListener("click", () => window.scrollTo({ top: 0, behavior: "smooth" }));
+</script>
+
+<script>
+(function () {
+  var CLAVE = 'recetario-modo-noche';
+  var btnD = document.getElementById('btnModoNoche');
+  var btnM = document.getElementById('btnModoNocheMobile');
+  var iconoM = document.getElementById('iconoModoNocheMobile');
+  var textoM = document.getElementById('textoModoNocheMobile');
+
+  function activar() {
+    document.documentElement.classList.add('modo-noche');
+    btnD.textContent = '\u2600\uFE0F';
+    btnD.setAttribute('aria-label', 'Desactivar modo noche');
+    btnD.setAttribute('title', 'Modo d\u00EDa');
+    if (iconoM) iconoM.textContent = '\u2600\uFE0F';
+    if (textoM) textoM.textContent = 'Modo d\u00EDa';
+    localStorage.setItem(CLAVE, '1');
+  }
+
+  function desactivar() {
+    document.documentElement.classList.remove('modo-noche');
+    btnD.textContent = '\uD83C\uDF15';
+    btnD.setAttribute('aria-label', 'Activar modo noche');
+    btnD.setAttribute('title', 'Modo noche');
+    if (iconoM) iconoM.textContent = '\uD83C\uDF15';
+    if (textoM) textoM.textContent = 'Modo noche';
+    localStorage.removeItem(CLAVE);
+  }
+
+  function toggle() {
+    document.documentElement.classList.contains('modo-noche') ? desactivar() : activar();
+  }
+
+  if (localStorage.getItem(CLAVE) === '1') activar();
+
+  btnD.addEventListener('click', toggle);
+  if (btnM) {
+    btnM.addEventListener('click', function (e) { e.preventDefault(); toggle(); });
+  }
+})();
+</script>
+
+<script>
+(function () {
+  const hamburger = document.getElementById('navHamburger');
+  const menu      = document.getElementById('navMobileMenu');
+  const overlay   = document.getElementById('navOverlay');
+
+  function abrir() {
+    hamburger.classList.add('abierto');
+    menu.classList.add('visible');
+    overlay.classList.add('visible');
+    hamburger.setAttribute('aria-expanded', 'true');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function cerrar() {
+    hamburger.classList.remove('abierto');
+    menu.classList.remove('visible');
+    overlay.classList.remove('visible');
+    hamburger.setAttribute('aria-expanded', 'false');
+    document.body.style.overflow = '';
+  }
+
+  hamburger.addEventListener('click', function () {
+    menu.classList.contains('visible') ? cerrar() : abrir();
+  });
+
+  overlay.addEventListener('click', cerrar);
+
+  document.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape') cerrar();
+  });
+
+  window.addEventListener('resize', function () {
+    if (window.innerWidth > 860) cerrar();
+  });
+
+  document.querySelectorAll('.nav-mobile-submenu-trigger').forEach(function (trigger) {
+    trigger.addEventListener('click', function () {
+      var items = this.nextElementSibling;
+      if (items) {
+        items.classList.toggle('visible');
+        this.classList.toggle('abierto');
+      }
+    });
+  });
+})();
+</script>
+</body>
+</html>

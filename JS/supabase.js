@@ -1,0 +1,2 @@
+const SUPABASE_URL = 'https://dlxvomaccobalfmtaahs.supabase.co';
+const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImRseHZvbWFjY29iYWxmbXRhYWhzIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODEyOTgxMDgsImV4cCI6MjA5Njg3NDEwOH0.Mc1Dtglso81XhByb2Tx1NV04oiIZ-G4_NEh9DOVDiv0';
